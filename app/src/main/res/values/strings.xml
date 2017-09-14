@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Danmo</string>
+    <string name="author">Danmo</string>
+    <string name="git_hub">GitHub</string>
+    <string name="blog">Blog</string>
+    <string name="demo_of_android_util_code">Owner the World</string>
+
+    <string name="main_tab_name_news">资讯</string>
+    <string name="main_tab_name_tweet">辣品</string>
+    <string name="main_tab_name_explore">圈子</string>
+    <string name="main_tab_name_my">我</string>
+
+
+</resources>

@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <com.danmo.ithouse.fragment.nav.NavigationButton
+        android:id="@+id/nav_item_news"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/lay_12"
+        android:paddingRight="@dimen/lay_12" />
+
+    <com.danmo.ithouse.fragment.nav.NavigationButton
+        android:id="@+id/nav_item_tweet"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/lay_12"
+        android:paddingRight="@dimen/lay_12" />
+
+    <!--加号发表动态的，暂时不需要-->
+    <ImageView
+        android:id="@+id/nav_item_tweet_pub"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:contentDescription="@null"
+        android:padding="2dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_nav_add_selector"
+        android:visibility="gone" />
+
+    <com.danmo.ithouse.fragment.nav.NavigationButton
+        android:id="@+id/nav_item_explore"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/lay_12"
+        android:paddingRight="@dimen/lay_12" />
+
+    <com.danmo.ithouse.fragment.nav.NavigationButton
+        android:id="@+id/nav_item_me"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/lay_12"
+        android:paddingRight="@dimen/lay_12" />
+</LinearLayout>
