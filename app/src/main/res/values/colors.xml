@@ -38,5 +38,6 @@
     <color name="list_divider_color">#c8c7cc</color>
     <color name="user_info_message_notice">#E35B5A</color>
     <color name="tab_text_normal">#EEA9A9</color>
+    <color name="diy_red">#DB3937</color>
 
 </resources>

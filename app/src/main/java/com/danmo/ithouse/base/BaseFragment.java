@@ -115,5 +115,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if (mViewHolder.getRootView() != null) {
+            ((ViewGroup) mViewHolder.getRootView().getParent()).removeView(mViewHolder.getRootView());
+        }
     }
 }
