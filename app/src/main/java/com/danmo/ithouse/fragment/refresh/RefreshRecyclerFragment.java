@@ -28,6 +28,9 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
+import com.danmo.commonapi.base.BaseEvent;
+import com.danmo.commonapi.bean.Newest;
+import com.danmo.commonapi.bean.NewestTopNode;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
@@ -42,7 +45,7 @@ import java.util.List;
 /**
  * 具有下拉刷新和上拉加载的 Fragment
  */
-public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<List<T>>> extends
+public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> extends
         BaseFragment {
     // 请求状态 - 下拉刷新 还是 加载更多
     public static final String POST_LOAD_MORE = "load_more";
@@ -157,7 +160,27 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<List<T>
     }
 
     protected void onLoadMore(Event event) {
-        if (event.getBean().size() < pageCount) {
+
+        if(event.getBean() instanceof NewestTopNode){
+//            adapter.addDatas(((Newest)((Newest) event.getBean())).itemInfos);
+            if (((NewestTopNode)(event.getBean())).newest.item.size() < pageCount) {//xml解析
+                mState = STATE_NO_MORE;
+                mFooterProvider.setFooterNormal();
+            } else {
+                mState = STATE_NORMAL;
+                mFooterProvider.setFooterNormal();
+            }
+        }else{
+//            adapter.addDatas((List)event.getBean());
+            if (((List)event.getBean()).size() < pageCount) {
+                mState = STATE_NO_MORE;
+                mFooterProvider.setFooterNormal();
+            } else {
+                mState = STATE_NORMAL;
+                mFooterProvider.setFooterNormal();
+            }
+        }
+        if (((List)event.getBean()).size() < pageCount) {
             mState = STATE_NO_MORE;
             mFooterProvider.setFooterNormal();
         } else {

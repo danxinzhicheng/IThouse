@@ -17,6 +17,8 @@ import com.danmo.commonutil.BarUtils;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
+import com.danmo.ithouse.fragment.sub.NewestFragment;
+import com.danmo.ithouse.fragment.sub.NewsListFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 
 /**
@@ -59,9 +61,9 @@ public class DynamicTabFragment extends BaseFragment {
         bundle.putSerializable("sub_tab", "tab");
 
         return new PagerInfo[]{
-                new PagerInfo("最新", SubFragment.class,
+                new PagerInfo("最新", NewsListFragment.class,
                         bundle),
-                new PagerInfo("排行榜", SubFragment.class,
+                new PagerInfo("排行榜", NewestFragment.class,
                         bundle),
                 new PagerInfo("华为", SubFragment.class,
                         bundle),
