@@ -20,12 +20,10 @@ import java.util.List;
  */
 public final class Utils {
 
-    @SuppressLint("StaticFieldLeak")
-    private static Application sApplication;
-
     static WeakReference<Activity> sTopActivityWeakRef;
     static List<Activity> sActivityList = new LinkedList<>();
-
+    @SuppressLint("StaticFieldLeak")
+    private static Application sApplication;
     private static Application.ActivityLifecycleCallbacks mCallbacks = new Application.ActivityLifecycleCallbacks() {
         @Override
         public void onActivityCreated(Activity activity, Bundle bundle) {

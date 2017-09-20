@@ -24,8 +24,11 @@ package com.danmo.commonutil.recyclerview.adapter.multitype;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
+
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +117,7 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         assert mItems != null;
         Object item = mItems.get(position);
         BaseViewProvider provider = getProviderByClass(item.getClass());
+        Log.i("xxxx", "onBindViewHolder");
         provider.onBindView(holder, item);
     }
 

@@ -40,8 +40,8 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
  * @param <Service>
  */
 public class BaseImpl<Service> {
-    protected CacheUtil mCacheUtil;
     private static Retrofit mRetrofit;
+    protected CacheUtil mCacheUtil;
     protected Service mService;
 
     public BaseImpl(@NonNull Context context) {

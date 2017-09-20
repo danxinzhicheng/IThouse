@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,7 +17,6 @@ import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
-import com.danmo.ithouse.fragment.sub.NewsListFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 
 /**
@@ -61,9 +59,9 @@ public class DynamicTabFragment extends BaseFragment {
         bundle.putSerializable("sub_tab", "tab");
 
         return new PagerInfo[]{
-                new PagerInfo("最新", NewsListFragment.class,
+                new PagerInfo("最新", NewestFragment.class,
                         bundle),
-                new PagerInfo("排行榜", NewestFragment.class,
+                new PagerInfo("排行榜", SubFragment.class,
                         bundle),
                 new PagerInfo("华为", SubFragment.class,
                         bundle),

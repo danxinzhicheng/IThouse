@@ -44,16 +44,18 @@ public class FooterProvider extends BaseViewProvider<Footer> {
 
     @Override
     public void onViewHolderIsCreated(RecyclerViewHolder holder) {
-         footer = holder.get(R.id.footer);
+        footer = holder.get(R.id.footer);
     }
 
     @Override
     public void onBindView(RecyclerViewHolder holder, Footer bean) {
         //footer= holder.get(R.id.footer);
-        needLoadMore();
+        needLoadMore(holder);
     }
 
-    public void needLoadMore() {}
+    public void needLoadMore(RecyclerViewHolder holder) {
+
+    }
 
     public void setFooterLoading() {
         if (null == footer) return;

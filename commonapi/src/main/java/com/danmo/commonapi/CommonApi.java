@@ -3,15 +3,11 @@ package com.danmo.commonapi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.danmo.commonapi.api.newest.NewestAPI;
 import com.danmo.commonapi.api.newest.NewestImpl;
 import com.danmo.commonapi.api.news.NewsAPI;
 import com.danmo.commonapi.api.news.NewsImpl;
-import com.danmo.commonapi.api.test.TestAPI;
-import com.danmo.commonapi.api.test.TestImpl;
-import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.base.OAuth;
 import com.danmo.commonutil.DebugUtil;
 import com.danmo.commonutil.log.Config;
@@ -21,9 +17,8 @@ import com.danmo.commonutil.log.Logger;
  * Created by danmo on 2017/9/16.
  */
 
-public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
+public class CommonApi implements NewsAPI, NewestAPI {
 
-    private static TestImpl sTestImpl;
     private static NewsImpl sNewsImpl;
     private static NewestImpl sNewestImpl;
     //--- 单例 -----------------------------------------------------------------------------------
@@ -48,7 +43,7 @@ public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
     //--- 初始化 ---------------------------------------------------------------------------------
 
     public static CommonApi init(@NonNull Context context, @NonNull final String client_id,
-                               @NonNull final String client_secret) {
+                                 @NonNull final String client_secret) {
         initLogger(context);
         Logger.i("初始化 diycode");
 
@@ -59,6 +54,7 @@ public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
 
         return getSingleInstance();
     }
+
     private static void initLogger(@NonNull Context context) {
         // 在 debug 模式输出日志， release 模式自动移除
         if (DebugUtil.isInDebug(context)) {
@@ -71,7 +67,6 @@ public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
     private static void initImplement(Context context) {
         Logger.i("初始化 implement");
         try {
-            sTestImpl = new TestImpl(context);
             sNewsImpl = new NewsImpl(context);
             sNewestImpl = new NewestImpl(context);
         } catch (Exception e) {
@@ -82,11 +77,6 @@ public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
 
 
     @Override
-    public String hello(@Nullable Integer limit) {
-        return sTestImpl.hello(limit);
-    }
-
-    @Override
     public String getNewsList(@Nullable Integer node_id, @Nullable Integer offset, @Nullable Integer limit) {
 
         return sNewsImpl.getNewsList(node_id, offset, limit);
@@ -94,7 +84,11 @@ public class CommonApi implements TestAPI,NewsAPI,NewestAPI {
 
     @Override
     public String getNewestList(String url) {
-
         return sNewestImpl.getNewestList(url);
+    }
+
+    @Override
+    public String getNewestBannerList(String url) {
+        return sNewestImpl.getNewestBannerList(url);
     }
 }

@@ -38,15 +38,15 @@ public class CacheUtil {
 
     //--- token ------------------------------------------------------------------------------------
 
-    public void saveToken(@NonNull Token token){
+    public void saveToken(@NonNull Token token) {
         cache.put("token", token);
     }
 
-    public Token getToken(){
+    public Token getToken() {
         return (Token) cache.getAsObject("token");
     }
 
-    public void clearToken(){
+    public void clearToken() {
         cache.remove("token");
     }
 }

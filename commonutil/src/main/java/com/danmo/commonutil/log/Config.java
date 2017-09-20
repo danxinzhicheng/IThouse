@@ -42,13 +42,13 @@ public class Config {
         level = LEVEL_FULL;
     }
 
-    public Config setLevel(int level){
-        this.level = level;
-        return this;
-    }
-
     public int getLevel() {
         return level;
+    }
+
+    public Config setLevel(int level) {
+        this.level = level;
+        return this;
     }
 
     public String getTag() {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="192dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -23,15 +22,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_above="@+id/tv_desc"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/iv_avatar"
         android:gravity="center_vertical"
         android:text="@string/author"
         android:textColor="@color/white"
         android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_above="@+id/tv_desc"
-        android:layout_toRightOf="@+id/iv_avatar"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_desc"

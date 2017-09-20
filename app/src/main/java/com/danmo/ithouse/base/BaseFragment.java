@@ -37,10 +37,10 @@ import android.widget.Toast;
  * 提供基础内容和生命周期控制
  */
 public abstract class BaseFragment extends Fragment {
+    private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     protected Context mContext;
     private ViewHolder mViewHolder;     // View 管理
     private View mRoot;
-    private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
 
     @Override
     public void onAttach(Context context) {
@@ -54,7 +54,8 @@ public abstract class BaseFragment extends Fragment {
         mContext = null;
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
@@ -80,6 +81,7 @@ public abstract class BaseFragment extends Fragment {
     public ViewHolder getViewHolder() {
         return mViewHolder;
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -97,7 +99,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected abstract void initViews(ViewHolder holder, View root);
-    protected  void initData(){
+
+    protected void initData() {
 
     }
 

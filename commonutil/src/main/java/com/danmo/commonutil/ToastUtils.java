@@ -27,16 +27,16 @@ import java.lang.ref.WeakReference;
  */
 public final class ToastUtils {
 
-    private static final int     DEFAULT_COLOR = 0xFEFFFFFF;
-    private static final Handler HANDLER       = new Handler(Looper.getMainLooper());
-    private static Toast               sToast;
+    private static final int DEFAULT_COLOR = 0xFEFFFFFF;
+    private static final Handler HANDLER = new Handler(Looper.getMainLooper());
+    private static Toast sToast;
     private static WeakReference<View> sViewWeakReference;
-    private static int gravity         = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
-    private static int xOffset         = 0;
-    private static int yOffset         = (int) (64 * Utils.getApp().getResources().getDisplayMetrics().density + 0.5);
+    private static int gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
+    private static int xOffset = 0;
+    private static int yOffset = (int) (64 * Utils.getApp().getResources().getDisplayMetrics().density + 0.5);
     private static int backgroundColor = DEFAULT_COLOR;
-    private static int bgResource      = -1;
-    private static int messageColor    = DEFAULT_COLOR;
+    private static int bgResource = -1;
+    private static int messageColor = DEFAULT_COLOR;
 
     private ToastUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");

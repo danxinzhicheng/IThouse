@@ -26,8 +26,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
 import com.danmo.commonapi.base.BaseEvent;
-import com.danmo.commonapi.bean.Newest;
-import com.danmo.commonapi.bean.NewestTopNode;
+import com.danmo.commonapi.bean.newest.Newest;
+import com.danmo.commonapi.bean.newest.NewestTopNode;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 
@@ -36,31 +36,36 @@ import java.util.List;
 public abstract class SimpleRefreshRecyclerFragment<T, Event extends BaseEvent<T>> extends
         RefreshRecyclerFragment<T, Event> {
 
-    @NonNull @Override protected RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
+    @NonNull
+    @Override
+    protected RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
         return new SpeedyLinearLayoutManager(getContext());
     }
 
-    @Override protected void onRefresh(Event event, HeaderFooterAdapter adapter) {
+    @Override
+    protected void onRefresh(Event event, HeaderFooterAdapter adapter) {
         adapter.clearDatas();
-        if(event.getBean() instanceof NewestTopNode){
+        if (event.getBean() instanceof NewestTopNode) {
             adapter.addDatas(((NewestTopNode) event.getBean()).newest.item);
-        }else{
-            adapter.addDatas((List)event.getBean());
+        } else {
+            adapter.addDatas((List) event.getBean());
         }
 //        adapter.addDatas(event.getBean());
 //        toast("刷新成功");
     }
 
-    @Override protected void onLoadMore(Event event, HeaderFooterAdapter adapter) {
-        if(event.getBean() instanceof Newest){
-            adapter.addDatas(((Newest)((Newest) event.getBean())).item);
-        }else{
-            adapter.addDatas((List)event.getBean());
+    @Override
+    protected void onLoadMore(Event event, HeaderFooterAdapter adapter) {
+        if (event.getBean() instanceof Newest) {
+            adapter.addDatas(((Newest) ((Newest) event.getBean())).item);
+        } else {
+            adapter.addDatas((List) event.getBean());
         }
 //        adapter.addDatas(event.getBean());
     }
 
-    @Override protected void onError(Event event, String postType) {
+    @Override
+    protected void onError(Event event, String postType) {
         if (postType.equals(POST_LOAD_MORE)) {
             toast("加载更多失败");
         } else if (postType.equals(POST_REFRESH)) {

@@ -12,17 +12,9 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Last modified 2017-03-13 00:41:24
-  ~
-  ~ GitHub:  https://github.com/GcsSloop
-  ~ Website: http://www.gcssloop.com
-  ~ Weibo:   http://weibo.com/GcsSloop
   -->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F0F0F0"
@@ -35,6 +27,6 @@
         android:layout_height="60dp"
         android:gravity="center"
         android:text="-- end --"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
 </RelativeLayout>

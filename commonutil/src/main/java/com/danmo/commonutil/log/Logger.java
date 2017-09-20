@@ -1,6 +1,5 @@
-
-
 package com.danmo.commonutil.log;
+
 import android.util.Log;
 
 public class Logger {
@@ -18,7 +17,7 @@ public class Logger {
         return mConfig;
     }
 
-    public static Config init( String tag) {
+    public static Config init(String tag) {
         mConfig = new Config(tag);
         return mConfig;
     }

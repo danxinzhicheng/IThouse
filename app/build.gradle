@@ -40,6 +40,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.bm.photoview:library:1.4.1'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.youth.banner:banner:1.4.10'
     compile project(':commonutil')
     compile project(':commonapi')
 }

@@ -23,7 +23,6 @@ import com.danmo.ithouse.fragment.UserInfoFragment;
 import java.util.List;
 
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -55,10 +54,10 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         mNavExplore = holder.get(R.id.nav_item_explore);
         mNavMe = holder.get(R.id.nav_item_me);
 
-        holder.setOnClickListener(this,R.id.nav_item_news);
-        holder.setOnClickListener(this,R.id.nav_item_tweet);
-        holder.setOnClickListener(this,R.id.nav_item_explore);
-        holder.setOnClickListener(this,R.id.nav_item_me);
+        holder.setOnClickListener(this, R.id.nav_item_news);
+        holder.setOnClickListener(this, R.id.nav_item_tweet);
+        holder.setOnClickListener(this, R.id.nav_item_explore);
+        holder.setOnClickListener(this, R.id.nav_item_me);
 
         ShapeDrawable lineDrawable = new ShapeDrawable(new BorderShape(new RectF(0, 1, 0, 0)));
         lineDrawable.getPaint().setColor(getResources().getColor(R.color.list_divider_color));
@@ -87,6 +86,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         clearOldFragment();
         doSelect(mNavNews);
     }
+
     @Override
     public void onClick(View v) {
         if (v instanceof NavigationButton) {
@@ -141,6 +141,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         doTabChanged(oldNavButton, newNavButton);
         mCurrentNavButton = newNavButton;
     }
+
     private void doTabChanged(NavigationButton oldNavButton, NavigationButton newNavButton) {
         FragmentTransaction ft = mFragmentManager.beginTransaction();
         if (oldNavButton != null) {
@@ -167,6 +168,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
             listener.onReselect(navigationButton);
         }
     }
+
     public interface OnNavigationReselectListener {
         void onReselect(NavigationButton navigationButton);
     }

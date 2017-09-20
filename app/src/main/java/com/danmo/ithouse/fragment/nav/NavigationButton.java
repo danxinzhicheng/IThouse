@@ -35,6 +35,7 @@ public class NavigationButton extends FrameLayout {
         super(context, attrs, defStyleAttr);
         init();
     }
+
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         inflater.inflate(R.layout.layout_nav_item, this, true);

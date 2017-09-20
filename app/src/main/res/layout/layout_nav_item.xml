@@ -49,8 +49,8 @@
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginTop="1dp"
         android:gravity="center"
-        android:textColor="@drawable/primarybar_txt"
         android:singleLine="true"
+        android:textColor="@drawable/primarybar_txt"
         android:textSize="12sp"
         tools:text="资讯" />
 

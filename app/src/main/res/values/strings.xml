@@ -9,6 +9,9 @@
     <string name="main_tab_name_tweet">辣品</string>
     <string name="main_tab_name_explore">圈子</string>
     <string name="main_tab_name_my">我</string>
+    <string name="yesterday">昨天</string>
+    <string name="just">刚刚</string>
+    <string name="comment_text">评</string>
 
 
 </resources>

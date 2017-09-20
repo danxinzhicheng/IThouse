@@ -1,27 +1,24 @@
 package com.danmo.ithouse.base;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
 import com.danmo.commonutil.BarUtils;
 import com.danmo.commonutil.leak.IMMLeaks;
 import com.danmo.ithouse.R;
@@ -55,7 +52,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             return false;
         }
     };
+    /**
+     * 上次点击时间
+     */
+    private long lastClick = 0;
 
+    public static void openActivity(Context context, Class<?> cls) {
+        Intent intent = new Intent(context, cls);
+        context.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @LayoutRes
     protected abstract int getLayoutId();
+
     /**
      * 初始化数据，调用位置在 initViews 之前
      */
@@ -79,7 +85,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化 View， 调用位置在 initDatas 之后
      */
-    protected  void initViews(ViewHolder holder, View root){
+    protected void initViews(ViewHolder holder, View root) {
         flActivityContainer = (FrameLayout) findViewById(R.id.activity_container);
         flActivityContainer.addView(LayoutInflater.from(this).inflate(getLayoutId(), flActivityContainer, false));
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -89,7 +95,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         rootLayout = (DrawerLayout) findViewById(R.id.root_layout);
         BarUtils.setStatusBarAlpha4Drawer(this, rootLayout, fakeStatusBar, 0, false);
     }
-
 
     // 默认点击左上角是结束当前 Activity
     @Override
@@ -110,6 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void toastShort(String text) {
         toast(text, Toast.LENGTH_SHORT);
     }
+
     /**
      * 发出一个长toast提醒
      *
@@ -118,6 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void toastLong(String text) {
         toast(text, Toast.LENGTH_LONG);
     }
+
     private void toast(final String text, final int duration) {
         if (!TextUtils.isEmpty(text)) {
             runOnUiThread(new Runnable() {
@@ -134,13 +141,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             });
         }
     }
+
     protected void openActivity(Class<?> cls) {
         openActivity(this, cls);
-    }
-
-    public static void openActivity(Context context, Class<?> cls) {
-        Intent intent = new Intent(context, cls);
-        context.startActivity(intent);
     }
 
     /**
@@ -149,7 +152,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected <V extends Serializable> void openActivity(Class<?> cls, String key, V value) {
         openActivity(this, cls, key, value);
     }
-
+    /**
+     * 判断是否快速点击
+     *
+     * @return {@code true}: 是<br>{@code false}: 否
+     */
 
     /**
      * 打开 Activity 的同时传递一个数据
@@ -159,16 +166,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtra(key, value);
         context.startActivity(intent);
     }
-    /**
-     * 判断是否快速点击
-     *
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
 
-    /**
-     * 上次点击时间
-     */
-    private long lastClick = 0;
     private boolean isFastClick() {
         long now = System.currentTimeMillis();
         if (now - lastClick >= 200) {
@@ -180,8 +178,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @SuppressWarnings("RestrictedApi")
     protected void clearOldFragment(Fragment fragment) {
-        FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
-        List<Fragment> fragments =  getSupportFragmentManager().getFragments();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
         if (transaction == null || fragments == null || fragments.size() == 0)
             return;
         boolean doCommit = false;
@@ -194,6 +192,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (doCommit)
             transaction.commitNow();
     }
+
     protected void addFragment(int frameLayoutId, Fragment fragment) {
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

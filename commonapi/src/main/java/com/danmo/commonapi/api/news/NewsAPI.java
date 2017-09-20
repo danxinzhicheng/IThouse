@@ -22,7 +22,6 @@
 
 package com.danmo.commonapi.api.news;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 public interface NewsAPI {
@@ -35,7 +34,6 @@ public interface NewsAPI {
      * @param limit   数量极限，默认值 20，值范围 1..150
      */
     String getNewsList(@Nullable Integer node_id, @Nullable Integer offset, @Nullable Integer limit);
-
 
 
 }

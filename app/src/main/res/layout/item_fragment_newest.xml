@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/topic_item_padding_horizontal"
+    android:paddingRight="@dimen/topic_item_padding_horizontal">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".2dp"
+        android:background="@color/diy_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_10"
+        android:paddingTop="@dimen/size_10">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="95dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/nav_me_sel" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="第三方v都是vs的vs的vs的发士大规定法规规范的夫士大夫"
+                android:textColor="@color/diy_black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/item_title">
+
+                <TextView
+                    android:id="@+id/item_postdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:text="14:56"
+                    android:textColor="@color/diy_gray2"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/item_v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:text="视频"
+                    android:textColor="@color/diy_gray2"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/item_commentcount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="bottom|right"
+                    android:text="9评"
+                    android:textColor="@color/diy_gray2"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

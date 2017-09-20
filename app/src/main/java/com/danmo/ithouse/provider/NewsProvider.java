@@ -24,14 +24,12 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.danmo.commonapi.bean.New;
 import com.danmo.commonapi.bean.User;
-import com.danmo.commonutil.TimeUtil;
 import com.danmo.commonutil.UrlUtil;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
@@ -48,11 +46,12 @@ public class NewsProvider extends BaseViewProvider<New> {
      * @param holder ViewHolder
      * @param bean   数据
      */
-    @Override public void onBindView(RecyclerViewHolder holder, final New bean) {
+    @Override
+    public void onBindView(RecyclerViewHolder holder, final New bean) {
         final User user = bean.getUser();
         holder.setText(R.id.username, user.getLogin());
         holder.setText(R.id.node_name, bean.getNode_name());
-        holder.setText(R.id.time, TimeUtil.computePastTime(bean.getUpdated_at()));
+//        holder.setText(R.id.time, TimeUtil.computePastTime(bean.getUpdated_at()));
         holder.setText(R.id.title, bean.getTitle());
         holder.setText(R.id.host_name, UrlUtil.getHost(bean.getAddress()));
 

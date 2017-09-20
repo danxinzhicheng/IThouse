@@ -28,6 +28,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 
 
@@ -35,9 +36,9 @@ import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
  * ItemView 的管理者
  */
 public abstract class BaseViewProvider<T> {
+    protected Context mContext;
     private LayoutInflater mInflater;
     private int mLayoutId;
-    protected Context mContext;
 
     public BaseViewProvider(@NonNull Context context, @NonNull @LayoutRes int layout_id) {
         mInflater = LayoutInflater.from(context);

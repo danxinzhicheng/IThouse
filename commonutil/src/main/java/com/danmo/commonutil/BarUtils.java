@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+
 import java.lang.reflect.Method;
 
 
@@ -32,10 +33,10 @@ public final class BarUtils {
     // status bar
     ///////////////////////////////////////////////////////////////////////////
 
-    private static final int    DEFAULT_ALPHA = 112;
-    private static final String TAG_COLOR     = "TAG_COLOR";
-    private static final String TAG_ALPHA     = "TAG_ALPHA";
-    private static final int    TAG_OFFSET    = -123;
+    private static final int DEFAULT_ALPHA = 112;
+    private static final String TAG_COLOR = "TAG_COLOR";
+    private static final String TAG_ALPHA = "TAG_ALPHA";
+    private static final int TAG_OFFSET = -123;
 
     private BarUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");

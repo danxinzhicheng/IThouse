@@ -12,16 +12,9 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  ~
-  ~ Last modified 2017-03-13 21:14:06
-  ~
-  ~ GitHub:  https://github.com/GcsSloop
-  ~ Website: http://www.gcssloop.com
-  ~ Weibo:   http://weibo.com/GcsSloop
   -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,7 +23,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height=".4dp"
-        android:background="@color/diy_gray"/>
+        android:background="@color/diy_gray" />
 
     <RelativeLayout
         android:id="@+id/item"
@@ -46,7 +39,9 @@
             android:id="@+id/avatar"
             android:layout_width="@dimen/panel_space_1"
             android:layout_height="@dimen/panel_space_1"
-            tools:src="@mipmap/ic_launcher"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/username"
@@ -56,7 +51,7 @@
             android:layout_toRightOf="@+id/avatar"
             android:gravity="center_vertical"
             android:textSize="@dimen/panel_text_1"
-            tools:text="diytest"/>
+            tools:text="diytest" />
 
         <TextView
             android:id="@+id/point"
@@ -68,7 +63,7 @@
             android:text="·"
             android:textColor="@color/diy_gray"
             android:textSize="@dimen/panel_text_1"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/node_name"
@@ -79,7 +74,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/diy_gray"
             android:textSize="@dimen/panel_text_1"
-            tools:text="Android"/>
+            tools:text="Android" />
 
         <TextView
             android:id="@+id/time"
@@ -89,18 +84,18 @@
             android:gravity="center_vertical"
             android:textColor="@color/diy_gray"
             android:textSize="@dimen/panel_text_1"
-            tools:text="1分钟前"/>
+            tools:text="1分钟前" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/avatar"
-            android:layout_marginRight="@dimen/topic_item_padding_vertical"
             android:paddingTop="@dimen/topic_item_padding_vertical"
             android:text="GcsTest(测试节点)"
             android:textColor="@color/diy_black"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/host_name"
@@ -110,9 +105,9 @@
             android:layout_marginRight="@dimen/topic_item_padding_vertical"
             android:layout_marginTop="8dp"
             android:maxLines="3"
-            tools:text="www.gcssloop.com"
             android:textColor="@color/diy_gray2"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            tools:text="www.gcssloop.com" />
 
         <ImageView
             android:id="@+id/collection"
@@ -124,7 +119,7 @@
             android:layout_marginTop="12dp"
             android:padding="2dp"
             android:src="@drawable/ic_collection_default"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
 
         <ImageView
@@ -137,7 +132,7 @@
             android:layout_toLeftOf="@+id/collection"
             android:padding="2dp"
             android:src="@drawable/ic_like_default"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 </LinearLayout>

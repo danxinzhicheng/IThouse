@@ -1,15 +1,8 @@
 package com.danmo.commonapi.api.newest;
 
-import com.danmo.commonapi.bean.New;
-import com.danmo.commonapi.bean.Newest;
-import com.danmo.commonapi.bean.NewestItem;
-import com.danmo.commonapi.bean.NewestTopNode;
+import com.danmo.commonapi.bean.newest.NewestTopNode;
 
-import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
@@ -20,4 +13,7 @@ import retrofit2.http.Url;
 public interface NewestService {
     @GET
     Call<NewestTopNode> getNewestList(@Url String url);
+
+    @GET
+    Call<NewestTopNode> getNewestBannerList(@Url String url);
 }

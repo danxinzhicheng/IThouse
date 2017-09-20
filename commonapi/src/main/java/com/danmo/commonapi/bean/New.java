@@ -40,99 +40,99 @@ public class New implements Serializable {
     private int replies_count;              // 回复总数量
     private String address;                 // 具体地址
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getId() {
         return this.id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
         return this.title;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCreated_at() {
         return this.created_at;
     }
 
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public String getUpdated_at() {
         return this.updated_at;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
     }
 
     public User getUser() {
         return this.user;
     }
 
-    public void setNode_name(String node_name) {
-        this.node_name = node_name;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getNode_name() {
         return this.node_name;
     }
 
-    public void setNode_id(int node_id) {
-        this.node_id = node_id;
+    public void setNode_name(String node_name) {
+        this.node_name = node_name;
     }
 
     public int getNode_id() {
         return this.node_id;
     }
 
-    public void setLast_reply_user_id(int last_reply_user_id) {
-        this.last_reply_user_id = last_reply_user_id;
+    public void setNode_id(int node_id) {
+        this.node_id = node_id;
     }
 
     public int getLast_reply_user_id() {
         return this.last_reply_user_id;
     }
 
-    public void setLast_reply_user_login(String last_reply_user_login) {
-        this.last_reply_user_login = last_reply_user_login;
+    public void setLast_reply_user_id(int last_reply_user_id) {
+        this.last_reply_user_id = last_reply_user_id;
     }
 
     public String getLast_reply_user_login() {
         return this.last_reply_user_login;
     }
 
-    public void setReplied_at(String replied_at) {
-        this.replied_at = replied_at;
+    public void setLast_reply_user_login(String last_reply_user_login) {
+        this.last_reply_user_login = last_reply_user_login;
     }
 
     public String getReplied_at() {
         return this.replied_at;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setReplied_at(String replied_at) {
+        this.replied_at = replied_at;
     }
 
     public String getAddress() {
         return this.address;
     }
 
-    public void setReplies_count(int replies_count) {
-        this.replies_count = replies_count;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getReplies_count() {
         return this.replies_count;
+    }
+
+    public void setReplies_count(int replies_count) {
+        this.replies_count = replies_count;
     }
 }

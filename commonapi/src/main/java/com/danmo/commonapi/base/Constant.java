@@ -28,10 +28,8 @@ public class Constant {
     public static final String OAUTH_URL = "https://www.diycode.cc/oauth/token";
 
     public static final String HOST_URL = "https://www.ithome.com";
-
-    public static boolean isNeedGsonParse = true;
-
-//    public static final String BASE_URL ="http://api.ithome.com/";
-    public static final String SLIDE_URL = "http://api.ithome.com/xml/slide/slide.xml?=1505559010903";//幻灯片
+    //    public static final String BASE_URL ="http://api.ithome.com/";
+    public static final String BANNER_URL = "http://api.ithome.com/xml/slide/slide.xml?=1505559010903";//幻灯片
     public static final String NESLIST_URL = "http://api.ithome.com/xml/newslist/news.xml";//最新
+    public static boolean isNeedGsonParse = true;
 }

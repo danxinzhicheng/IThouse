@@ -12,27 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Last modified 2017-03-08 01:01:18
- *
- * GitHub:  https://github.com/GcsSloop
- * Website: http://www.gcssloop.com
- * Weibo:   http://weibo.com/GcsSloop
  */
 
 package com.danmo.commonapi.callback;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.danmo.commonapi.base.BaseEvent;
-import com.danmo.commonapi.bean.Newest;
-import com.danmo.commonapi.bean.NewestItem;
-import com.danmo.commonapi.bean.NewestTopNode;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,15 +44,9 @@ public class BaseCallback<T> implements Callback<T> {
      */
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        Log.i("mmm", "response.body====>" + response.body().toString());
-        if(response.body() instanceof NewestTopNode){
-            List<NewestItem> list = (((NewestTopNode) response.body())).newest.item;
-            Log.i("mmm","iiiii:"+list.get(0).description);
-        }
         if (response.isSuccessful()) {
             EventBus.getDefault().post(event.setEvent(response.code(), response.body()));
-        }
-        else {
+        } else {
             EventBus.getDefault().post(event.setEvent(response.code(), null));
         }
     }
@@ -78,7 +60,6 @@ public class BaseCallback<T> implements Callback<T> {
      */
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        Log.i("mmm","iiiii:"+t.toString());
         EventBus.getDefault().post(event.setEvent(-1, null));
     }
 }

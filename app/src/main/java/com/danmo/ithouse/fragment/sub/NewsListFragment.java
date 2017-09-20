@@ -23,15 +23,12 @@
 package com.danmo.ithouse.fragment.sub;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.bean.New;
 import com.danmo.commonapi.event.GetNewsListEvent;
-import com.danmo.commonutil.log.Logger;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.ithouse.fragment.refresh.SimpleRefreshRecyclerFragment;
 import com.danmo.ithouse.provider.NewsProvider;
@@ -52,7 +49,8 @@ public class NewsListFragment extends SimpleRefreshRecyclerFragment<List<New>, G
 //        return fragment;
 //    }
 
-    @Override public void initData(HeaderFooterAdapter adapter) {
+    @Override
+    public void initData(HeaderFooterAdapter adapter) {
         // 优先从缓存中获取数据，如果是第一次加载则恢复滚动位置，如果没有缓存则从网络加载
 //        List<Object> news = mDataCache.getNewsListObj();
 //        if (null != news && news.size() > 0) {
@@ -72,26 +70,38 @@ public class NewsListFragment extends SimpleRefreshRecyclerFragment<List<New>, G
         loadMore();
     }
 
-    @Override protected void setAdapterRegister(Context context, RecyclerView recyclerView,
-                                                HeaderFooterAdapter adapter) {
+    @Override
+    protected void setAdapterRegister(Context context, RecyclerView recyclerView,
+                                      HeaderFooterAdapter adapter) {
         adapter.register(New.class, new NewsProvider(getContext()));
     }
 
-    @NonNull @Override protected String request(int offset, int limit) {
-       return  CommonApi.getSingleInstance().getNewsList(null, offset,limit);
+    @NonNull
+    @Override
+    protected String request(int offset, int limit) {
+        return CommonApi.getSingleInstance().getNewsList(null, offset, limit);
     }
 
-    @Override protected void onRefresh(GetNewsListEvent event, HeaderFooterAdapter adapter) {
+    @NonNull
+    @Override
+    protected String requestHeader() {
+        return null;
+    }
+
+    @Override
+    protected void onRefresh(GetNewsListEvent event, HeaderFooterAdapter adapter) {
         super.onRefresh(event, adapter);
 //        mDataCache.saveNewsListObj(adapter.getDatas());
     }
 
-    @Override protected void onLoadMore(GetNewsListEvent event, HeaderFooterAdapter adapter) {
+    @Override
+    protected void onLoadMore(GetNewsListEvent event, HeaderFooterAdapter adapter) {
         super.onLoadMore(event, adapter);
 //        mDataCache.saveNewsListObj(adapter.getDatas());
     }
 
-    @Override public void onDestroyView() {
+    @Override
+    public void onDestroyView() {
         super.onDestroyView();
 //        // 存储 PageIndex
 //        mConfig.saveNewsListPageIndex(pageIndex);

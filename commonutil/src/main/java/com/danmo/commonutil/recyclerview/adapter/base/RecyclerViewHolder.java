@@ -32,6 +32,7 @@ import android.widget.TextView;
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
+    private final SparseArray<View> mViews = new SparseArray<View>();
     private View mRootView;
 
     public RecyclerViewHolder(View itemView) {
@@ -42,8 +43,6 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     public View getRootView() {
         return mRootView;
     }
-
-    private final SparseArray<View> mViews = new SparseArray<View>();
 
     private <T extends View> T bindView(int id) {
         T view = (T) mViews.get(id);
