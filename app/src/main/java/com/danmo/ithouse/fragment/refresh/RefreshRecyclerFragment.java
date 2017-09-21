@@ -146,23 +146,16 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(Event event) {
-        Log.i("mmmm", "onResultEvent Event:" + event);
         String postType = mPostTypes.get(event.getUUID());
         if (event.isOk()) {
-            Log.i("mmmm", "1111");
             if (postType.equals(POST_HEADER)) {
-                Log.i("mmmm", "2222head");
-
                 onLoadHeader((GetNewestBannerEvent) event, mAdapter);
             } else if (postType.equals(POST_LOAD_MORE)) {
-                Log.i("mmmm", "2222");
                 onLoadMore(event);
             } else if (postType.equals(POST_REFRESH)) {
-                Log.i("mmmm", "3333");
                 onRefresh(event);
             }
         } else {
-            Log.i("mmmm", "4444");
             onError(event);
         }
         mPostTypes.remove(event.getUUID());

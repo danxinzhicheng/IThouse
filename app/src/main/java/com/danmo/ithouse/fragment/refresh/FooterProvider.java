@@ -32,10 +32,10 @@ import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
 
 public class FooterProvider extends BaseViewProvider<Footer> {
-    private static final String FOOTER_LOADING = "loading...";
-    private static final String FOOTER_NORMAL = "-- end --";
-    private static final String FOOTER_ERROR_A = "-- 获取失败 --";
-    private static final String FOOTER_ERROR_B = "-- 失败，点击重试 --";
+    private static final String FOOTER_LOADING = "正在加载中...";
+    private static final String FOOTER_NORMAL = "已加载全部";
+    private static final String FOOTER_ERROR_A = "加载失败";
+    private static final String FOOTER_ERROR_B = "失败，点击重试";
     private TextView footer;
 
     public FooterProvider(@NonNull Context context) {

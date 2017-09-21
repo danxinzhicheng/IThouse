@@ -14,19 +14,37 @@
   ~ limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F0F0F0"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/footer"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:text="-- end --"
-        android:textSize="16sp" />
+        android:layout_height=".1dp"
+        android:background="@color/diy_gray" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminateDrawable="@drawable/foot_loading_rotate"
+            android:indeterminateDuration="1000" />
+
+        <TextView
+            android:id="@+id/footer"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="end"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
