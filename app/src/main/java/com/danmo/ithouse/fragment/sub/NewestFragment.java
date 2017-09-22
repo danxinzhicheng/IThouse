@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.newest.NewestItem;
@@ -22,11 +21,13 @@ import com.danmo.ithouse.provider.NewestProvider;
  */
 
 public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNewestEvent> {
+
+    private Boolean isFirst = true;
     @Override
     public void initData(HeaderFooterAdapter adapter) {
-        Log.i("mmm", "initData");
-        loadMore();
+        setLoadMoreEnable(true);
         loadHeader();
+        loadMore();
     }
 
     @Override
@@ -43,8 +44,13 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        Log.i("mmm", "request");
-        return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
+        if(isFirst) {
+            isFirst = false;
+            return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
+
+        }else{
+            return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL_PAGE1);
+        }
     }
 
     @NonNull
@@ -63,14 +69,12 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
 
     @Override
     protected void onRefresh(GetNewestEvent event, HeaderFooterAdapter adapter) {
-        Log.i("mmm", "onRefresh");
         adapter.clearDatas();
         adapter.addDatas((event.getBean()).newest.item);
     }
 
     @Override
     protected void onLoadMore(GetNewestEvent event, HeaderFooterAdapter adapter) {
-        Log.i("mmm", "onLoadMore");
         adapter.addDatas(event.getBean().newest.item);
     }
 

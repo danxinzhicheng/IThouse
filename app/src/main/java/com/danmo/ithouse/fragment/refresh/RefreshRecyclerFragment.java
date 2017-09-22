@@ -68,7 +68,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     // 适配器
     protected HeaderFooterAdapter mAdapter;
     protected FooterProvider mFooterProvider;
-    protected boolean isFirstAddFooter = true;
+//    protected boolean isFirstAddFooter = true;
     private ArrayMap<String, String> mPostTypes = new ArrayMap<>();    // 请求类型
     private int mState = STATE_NORMAL;
     // View
@@ -86,13 +86,10 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     protected void initViews(ViewHolder holder, View root) {
         // 适配器
         mAdapter = new HeaderFooterAdapter();
-        mFooterProvider = new FooterProvider(getContext()) {
+        mFooterProvider = new FooterProvider(getContext()){
             @Override
             public void needLoadMore(RecyclerViewHolder holder) {
-                if (isFirstAddFooter) {
-                    isFirstAddFooter = false;
-                    return;
-                }
+                Log.i("mmm","needLoadMore:");
                 loadMore();
             }
         };
@@ -113,6 +110,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                Log.i("mmm","onRefresh");
                 refresh();
             }
         });
@@ -129,6 +127,8 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     }
 
     protected void loadMore() {
+        Log.i("mmm","loadMoreEnable :"+loadMoreEnable);
+        Log.i("mmm","mState:"+mState);
         if (!loadMoreEnable) return;
         if (mState == STATE_NO_MORE) return;
         String uuid = request(pageIndex * pageCount, pageCount);
@@ -176,7 +176,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         if (event instanceof GetNewestBannerEvent) {
             GetNewestBannerEvent ev = (GetNewestBannerEvent) event;
             List<NewestItem> list = ev.getBean().newest.item;
-            Log.i("mmmm", "list.size:" + list.size());
             if (list.size() > 0) {
                 mAdapter.registerHeader(ev.getBean().newest, new NewestBannerProvider(mContext));
             }

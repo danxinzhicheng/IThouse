@@ -2,6 +2,8 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -11,6 +13,7 @@ import com.danmo.commonutil.TimeUtil;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.NewsDetailActivity;
 
 import java.text.ParseException;
 
@@ -52,6 +55,14 @@ public class NewestProvider extends BaseViewProvider<NewestItem> {
         ImageView imageView = holder.get(R.id.item_image);
         String url = bean.image;
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
+
+        holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("mmm","onClick");
+                NewsDetailActivity.start(mContext);
+            }
+        },R.id.item_container);
 
     }
 }
