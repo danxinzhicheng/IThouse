@@ -33,4 +33,10 @@
 	</string>
 
 
+	<string name="option_title_refresh">刷新</string>
+	<string name="option_title_font">字体大小</string>
+	<string name="option_title_night">夜间模式</string>
+	<string name="option_title_browser">调用外部浏览器打开</string>
+	<string name="option_title_error">文章纠错</string>
+	<string name="option_title_speech">语音朗读</string>
 </resources>
