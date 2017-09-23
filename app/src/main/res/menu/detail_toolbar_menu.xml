@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/option_refresh"
+        android:icon="@drawable/option_menu_refresh"
+        android:title="@string/option_title_refresh"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_font"
+        android:icon="@drawable/option_menu_font"
+        android:title="@string/option_title_font"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_night"
+        android:icon="@drawable/option_menu_night"
+        android:title="@string/option_title_night"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_browser"
+        android:icon="@drawable/option_menu_browser"
+        android:title="@string/option_title_browser"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_error"
+        android:icon="@drawable/option_menu_error"
+        android:title="@string/option_title_error"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_speech"
+        android:icon="@drawable/option_menu_speech"
+        android:title="@string/option_title_speech"
+        app:showAsAction="never" />
+</menu>
