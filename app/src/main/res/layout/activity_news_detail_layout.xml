@@ -2,31 +2,61 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/annonce.main.coordinator"
+    android:id="@+id/coordinator"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/flexible.example.appbar"
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/flexible.example.collapsing"
+            android:id="@+id/collapsing"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="160dp"
             app:contentScrim="?colorPrimary"
-            app:expandedTitleMarginBottom="94dp"
+            app:expandedTitleMarginBottom="80dp"
+            app:expandedTitleMarginStart="20dp"
             app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
             app:title="@string/flexible_title">
 
+            <RelativeLayout
+                android:id="@+id/detail_top_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="55dp">
+                <TextView
+                    android:id="@+id/detail_time"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="2017-09-23 19:51"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/detail_author"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/detail_time"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="新浪科技"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/flexible.example.toolbar"
                 style="@style/ToolBarWithNavigationBack"
+                app:popupTheme="@style/ToolbarPopupTheme"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@null"
@@ -38,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
-        app:behavior_overlapTop="78dp"
+        app:behavior_overlapTop="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -62,13 +92,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextComponent.ItemRow"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Text"
-                        android:textAppearance="@style/TextAppearance.Header" />
 
                     <TextView
                         android:layout_width="match_parent"
