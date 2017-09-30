@@ -24,7 +24,7 @@
             android:layout_width="95dp"
             android:layout_height="80dp"
             android:scaleType="fitXY"
-            android:src="@drawable/nav_me_sel" />
+            android:src="@mipmap/ic_launcher" />
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -29,26 +29,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="55dp">
+                android:layout_marginBottom="55dp"
+                android:layout_marginStart="20dp">
+
                 <TextView
                     android:id="@+id/detail_time"
-                    android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:text="2017-09-23 19:51"
+                    android:text="@string/detail_time"
                     android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/detail_author"
-                    android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/detail_time"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:text="新浪科技"
+                    android:text="@string/detail_author"
                     android:textSize="11sp" />
             </RelativeLayout>
 
@@ -56,11 +57,11 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/flexible.example.toolbar"
                 style="@style/ToolBarWithNavigationBack"
-                app:popupTheme="@style/ToolbarPopupTheme"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@null"
-                app:layout_collapseMode="pin" />
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ToolbarPopupTheme" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -102,7 +103,84 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/detail_zebian"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/detail_shape_corner"
+                    android:gravity="center"
+                    android:text="@string/detail_jiucuo"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="@string/detail_comment_tip"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/detail_shape_corner_comment"
+                    android:gravity="center"
+                    android:text="@string/detail_comment_bad"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/detail_shape_corner_comment"
+                    android:gravity="center"
+                    android:text="@string/detail_comment_soso"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="95dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/detail_shape_corner_comment"
+                    android:gravity="center"
+                    android:text="@string/detail_comment_good"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
 
 </android.support.design.widget.CoordinatorLayout>

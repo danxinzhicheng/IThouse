@@ -47,9 +47,8 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
         if(isFirst) {
             isFirst = false;
             return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
-
         }else{
-            return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL_PAGE1);
+            return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
         }
     }
 

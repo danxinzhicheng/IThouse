@@ -39,4 +39,19 @@
 	<string name="option_title_browser">调用外部浏览器打开</string>
 	<string name="option_title_error">文章纠错</string>
 	<string name="option_title_speech">语音朗读</string>
+
+	<string name="bye_burger_float_behavior">com.danmo.commonutil.behavior.ByeBurgerFloatButtonBehavior</string>
+	<string name="bye_burger_bottom_behavior">com.danmo.commonutil.behavior.ByeBurgerBottomBehavior</string>
+	<string name="bye_burger_title_behavior">com.danmo.commonutil.behavior.ByeBurgerTitleBehavior</string>
+
+	<string name="detail_zebian">责编: 马卡</string>
+	<string name="detail_author">新浪科技</string>
+	<string name="detail_time">2017-09-23 19:51</string>
+	<string name="detail_jiucuo">纠错</string>
+	<string name="detail_comment_tip">打分后显示文章质量得分，当前%d人打分</string>
+	<string name="detail_comment_bad">无价值</string>
+	<string name="detail_comment_soso">还可以</string>
+	<string name="detail_comment_good">有价值</string>
+    <string name="detail_releated_actical">相关文章</string>
+    <string name="detail_recommend_actical">大家都在买</string>
 </resources>
