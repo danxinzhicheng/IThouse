@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 public class RelatedActical implements Serializable {
     public String category;
-    public String title;
-    public String time;
+    public String newstitle;
+    public String postdate;
+    public String newsid;
+    public String url;
 }

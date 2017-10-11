@@ -9,6 +9,7 @@ import org.simpleframework.xml.Root;
 
 @Root(name = "item", strict = false)
 public class NewestItem {
+    //==========newlist special==============
     @Element(name = "newsid", required = false)
     public String newsid;
     @Element(name = "title", required = false)
@@ -33,6 +34,7 @@ public class NewestItem {
     public String v;//001为视频
     @Element(name = "live", required = false)
     public String live;//1为直播
+
     //==========banner special==============
     @Element(name = "link", required = false)
     public String link;
@@ -44,7 +46,16 @@ public class NewestItem {
     public String device;
     public NewestItem() {
     }
-    //==========banner special==============
+
+    //==========news detail special==============
+    @Element(name = "newssource", required = false)
+    public String newssource;
+    @Element(name = "newsauthor", required = false)
+    public String newsauthor;
+    @Element(name = "detail", required = false)
+    public String detail;
+    @Element(name = "z", required = false)//责编
+    public String z;
 
 
 }

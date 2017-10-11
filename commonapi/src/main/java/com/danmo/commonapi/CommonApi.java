@@ -8,6 +8,9 @@ import com.danmo.commonapi.api.newest.NewestAPI;
 import com.danmo.commonapi.api.newest.NewestImpl;
 import com.danmo.commonapi.api.news.NewsAPI;
 import com.danmo.commonapi.api.news.NewsImpl;
+import com.danmo.commonapi.api.newsdetail.NewsDetailAPI;
+import com.danmo.commonapi.api.newsdetail.NewsDetailImpl;
+import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.base.OAuth;
 import com.danmo.commonutil.DebugUtil;
 import com.danmo.commonutil.log.Config;
@@ -17,27 +20,28 @@ import com.danmo.commonutil.log.Logger;
  * Created by danmo on 2017/9/16.
  */
 
-public class CommonApi implements NewsAPI, NewestAPI {
+public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
 
+    private static Context mContext;
     private static NewsImpl sNewsImpl;
     private static NewestImpl sNewestImpl;
+    private static NewsDetailAPI sNewsDetailAPI;
     //--- 单例 -----------------------------------------------------------------------------------
 
-    private volatile static CommonApi mDiycode;
+    private volatile static CommonApi mCommonApi;
 
     private CommonApi() {
     }
 
-
     public static CommonApi getSingleInstance() {
-        if (null == mDiycode) {
+        if (null == mCommonApi) {
             synchronized (CommonApi.class) {
-                if (null == mDiycode) {
-                    mDiycode = new CommonApi();
+                if (null == mCommonApi) {
+                    mCommonApi = new CommonApi();
                 }
             }
         }
-        return mDiycode;
+        return mCommonApi;
     }
 
     //--- 初始化 ---------------------------------------------------------------------------------
@@ -65,16 +69,17 @@ public class CommonApi implements NewsAPI, NewestAPI {
     }
 
     private static void initImplement(Context context) {
+        mContext = context;
         Logger.i("初始化 implement");
         try {
-            sNewsImpl = new NewsImpl(context);
-            sNewestImpl = new NewestImpl(context);
+            sNewsImpl = new NewsImpl(context, Constant.PARSE_XML);
+            sNewestImpl = new NewestImpl(context,Constant.PARSE_XML);
+            sNewsDetailAPI = new NewsDetailImpl(context,Constant.PARSE_XML);
         } catch (Exception e) {
             e.printStackTrace();
         }
         Logger.i("初始化 implement 结束");
     }
-
 
     @Override
     public String getNewsList(@Nullable Integer node_id, @Nullable Integer offset, @Nullable Integer limit) {
@@ -90,5 +95,22 @@ public class CommonApi implements NewsAPI, NewestAPI {
     @Override
     public String getNewestBannerList(String url) {
         return sNewestImpl.getNewestBannerList(url);
+    }
+
+    @Override
+    public String getNewsDetailContent(String url) {
+        return sNewsDetailAPI.getNewsDetailContent(url);
+    }
+
+    @Override
+    public String getNewsDetailRelated(String url) {
+        sNewsDetailAPI = new NewsDetailImpl(mContext,Constant.PARSE_DEFAULT);
+        return sNewsDetailAPI.getNewsDetailRelated(url);
+    }
+
+    @Override
+    public String getNewsDetailRecommend(String url) {
+        sNewsDetailAPI = new NewsDetailImpl(mContext,Constant.PARSE_GSON);
+        return sNewsDetailAPI.getNewsDetailRecommend(url);
     }
 }

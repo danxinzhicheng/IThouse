@@ -27,7 +27,7 @@ public class NewestProvider extends BaseViewProvider<NewestItem> {
     }
 
     @Override
-    public void onBindView(RecyclerViewHolder holder, NewestItem bean) {
+    public void onBindView(RecyclerViewHolder holder, final NewestItem bean) {
         holder.setText(R.id.item_title, bean.title);
         holder.setText(R.id.item_commentcount, bean.commentcount + mContext.getString(R.string.comment_text));
 
@@ -60,7 +60,7 @@ public class NewestProvider extends BaseViewProvider<NewestItem> {
             @Override
             public void onClick(View v) {
                 Log.i("mmm","onClick");
-                NewsDetailActivity.start(mContext);
+                NewsDetailActivity.start(mContext,bean.postdate,bean.title);
             }
         },R.id.item_container);
 

@@ -12,18 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Last modified 2017-03-08 01:01:18
- *
- * GitHub:  https://github.com/GcsSloop
- * Website: http://www.gcssloop.com
- * Weibo:   http://weibo.com/GcsSloop
  */
 
 package com.danmo.commonapi.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.danmo.commonapi.converter.StringConverterFactory;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.concurrent.TimeUnit;
@@ -43,19 +40,22 @@ public class BaseImpl<Service> {
     private static Retrofit mRetrofit;
     protected CacheUtil mCacheUtil;
     protected Service mService;
+    protected static int currentParse;
 
-    public BaseImpl(@NonNull Context context) {
+
+    public BaseImpl(@NonNull Context context, int currentParse) {
         mCacheUtil = new CacheUtil(context.getApplicationContext());
-        initRetrofit();
+        initRetrofit(currentParse);
         this.mService = mRetrofit.create(getServiceClass());
+        this.currentParse = currentParse;
     }
 
     private Class<Service> getServiceClass() {
         return (Class<Service>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    private void initRetrofit() {
-        if (null != mRetrofit)
+    private void initRetrofit(int currentParse) {
+        if (null != mRetrofit && this.currentParse == currentParse)
             return;
 
         // 设置 Log 拦截器，可以用于以后处理一些异常情况
@@ -72,20 +72,29 @@ public class BaseImpl<Service> {
 
         // 配置 Retrofit
 
-        Retrofit.Builder builder = new Retrofit.Builder();
-        if (Constant.isNeedGsonParse) {
+        if (currentParse == Constant.PARSE_GSON) {
+            Retrofit.Builder builder = new Retrofit.Builder();
+            mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
+                    .client(client)                                     // 设置 client
+                    .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具
+                    .build();
+        } else if (currentParse == Constant.PARSE_XML) {
+            Retrofit.Builder builder = new Retrofit.Builder();
             mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
                     .client(client)                                     // 设置 client
                     .addConverterFactory(SimpleXmlConverterFactory.create())// 设置xml转换工具
-                    .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具
                     .build();
         } else {
+            Retrofit.Builder builder = new Retrofit.Builder();
             mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
-                    .client(client)                                   // 设置 client
-                    .addConverterFactory(SimpleXmlConverterFactory.create())// 设置xml转换工具
+                    .client(client)                                     // 设置 client
+                    .addConverterFactory(StringConverterFactory.create()) // 设置 string 转换工具
                     .build();
         }
+
     }
+
+
 }
 
 

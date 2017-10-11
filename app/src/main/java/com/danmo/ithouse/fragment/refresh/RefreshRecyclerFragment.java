@@ -98,7 +98,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         // refreshLayout
         mRefreshLayout = holder.get(R.id.refresh_layout);
         mRefreshLayout.setProgressViewOffset(false, -20, 80);
-        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.diy_red));
+        mRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         mRefreshLayout.setEnabled(true);
         // RecyclerView
         mRecyclerView = holder.get(R.id.recycler_view);
@@ -110,7 +110,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Log.i("mmm","onRefresh");
                 refresh();
             }
         });
@@ -127,8 +126,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     }
 
     protected void loadMore() {
-        Log.i("mmm","loadMoreEnable :"+loadMoreEnable);
-        Log.i("mmm","mState:"+mState);
         if (!loadMoreEnable) return;
         if (mState == STATE_NO_MORE) return;
         String uuid = request(pageIndex * pageCount, pageCount);

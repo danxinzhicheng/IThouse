@@ -31,7 +31,10 @@
 
     <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
     <style name="CollapsingTextAppearance.Inverse" >
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="CollapsingTextAppearance.Collapsing" >
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">

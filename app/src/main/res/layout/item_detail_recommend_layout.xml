@@ -77,6 +77,8 @@
         android:layout_marginTop="10dp"
         android:id="@+id/detail_related_item_line"
         android:layout_width="match_parent"
+        android:layout_marginLeft="18sp"
+        android:layout_marginRight="18sp"
         android:layout_height=".1dp"
         android:background="@color/diy_gray" />
 

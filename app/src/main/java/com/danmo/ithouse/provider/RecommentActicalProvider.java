@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.danmo.commonapi.base.Constant;
+import com.danmo.commonapi.bean.newest.detail.DetailRecommendItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
@@ -16,14 +18,14 @@ import com.danmo.ithouse.bean.RecommentActical;
  * Created by user on 2017/9/27.
  */
 
-public class RecommentActicalProvider extends BaseViewProvider<RecommentActical> {
+public class RecommentActicalProvider extends BaseViewProvider<DetailRecommendItem> {
 
     public RecommentActicalProvider(@NonNull Context context) {
         super(context, R.layout.item_detail_recommend_layout);
     }
 
     @Override
-    public void onBindView(RecyclerViewHolder holder, RecommentActical bean) {
+    public void onBindView(RecyclerViewHolder holder, DetailRecommendItem bean) {
         if (bean==null) return;
 
         if(holder.getLayoutPosition() == 3){//==todo
@@ -33,11 +35,12 @@ public class RecommentActicalProvider extends BaseViewProvider<RecommentActical>
             holder.get(R.id.detail_recomment_head).setVisibility(View.GONE);
         }
 
-        holder.setText(R.id.detail_recommend_item_coupon,bean.coupon);
-        holder.setText(R.id.detail_recommend_item_title,bean.title);
-        holder.setText(R.id.detail_recommend_item_time,bean.time);
+        holder.setText(R.id.detail_recommend_item_coupon,bean.PromotionInfo);
+        holder.setText(R.id.detail_recommend_item_title,bean.ProductName);
+        holder.setText(R.id.detail_recommend_item_time,bean.CreateTime);
         ImageView icon = holder.get(R.id.detail_recomment_item_image);
-        Glide.with(mContext).load(bean.image).into(icon);
+        String url = Constant.RECOMMEND_PIC_HOST + bean.Picture;
+        Glide.with(mContext).load(url).into(icon);
 
 
     }

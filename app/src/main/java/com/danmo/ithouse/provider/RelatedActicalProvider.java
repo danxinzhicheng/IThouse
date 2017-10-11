@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.danmo.commonapi.bean.newest.detail.DetailRelatedItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
@@ -15,13 +16,13 @@ import com.danmo.ithouse.bean.RelatedActical;
  * Created by user on 2017/9/27.
  */
 
-public class RelatedActicalProvider extends BaseViewProvider<RelatedActical> {
+public class RelatedActicalProvider extends BaseViewProvider<DetailRelatedItem> {
     public RelatedActicalProvider(@NonNull Context context) {
         super(context, R.layout.item_detail_related_layout);
     }
 
     @Override
-    public void onBindView(RecyclerViewHolder holder, RelatedActical bean) {
+    public void onBindView(RecyclerViewHolder holder, DetailRelatedItem bean) {
 
         if(bean == null){
             return;
@@ -33,8 +34,8 @@ public class RelatedActicalProvider extends BaseViewProvider<RelatedActical> {
             holder.get(R.id.detail_related_head).setVisibility(View.GONE);
         }
 
-        holder.setText(R.id.detail_related_item_time,bean.time);
-        holder.setText(R.id.detail_related_item_title,bean.title);
+        holder.setText(R.id.detail_related_item_time,bean.postdate);
+        holder.setText(R.id.detail_related_item_title,bean.newstitle);
 
         if(holder.getLayoutPosition() == 2) {//todo
             holder.get(R.id.detail_related_item_line).setVisibility(View.INVISIBLE);
