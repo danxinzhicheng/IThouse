@@ -8,7 +8,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,6 +22,8 @@ import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by user on 2017/9/13.
@@ -39,14 +45,39 @@ public class DynamicTabFragment extends BaseFragment {
         mBaseViewPager = holder.get(R.id.viewPager);
         Toolbar toolbar = holder.get(R.id.toolbar);
         toolbar.setTitle("");
+        setHasOptionsMenu(true);
         ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
-        BarUtils.addMarginTopEqualStatusBarHeight(toolbar);
 
         BaseViewPagerAdapter adapter = new BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
         mBaseViewPager.setAdapter(adapter);
         mTabNav.setupWithViewPager(mBaseViewPager);
         mBaseViewPager.setCurrentItem(0, true);
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.main_toolbar_menu, menu);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        if (menu != null) {
+            if (menu.getClass() == MenuBuilder.class) {
+                try {
+                    Method m = menu.getClass().getDeclaredMethod("setOptionalIconsVisible", Boolean.TYPE);
+                    m.setAccessible(true);
+                    m.invoke(menu, true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        super.onPrepareOptionsMenu(menu);
+    }
+
+
+
 
     @Override
     protected void initData() {

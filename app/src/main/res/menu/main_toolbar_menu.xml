@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/option_cal"
+        android:icon="@drawable/icon_toolbar_calendar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/option_search"
+        android:icon="@drawable/icon_toolbar_search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/option_tougao"
+        android:icon="@drawable/option_menu_tougao"
+        android:title="投稿"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_qr"
+        android:icon="@drawable/option_menu_qr"
+        android:title="二维码扫描"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_night"
+        android:icon="@drawable/option_menu_night"
+        android:title="夜间模式"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/option_feedback"
+        android:icon="@drawable/option_menu_feedback"
+        android:title="反馈"
+        app:showAsAction="never" />
+</menu>

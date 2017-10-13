@@ -57,7 +57,7 @@
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/flexible_toolbar"
-                style="@style/ToolBarWithNavigationBack"
+                app:navigationIcon="@drawable/abc_ic_ab_back_material"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@null"
@@ -83,8 +83,10 @@
                 android:id="@+id/wv_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:scrollbars="none"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

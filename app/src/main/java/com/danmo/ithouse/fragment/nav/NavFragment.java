@@ -27,10 +27,10 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class NavFragment extends BaseFragment implements View.OnClickListener {
-    NavigationButton mNavNews;
-    NavigationButton mNavTweet;
-    NavigationButton mNavExplore;
-    NavigationButton mNavMe;
+    private NavigationButton mNavNews;
+    private NavigationButton mNavTweet;
+    private NavigationButton mNavExplore;
+    private NavigationButton mNavMe;
 
     private Context mContext;
     private int mContainerId;

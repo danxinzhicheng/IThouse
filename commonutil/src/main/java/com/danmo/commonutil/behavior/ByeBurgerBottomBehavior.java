@@ -14,7 +14,6 @@ public class ByeBurgerBottomBehavior extends ByeBurgerBehavior {
 
   @Override public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
 
-
     return true;
   }
 

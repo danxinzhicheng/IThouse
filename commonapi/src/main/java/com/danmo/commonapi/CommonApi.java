@@ -3,6 +3,7 @@ package com.danmo.commonapi;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.danmo.commonapi.api.newest.NewestAPI;
 import com.danmo.commonapi.api.newest.NewestImpl;
@@ -99,6 +100,7 @@ public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
 
     @Override
     public String getNewsDetailContent(String url) {
+        sNewsDetailAPI = new NewsDetailImpl(mContext,Constant.PARSE_XML);
         return sNewsDetailAPI.getNewsDetailContent(url);
     }
 

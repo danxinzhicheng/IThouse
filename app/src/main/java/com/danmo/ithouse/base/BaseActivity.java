@@ -52,10 +52,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             return false;
         }
     };
-    /**
-     * 上次点击时间
-     */
-    private long lastClick = 0;
 
     public static void openActivity(Context context, Class<?> cls) {
         Intent intent = new Intent(context, cls);
@@ -91,9 +87,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mListener);
 
-        View fakeStatusBar = findViewById(R.id.fake_status_bar);
+//        View fakeStatusBar = findViewById(R.id.fake_status_bar);
         rootLayout = (DrawerLayout) findViewById(R.id.root_layout);
-        BarUtils.setStatusBarAlpha4Drawer(this, rootLayout, fakeStatusBar, 0, false);
+//        BarUtils.setStatusBarAlpha4Drawer(this, rootLayout, fakeStatusBar, 0, false);
     }
 
     // 默认点击左上角是结束当前 Activity
@@ -152,11 +148,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected <V extends Serializable> void openActivity(Class<?> cls, String key, V value) {
         openActivity(this, cls, key, value);
     }
-    /**
-     * 判断是否快速点击
-     *
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
 
     /**
      * 打开 Activity 的同时传递一个数据
@@ -167,14 +158,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         context.startActivity(intent);
     }
 
-    private boolean isFastClick() {
-        long now = System.currentTimeMillis();
-        if (now - lastClick >= 200) {
-            lastClick = now;
-            return false;
-        }
-        return true;
-    }
 
     @SuppressWarnings("RestrictedApi")
     protected void clearOldFragment(Fragment fragment) {

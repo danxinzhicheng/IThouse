@@ -39,7 +39,7 @@ import android.widget.Toast;
 public abstract class BaseFragment extends Fragment {
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     protected Context mContext;
-    private ViewHolder mViewHolder;     // View 管理
+    private ViewHolder mViewHolder;
     private View mRoot;
 
     @Override

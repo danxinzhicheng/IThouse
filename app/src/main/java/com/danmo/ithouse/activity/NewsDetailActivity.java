@@ -2,6 +2,7 @@ package com.danmo.ithouse.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -19,7 +20,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.danmo.commonapi.CommonApi;
@@ -36,7 +40,6 @@ import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.provider.RecommentActicalProvider;
 import com.danmo.ithouse.provider.RelatedActicalProvider;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -70,13 +73,18 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     public static final String POST_DETAIL_RELATED = "related";
     public static final String POST_DETAIL_RECOMMEND = "recommend";
 
-    public static final String INTENT_DETAIL_CONTENT_TITLE = "title";
-    public static final String INTENT_DETAIL_CONTENT_TIME = "time";
+    public static final int TYPE_LIST = 0;
+    public static final int TYPE_BANNER = 1;
+    public static final String INTENT_FROM_TYPE = "from_type";
+    public static final String INTENT_DETAIL_CONTENT_NEWSID = "newsid";
+
 
     private CollapsingToolbarLayout detailTitle;
     private WebView wvDetailContent;
     private NestedScrollView nestedScrollView;
-    private List<Serializable> listItem = new ArrayList<Serializable>();
+
+    //文字左右对齐；文字间隔
+    private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;letter-spacing:2;\">%s</body></html>";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,12 +98,18 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         tvZebian = (TextView) findViewById(R.id.tv_detail_zebian);
 
         wvDetailContent = (WebView) findViewById(R.id.wv_detail_content);
-        wvDetailContent.getSettings().setJavaScriptEnabled(true);
+        WebSettings webSettings = wvDetailContent.getSettings();//获取webview设置属性
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        wvDetailContent.setHorizontalScrollBarEnabled(false);
+        wvDetailContent.setVerticalScrollBarEnabled(false);
         wvDetailContent.setBackgroundColor(0x00000000); // 设置背景色
         wvDetailContent.getSettings().setDefaultFontSize(16);
+        wvDetailContent.setWebViewClient(new MyWebViewClient());
 
         detailTitle = (CollapsingToolbarLayout) findViewById(R.id.detail_title);
         Toolbar toolbar = (Toolbar) findViewById(R.id.flexible_toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +118,6 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         });
         AppBarLayout appbar = (AppBarLayout) findViewById(R.id.appbar);
         appbar.addOnOffsetChangedListener(this);
-        setSupportActionBar(toolbar);
 
         mAdapter = new HeaderFooterAdapter();
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -115,7 +128,46 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         mAdapter.register(DetailRelatedItem.class, new RelatedActicalProvider(this));
         mAdapter.register(DetailRecommendItem.class, new RecommentActicalProvider(this));
 
-        String uuid = CommonApi.getSingleInstance().getNewsDetailContent(Constant.NEWS_DETAIL_CONTENT_URL);
+    }
+
+    private class MyWebViewClient extends WebViewClient {
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            imgReset();
+        }
+
+//        @Override
+//        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//            view.loadUrl(url);
+//            return true;
+//        }
+    }
+
+    //此方法获取里面的img，设置img的高度100%,固定图片不能左右滑动
+    private void imgReset() {
+        wvDetailContent.loadUrl("javascript:(function(){" +
+                "var objs = document.getElementsByTagName('img'); " +
+                "for(var i=0;i<objs.length;i++)  " +
+                "{"
+                + "var img = objs[i];   " +
+                " img.style.maxWidth = '100%';img.style.height='auto';" +
+                "}" +
+                "})()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+
+        String uuid = CommonApi.getSingleInstance().getNewsDetailContent(getDetailContentUrl());
         mPostTypes.put(POST_DETAIL_CONTENT, uuid);
 
         String uuid2 = CommonApi.getSingleInstance().getNewsDetailRelated(Constant.NEWS_DETAIL_RELATED_URL);
@@ -125,15 +177,19 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         mPostTypes.put(POST_DETAIL_RECOMMEND, uuid3);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
+
+    private String getDetailContentUrl(){
+        String newsid = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_NEWSID); //345234
+        if(getIntent().getIntExtra(INTENT_FROM_TYPE,0) == TYPE_BANNER){
+            return String.format(Constant.NEWS_DETAIL_CONTENT_URL_BANNER,newsid);
+        }
+        StringBuffer stringBuffer = new StringBuffer(newsid);
+        String ss = stringBuffer.insert(2, "/").toString();
+        return String.format(Constant.NEWS_DETAIL_CONTENT_URL,ss);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(BaseEvent event) {
-        Log.i("msg", "onResultEvent event:" + event);
         if (event.isOk()) {
             if (event instanceof GetNewsDetailContentEvent) {
                 GetNewsDetailContentEvent ev = (GetNewsDetailContentEvent) event;
@@ -149,6 +205,7 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
                     return;
                 }
                 try {
+                    List<Serializable> listItem = new ArrayList<Serializable>();
                     JSONArray jsonArray = new JSONArray(ss[1]);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         if (i >= 3) {
@@ -163,19 +220,17 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
                         item.url = jo.optString("url");
                         listItem.add(item);
                     }
+                    mAdapter.addDatas(listItem);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.i("msg", "listItem:" + listItem.size());
-//                mAdapter.addDatas(listItem);
             } else if (event instanceof GetNewsDetailRecommendEvent) {
                 GetNewsDetailRecommendEvent ev = (GetNewsDetailRecommendEvent) event;
                 List<DetailRecommendItem> list = ev.getBean().content;
                 for (DetailRecommendItem item : list) {
                     item.category = "大家都在看";
                 }
-                listItem.addAll(list);
-                mAdapter.addDatas(listItem);
+                mAdapter.addDatas(list);
             }
 
         } else {
@@ -183,19 +238,18 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     }
 
     private void setDetaiContentToView(NewestItem item) {
-        String title = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_TITLE);
-        String time = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_TIME);
-        if (!TextUtils.isEmpty(time)) {
-            tvTime.setText(time);
+        if (!TextUtils.isEmpty(item.postdate)) {
+            tvTime.setText(item.postdate);
         }
 
-        if (!TextUtils.isEmpty(title)) {
-            detailTitle.setTitle(title);
+        if (!TextUtils.isEmpty(item.title)) {
+            detailTitle.setTitle(item.title);
         }
 
         if (!TextUtils.isEmpty(item.detail)) {
-            wvDetailContent.loadDataWithBaseURL(null, item.detail, "text/html", "utf-8", null);
-            nestedScrollView.smoothScrollTo(0, 0);
+            String replace = item.detail.replace("<a","<a style=\"color:#D22222\"");//超链接改为红色，方法比较low
+            String content = String.format(WEBVIEW_CONTENT,replace);
+            wvDetailContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
         }
 
         if (!TextUtils.isEmpty(item.newssource) && !TextUtils.isEmpty(item.newsauthor)) {
@@ -243,10 +297,10 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         }
     }
 
-    public static void start(Context c, String time, String title) {
+    public static void start(Context c, int fromType,String newsid) {
         Intent intent = new Intent(c, NewsDetailActivity.class);
-        intent.putExtra(INTENT_DETAIL_CONTENT_TIME, time);
-        intent.putExtra(INTENT_DETAIL_CONTENT_TITLE, title);
+        intent.putExtra(INTENT_FROM_TYPE, fromType);
+        intent.putExtra(INTENT_DETAIL_CONTENT_NEWSID,newsid);
         c.startActivity(intent);
     }
 

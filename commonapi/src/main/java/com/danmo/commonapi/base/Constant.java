@@ -33,9 +33,13 @@ public class Constant {
     public static final String BANNER_URL = "http://api.ithome.com/xml/slide/slide.xml?=1505559010903";//幻灯片
     public static final String NESLIST_URL = "http://api.ithome.com/xml/newslist/news.xml";//最新
 
-    public static final String NEWS_DETAIL_CONTENT_URL = "http://api.ithome.com/xml/newscontent/329/170.xml";//文章详情
+//    public static final String NEWS_DETAIL_CONTENT_URL = "http://api.ithome.com/xml/newscontent/329/170.xml";//文章详情
+    public static final String NEWS_DETAIL_CONTENT_URL = "http://api.ithome.com/xml/newscontent/%s.xml";//文章详情
+    public static final String NEWS_DETAIL_CONTENT_URL_BANNER = "http://api.ithome.com/rss/%s.xml";//文章详情forBanner
     public static final String NEWS_DETAIL_RELATED_URL = "http://api.ithome.com/json/tags/0329/329170.json";//相关文章
     public static final String NEWS_DETAIL_RECOMMEND_URL= "http://api.lapin365.com/api/apps/douzaimai?count=3&signature=0D41491DDEF77D3823EDE90ABEAA892E&timestamp=1507537231&platform=ithome_android&r=1507537231282";//商品推荐
 
     public static final String RECOMMEND_PIC_HOST = "http://img.lapin365.com/productpictures";//推荐图片路径前缀
+
+    //http://api.ithome.com/rss/329823.xml
 }

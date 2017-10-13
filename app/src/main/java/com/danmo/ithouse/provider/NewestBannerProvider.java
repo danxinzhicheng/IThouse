@@ -2,14 +2,20 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.danmo.commonapi.bean.newest.Newest;
+import com.danmo.commonutil.UrlUtil;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.NewsDetailActivity;
+import com.danmo.ithouse.activity.WebViewActivity;
 import com.danmo.ithouse.util.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerClickListener;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +32,7 @@ public class NewestBannerProvider extends BaseViewProvider<Newest> {
     }
 
     @Override
-    public void onBindView(RecyclerViewHolder holder, Newest bean) {
+    public void onBindView(RecyclerViewHolder holder, final Newest bean) {
         List<String> images = new ArrayList<String>();
         List<String> titles = new ArrayList<String>();
         for (int i = 0; i < bean.item.size(); i++) {
@@ -45,5 +51,19 @@ public class NewestBannerProvider extends BaseViewProvider<Newest> {
         //banner设置方法全部调用完毕时最后调用
         banner.setDelayTime(4 * 1000);
         banner.start();
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                if (position >= 0) {
+                    String link = bean.item.get(position).link;
+                    if (UrlUtil.isUrlPrefix(link)) {
+                        WebViewActivity.start(mContext,link);
+                    } else {
+                        NewsDetailActivity.start(mContext, NewsDetailActivity.TYPE_BANNER, link);
+                    }
+                }
+            }
+        });
+
     }
 }

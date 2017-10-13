@@ -2,15 +2,11 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
-
-import com.bumptech.glide.Glide;
 import com.danmo.commonapi.bean.newest.detail.DetailRelatedItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
-import com.danmo.ithouse.bean.RelatedActical;
 
 /**
  * Created by user on 2017/9/27.

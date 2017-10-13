@@ -12,7 +12,6 @@ import com.danmo.commonapi.bean.newest.detail.DetailRecommendItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
-import com.danmo.ithouse.bean.RecommentActical;
 
 /**
  * Created by user on 2017/9/27.

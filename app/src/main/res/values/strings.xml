@@ -13,7 +13,7 @@
     <string name="just">刚刚</string>
     <string name="comment_text">评</string>
 
-    <string name="flexible_title">Flexible space</string>
+    <string name="flexible_title">标题</string>
     <string name="lorem">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 		In mollis est vitae erat laoreet consectetur. Mauris dui mauris,

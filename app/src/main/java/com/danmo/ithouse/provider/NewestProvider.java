@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -16,18 +17,24 @@ import com.danmo.ithouse.R;
 import com.danmo.ithouse.activity.NewsDetailActivity;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by danmo on 2017/9/16.
  */
 
 public class NewestProvider extends BaseViewProvider<NewestItem> {
+    private Map<String,Integer> mapClicked = new HashMap<String,Integer>();
     public NewestProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest);
     }
 
     @Override
     public void onBindView(RecyclerViewHolder holder, final NewestItem bean) {
+        final int position = holder.getLayoutPosition();
         holder.setText(R.id.item_title, bean.title);
         holder.setText(R.id.item_commentcount, bean.commentcount + mContext.getString(R.string.comment_text));
 
@@ -56,11 +63,18 @@ public class NewestProvider extends BaseViewProvider<NewestItem> {
         String url = bean.image;
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 
+        final TextView title = holder.get(R.id.item_title);
+        if(mapClicked.containsKey(bean.newsid)){
+            title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
+        }else{
+            title.setTextColor(mContext.getResources().getColor(R.color.diy_black));
+        }
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("mmm","onClick");
-                NewsDetailActivity.start(mContext,bean.postdate,bean.title);
+                NewsDetailActivity.start(mContext,NewsDetailActivity.TYPE_LIST,bean.newsid);
+                title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
+                mapClicked.put(bean.newsid,position);
             }
         },R.id.item_container);
 
