@@ -1,19 +1,16 @@
 package com.danmo.ithouse;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.View;
-
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.nav.NavFragment;
 import com.danmo.ithouse.fragment.nav.NavigationButton;
 import com.danmo.ithouse.fragment.nav.OnTabReselectListener;
+import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.util.EventBusMsg;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -21,7 +18,6 @@ import org.greenrobot.eventbus.ThreadMode;
 public class MainActivity extends BaseActivity implements NavFragment.OnNavigationReselectListener {
 
     private NavFragment mNavBar;
-    private Animator mAnimator;//动画属性
 
     @Override
     protected void initViews(ViewHolder holder, View root) {
@@ -71,22 +67,41 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(EventBusMsg eventBusMsg) {
-
-        Log.i("nnn","eventmsg mainactivity-->"+eventBusMsg.getFlag());
         showOrHideNavAnim(eventBusMsg.getFlag());
+    }
+
+
+    private void showOrHideNavAnim(int flag) {
+        if (flag == NewestFragment.SCROLL_STATE_UP) {
+            hideBottomNav(mNavBar.getView());
+        } else if(flag == NewestFragment.SCROLL_STATE_DOWN){
+            showBottomNav(mNavBar.getView());
+        }
 
     }
 
-    private void showOrHideNavAnim(int flag){
-        if(mAnimator != null && mAnimator.isRunning()){//判断动画存在  如果启动了,则先关闭
-            mAnimator.cancel();
-        }
-        if(flag != 0){//up
-            mAnimator = ObjectAnimator.ofFloat(mNavBar.getView(), "translationY", mNavBar.getView().getTranslationY(),0);//从当前位置位移到0位置
-        }else{//down
-            mAnimator = ObjectAnimator.ofFloat(mNavBar.getView(), "translationY", mNavBar.getView().getTranslationY(),-mNavBar.getView().getHeight());//从当前位置移动到布局负高度的wiz
-        }
-        mAnimator.start();//执行动画
+    private void showBottomNav(final View mTarget) {
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), 0);
+        va.setDuration(200);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+        va.start();
+    }
 
+    private void hideBottomNav(final View mTarget) {
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), mTarget.getHeight());
+        va.setDuration(200);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+
+        va.start();
     }
 }

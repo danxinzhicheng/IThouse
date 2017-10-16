@@ -31,20 +31,19 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
 
     private Boolean isFirst = true;
 
-    private int mTouchShop;//最小滑动距离
-    protected float mFirstY;//触摸下去的位置
-    protected float mCurrentY;//滑动时Y的位置
-    protected int direction;//判断是否上滑或者下滑的标志
-    protected boolean mShow;//判断是否执行了上滑动画
+    private Boolean isRequestShowed = true;
+
+    public static int SCROLL_STATE_DOWN = 0;
+    public static int SCROLL_STATE_UP = 1;
+
+
 
     @Override
     public void initData(HeaderFooterAdapter adapter) {
         setLoadMoreEnable(true);
         loadHeader();
         loadMore();
-        //获得一个最小滑动距离
-        mTouchShop = ViewConfiguration.get(mContext).getScaledTouchSlop();//系统级别的一个属性,判断用户的最小滑动距离的,可查看源码为16
-        mRecyclerView.setOnTouchListener(onTouchListener);
+        mRecyclerView.setOnScrollListener(mOnScrollListener);
     }
 
 
@@ -62,10 +61,10 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        if(isFirst) {
+        if (isFirst) {
             isFirst = false;
             return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
-        }else{
+        } else {
             return CommonApi.getSingleInstance().getNewestList(Constant.NESLIST_URL);
         }
     }
@@ -104,43 +103,31 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
         }
     }
 
-    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    mFirstY = event.getY();//按下时获取位置
-                    break;
-                case MotionEvent.ACTION_MOVE:
-//                    EventBus.getDefault().post(new EventBusMsg("move"));
-                    mCurrentY = event.getY();//得到滑动的位置
-                    if(mCurrentY - mFirstY > mTouchShop) {//滑动的位置减去按下的位置大于最小滑动距离  则表示向下滑动
-                        direction = 0;//down
-                    }else if(mFirstY - mCurrentY > mTouchShop){//反之向上滑动
-                        direction = 1;//up
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            int mScrollState = recyclerView.getScrollState();
+            Log.i("nnn","mScrollState:"+mScrollState);
+            Log.i("nnn","dy:"+dy);
+            Log.i("nnn","isRequestShowed:"+isRequestShowed);
+            if (mScrollState == RecyclerView.SCROLL_STATE_DRAGGING || mScrollState == RecyclerView.SCROLL_STATE_SETTLING) {
+                if (dy > 0) {//up -> hide
+                    if (isRequestShowed) {
+                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_UP));
+                        isRequestShowed = false;
                     }
-                    if(direction == 1){//判断如果是向上滑动 则执行向上滑动的动画
-                        if(mShow){//判断动画是否执行了  执行了则改变状态
-                            //执行往上滑动的动画
-//                            tolbarAnim(1);
-                            EventBus.getDefault().post(new EventBusMsg(direction));
-                            mShow = !mShow;
-                        }
-                    }else if(direction == 0){//判断如果是向下滑动 则执行向下滑动的动画
-                        if(!mShow){//判断动画是否执行了  执行了则改变状态
-                            //执行往下滑动的动画
-//                            tolbarAnim(0);
-                            EventBus.getDefault().post(new EventBusMsg(direction));
-                            mShow = !mShow;
-                        }
+                } else {//down -> show
+                    if (!isRequestShowed) {
+                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_DOWN));
+                        isRequestShowed = true;
                     }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    break;
+                }
             }
-            return false;
         }
     };
-
-
 }

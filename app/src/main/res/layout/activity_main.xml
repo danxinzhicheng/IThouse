@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
-        android:id="@+id/activity_main_ui"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:layout_height="match_parent">
 
         <FrameLayout
             android:id="@+id/main_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
 
         <FrameLayout
             android:id="@+id/fag_nav"
-            app:layout_behavior="@string/bye_burger_bottom_behavior"
             android:layout_width="match_parent"
+            android:layout_gravity="bottom"
             android:layout_height="48dp" />
 
-    </LinearLayout>
-
-
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>
