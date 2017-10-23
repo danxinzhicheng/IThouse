@@ -26,26 +26,22 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.danmo.commonapi.base.BaseEvent;
-import com.danmo.commonapi.bean.newest.NewestItem;
+import com.danmo.commonapi.bean.lapin.LapinTopNode;
 import com.danmo.commonapi.bean.newest.NewestTopNode;
-import com.danmo.commonapi.event.GetNewestBannerEvent;
-import com.danmo.commonapi.event.GetNewestEvent;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
-import com.danmo.ithouse.provider.NewestBannerProvider;
+import com.danmo.ithouse.util.EventBusMsg;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
 
 /**
  * 具有下拉刷新和上拉加载的 Fragment
@@ -56,6 +52,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     public static final String POST_HEADER = "load_header";
     public static final String POST_LOAD_MORE = "load_more";
     public static final String POST_REFRESH = "refresh";
+    public static final String POST_MID = "mid";
     // 当前状态
     private static final int STATE_NORMAL = 0;      // 正常
     private static final int STATE_NO_MORE = 1;     // 正在
@@ -68,7 +65,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     // 适配器
     protected HeaderFooterAdapter mAdapter;
     protected FooterProvider mFooterProvider;
-//    protected boolean isFirstAddFooter = true;
+    //    protected boolean isFirstAddFooter = true;
     private ArrayMap<String, String> mPostTypes = new ArrayMap<>();    // 请求类型
     private int mState = STATE_NORMAL;
     // View
@@ -76,6 +73,10 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     // 状态
     private boolean refreshEnable = true;           // 是否允许刷新
     private boolean loadMoreEnable = true;          // 是否允许加载
+
+    private Boolean isRequestShowed = true;
+    public static int SCROLL_STATE_DOWN = 0;
+    public static int SCROLL_STATE_UP = 1;
 
     @Override
     protected int getLayoutId() {
@@ -86,10 +87,9 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     protected void initViews(ViewHolder holder, View root) {
         // 适配器
         mAdapter = new HeaderFooterAdapter();
-        mFooterProvider = new FooterProvider(getContext()){
+        mFooterProvider = new FooterProvider(getContext()) {
             @Override
             public void needLoadMore(RecyclerViewHolder holder) {
-                Log.i("mmm","needLoadMore:");
                 loadMore();
             }
         };
@@ -105,6 +105,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(getRecyclerViewLayoutManager());
+        mRecyclerView.setOnScrollListener(mOnScrollListener);
         setAdapterRegister(getContext(), mRecyclerView, mAdapter);
         // 监听 RefreshLayout 下拉刷新
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -140,13 +141,19 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         mPostTypes.put(uuid, POST_HEADER);
     }
 
+    protected void loadMiddle() {
+        String uuid = requestMiddle();
+        mPostTypes.put(uuid, POST_MID);
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(Event event) {
         String postType = mPostTypes.get(event.getUUID());
         if (event.isOk()) {
             if (postType.equals(POST_HEADER)) {
-                onLoadHeader((GetNewestBannerEvent) event, mAdapter);
+                onLoadHeader(event, mAdapter);
+            } else if (postType.equals(POST_MID)) {
+                onLoadMiddle(event, mAdapter);
             } else if (postType.equals(POST_LOAD_MORE)) {
                 onLoadMore(event);
             } else if (postType.equals(POST_REFRESH)) {
@@ -164,33 +171,18 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         onRefresh(event, mAdapter);
     }
 
-    protected void onLoadHeader(GetNewestBannerEvent event, HeaderFooterAdapter mAdapter) {
-
-    }
-
     protected void onLoadMore(Event event) {
-
-        if (event instanceof GetNewestBannerEvent) {
-            GetNewestBannerEvent ev = (GetNewestBannerEvent) event;
-            List<NewestItem> list = ev.getBean().newest.item;
-            if (list.size() > 0) {
-                mAdapter.registerHeader(ev.getBean().newest, new NewestBannerProvider(mContext));
+        if (event.getBean() instanceof NewestTopNode) {//xml解析
+            if (((NewestTopNode) (event.getBean())).newest.item.size() < pageCount) {
+                mState = STATE_NO_MORE;
+                mFooterProvider.setFooterNormal();
+            } else {
+                mState = STATE_NORMAL;
+                mFooterProvider.setFooterNormal();
             }
 
-        } else if (event instanceof GetNewestEvent) {
-            if (event.getBean() instanceof NewestTopNode) {//xml解析
-//            adapter.addDatas(((Newest)((Newest) event.getBean())).itemInfos);
-                if (((NewestTopNode) (event.getBean())).newest.item.size() < pageCount) {
-                    mState = STATE_NO_MORE;
-                    mFooterProvider.setFooterNormal();
-                } else {
-                    mState = STATE_NORMAL;
-                    mFooterProvider.setFooterNormal();
-                }
-            }
-        } else {
-//            adapter.addDatas((List)event.getBean());
-            if (((List) event.getBean()).size() < pageCount) {
+        } else if (event.getBean() instanceof LapinTopNode) {
+            if (((LapinTopNode) event.getBean()).content.size() < pageCount) {
                 mState = STATE_NO_MORE;
                 mFooterProvider.setFooterNormal();
             } else {
@@ -244,6 +236,34 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         EventBus.getDefault().unregister(this);
     }
 
+    /**
+     * 通知导航栏显示或隐藏
+     */
+    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            int mScrollState = recyclerView.getScrollState();
+            if (mScrollState == RecyclerView.SCROLL_STATE_DRAGGING || mScrollState == RecyclerView.SCROLL_STATE_SETTLING) {
+                if (dy > 0) {//up -> hide
+                    if (isRequestShowed) {
+                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_UP));
+                        isRequestShowed = false;
+                    }
+                } else {//down -> show
+                    if (!isRequestShowed) {
+                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_DOWN));
+                        isRequestShowed = true;
+                    }
+                }
+            }
+        }
+    };
+
     //--- 需要继承类处理的部分 ----------------------------------------------------------------------
 
     /**
@@ -295,6 +315,16 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     protected abstract String requestHeader();
 
     /**
+     * 请求recyclerView的中间部分内容数据，并返回请求的 uuid
+     * 例如：return mDiycode.getTopicsList(null, mNodeId, offset, limit);
+     *
+     * @return uuid
+     */
+    @NonNull
+    protected abstract String requestMiddle();
+
+
+    /**
      * 数据刷新成功的回调，由于不同页面可能要对数据进行处理，例如重新排序，清理掉一些无效数据等，所以由子类自己实现，
      * 如果不需要特殊处理，一般像下面这样写就行:
      * adapter.clearDatas();
@@ -315,6 +345,24 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     protected abstract void onLoadMore(Event event, HeaderFooterAdapter adapter);
 
     /**
+     * 给列表增加头部，如幻灯片等.
+     * adapter.addDatas(event.getBean());
+     *
+     * @param event   Event
+     * @param adapter Adapter
+     */
+    protected abstract void onLoadHeader(Event event, HeaderFooterAdapter adapter);
+
+    /**
+     * 给列表增加中间部分.
+     * adapter.addDatas(event.getBean());
+     *
+     * @param event   Event
+     * @param adapter Adapter
+     */
+    protected abstract void onLoadMiddle(Event event, HeaderFooterAdapter adapter);
+
+    /**
      * 数据加载错误时调用，你可以在这里获取错误类型并进行处理，如果不需要特殊处理，弹出一个 toast 提醒用户即可。
      * if (postType.equals(POST_LOAD_MORE)) {
      * toast("加载更多失败");
@@ -326,4 +374,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
      * @param postType
      */
     protected abstract void onError(Event event, String postType);
+
+
 }

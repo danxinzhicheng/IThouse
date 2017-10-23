@@ -88,17 +88,35 @@ public class NewsListFragment extends SimpleRefreshRecyclerFragment<List<New>, G
         return null;
     }
 
+    @NonNull
+    @Override
+    protected String requestMiddle() {
+        return null;
+    }
+
     @Override
     protected void onRefresh(GetNewsListEvent event, HeaderFooterAdapter adapter) {
         super.onRefresh(event, adapter);
 //        mDataCache.saveNewsListObj(adapter.getDatas());
     }
 
+
     @Override
     protected void onLoadMore(GetNewsListEvent event, HeaderFooterAdapter adapter) {
         super.onLoadMore(event, adapter);
 //        mDataCache.saveNewsListObj(adapter.getDatas());
     }
+
+    @Override
+    protected void onLoadHeader(GetNewsListEvent event, HeaderFooterAdapter adapter) {
+
+    }
+
+    @Override
+    protected void onLoadMiddle(GetNewsListEvent event, HeaderFooterAdapter adapter) {
+
+    }
+
 
     @Override
     public void onDestroyView() {

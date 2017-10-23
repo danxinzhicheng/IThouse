@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 
 import com.danmo.commonapi.CommonApi;
+import com.danmo.commonapi.base.BaseEvent;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.newest.NewestItem;
 import com.danmo.commonapi.bean.newest.NewestTopNode;
@@ -31,21 +32,11 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
 
     private Boolean isFirst = true;
 
-    private Boolean isRequestShowed = true;
-
-    public static int SCROLL_STATE_DOWN = 0;
-    public static int SCROLL_STATE_UP = 1;
-
-
-
     @Override
     public void initData(HeaderFooterAdapter adapter) {
         setLoadMoreEnable(true);
         loadHeader();
-        loadMore();
-        mRecyclerView.setOnScrollListener(mOnScrollListener);
     }
-
 
     @Override
     protected void setAdapterRegister(Context context, RecyclerView recyclerView, HeaderFooterAdapter adapter) {
@@ -75,13 +66,24 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
         return CommonApi.getSingleInstance().getNewestBannerList(Constant.BANNER_URL);
     }
 
+    @NonNull
     @Override
-    protected void onLoadHeader(GetNewestBannerEvent event, HeaderFooterAdapter mAdapter) {
-        super.onLoadHeader(event, mAdapter);
+    protected String requestMiddle() {
+        return null;
+    }
+
+    @Override
+    protected void onLoadHeader(GetNewestEvent event, HeaderFooterAdapter adapter) {
         if (event.getBean().newest != null && event.getBean().newest.item.size() > 0) {
             mAdapter.registerHeader(event.getBean().newest, new NewestBannerProvider(mContext));//添加幻灯片
         }
     }
+
+    @Override
+    protected void onLoadMiddle(GetNewestEvent event, HeaderFooterAdapter adapter) {
+
+    }
+
 
     @Override
     protected void onRefresh(GetNewestEvent event, HeaderFooterAdapter adapter) {
@@ -102,32 +104,4 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
             toast("刷新数据失败");
         }
     }
-
-    private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            int mScrollState = recyclerView.getScrollState();
-            Log.i("nnn","mScrollState:"+mScrollState);
-            Log.i("nnn","dy:"+dy);
-            Log.i("nnn","isRequestShowed:"+isRequestShowed);
-            if (mScrollState == RecyclerView.SCROLL_STATE_DRAGGING || mScrollState == RecyclerView.SCROLL_STATE_SETTLING) {
-                if (dy > 0) {//up -> hide
-                    if (isRequestShowed) {
-                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_UP));
-                        isRequestShowed = false;
-                    }
-                } else {//down -> show
-                    if (!isRequestShowed) {
-                        EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_DOWN));
-                        isRequestShowed = true;
-                    }
-                }
-            }
-        }
-    };
 }

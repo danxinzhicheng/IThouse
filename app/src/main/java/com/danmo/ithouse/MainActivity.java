@@ -9,6 +9,7 @@ import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.nav.NavFragment;
 import com.danmo.ithouse.fragment.nav.NavigationButton;
 import com.danmo.ithouse.fragment.nav.OnTabReselectListener;
+import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.util.EventBusMsg;
 import org.greenrobot.eventbus.EventBus;
@@ -72,9 +73,9 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
 
 
     private void showOrHideNavAnim(int flag) {
-        if (flag == NewestFragment.SCROLL_STATE_UP) {
+        if (flag == RefreshRecyclerFragment.SCROLL_STATE_UP) {
             hideBottomNav(mNavBar.getView());
-        } else if(flag == NewestFragment.SCROLL_STATE_DOWN){
+        } else if(flag == RefreshRecyclerFragment.SCROLL_STATE_DOWN){
             showBottomNav(mNavBar.getView());
         }
 

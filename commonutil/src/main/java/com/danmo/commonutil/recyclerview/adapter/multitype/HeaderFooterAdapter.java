@@ -65,10 +65,7 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         assert mItems != null;
         Object item = mItems.get(position);
         int index = mTypePool.indexOf(item.getClass());
-        if (index >= 0) {
-            return index;
-        }
-        return mTypePool.indexOf(item.getClass());
+        return index;
     }
 
     @Override
@@ -109,7 +106,6 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int indexViewType) {
         BaseViewProvider provider = getProviderByIndex(indexViewType);
-        Log.i("xxx", "onCreateViewHolder");
         return provider.onCreateViewHolder(parent);
     }
 
@@ -118,8 +114,6 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         assert mItems != null;
         Object item = mItems.get(position);
         BaseViewProvider provider = getProviderByClass(item.getClass());
-        Log.i("xxx", "onBindViewHolder provider:"+provider);
-        Log.i("xxx", "onBindViewHolder position!!!:"+position);
         provider.onBindView(holder, item);
     }
 

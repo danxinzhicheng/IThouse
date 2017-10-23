@@ -17,8 +17,9 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:logo="@drawable/ithome_logo_topbar"
-            app:popupTheme="@style/ToolbarPopupTheme">
+            app:popupTheme="@style/ToolbarPopupTheme"
+            app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing"
+            app:title="辣品">
 
         </android.support.v7.widget.Toolbar>
 
@@ -30,40 +31,24 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_nav"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
-
-            <ImageView
-                android:id="@+id/icon_toolbar_custom"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@color/colorPrimary"
-                android:paddingRight="12dp"
-                android:src="@drawable/icon_toolbar_custom" />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_nav"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/icon_toolbar_custom"
-                android:background="@color/colorPrimary"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="@color/white"
-                app:tabMaxWidth="62dp"
-                app:tabMode="scrollable"
-                app:tabPaddingEnd="0dp"
-                app:tabPaddingStart="0dp"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="@color/tab_text_normal" />
-        </RelativeLayout>
+            android:layout_height="45dp"
+            android:background="@color/colorPrimary"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/white"
+            app:tabMaxWidth="61dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="0dp"
+            app:tabPaddingStart="0dp"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/tab_text_normal" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

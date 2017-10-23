@@ -12,14 +12,13 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.danmo.commonutil.BarUtils;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
+import com.danmo.ithouse.fragment.sub.LapinAllFragment;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 
@@ -29,14 +28,12 @@ import java.lang.reflect.Method;
  * Created by user on 2017/9/13.
  */
 
-public class DynamicTabFragment extends BaseFragment {
-
+public class LapinMainFragment extends BaseFragment {
     private TabLayout mTabNav;
     private ViewPager mBaseViewPager;
-
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_dynamic;
+        return R.layout.fragment_lapin_main;
     }
 
     @Override
@@ -44,14 +41,16 @@ public class DynamicTabFragment extends BaseFragment {
         mTabNav = holder.get(R.id.tab_nav);
         mBaseViewPager = holder.get(R.id.viewPager);
         Toolbar toolbar = holder.get(R.id.toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle("辣品");
+
         setHasOptionsMenu(true);
         ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
 
-        BaseViewPagerAdapter adapter = new BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
+        LapinMainFragment.BaseViewPagerAdapter adapter = new LapinMainFragment.BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
         mBaseViewPager.setAdapter(adapter);
         mTabNav.setupWithViewPager(mBaseViewPager);
         mBaseViewPager.setCurrentItem(0, true);
+
     }
 
     @Override
@@ -59,7 +58,6 @@ public class DynamicTabFragment extends BaseFragment {
         menu.clear();
         inflater.inflate(R.menu.main_toolbar_menu, menu);
     }
-
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if (menu != null) {
@@ -76,40 +74,6 @@ public class DynamicTabFragment extends BaseFragment {
         super.onPrepareOptionsMenu(menu);
     }
 
-
-
-
-    @Override
-    protected void initData() {
-        super.initData();
-    }
-
-    private PagerInfo[] getPagers() {
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("sub_tab", "tab");
-
-        return new PagerInfo[]{
-                new PagerInfo("最新", NewestFragment.class,
-                        bundle),
-                new PagerInfo("排行榜", SubFragment.class,
-                        bundle),
-                new PagerInfo("华为", SubFragment.class,
-                        bundle),
-                new PagerInfo("上热评", SubFragment.class,
-                        bundle),
-                new PagerInfo("评测室", SubFragment.class,
-                        bundle),
-                new PagerInfo("发布会", SubFragment.class,
-                        bundle),
-                new PagerInfo("安卓", SubFragment.class,
-                        bundle),
-                new PagerInfo("苹果", SubFragment.class,
-                        bundle)
-
-        };
-    }
-
     public static class PagerInfo {
         private String title;
         private Class<?> clx;
@@ -123,10 +87,10 @@ public class DynamicTabFragment extends BaseFragment {
     }
 
     public class BaseViewPagerAdapter extends FragmentPagerAdapter {
-        private PagerInfo[] mInfoList;
+        private LapinMainFragment.PagerInfo[] mInfoList;
         private Fragment mCurFragment;
 
-        public BaseViewPagerAdapter(FragmentManager fm, PagerInfo[] infoList) {
+        public BaseViewPagerAdapter(FragmentManager fm, LapinMainFragment.PagerInfo[] infoList) {
             super(fm);
             mInfoList = infoList;
         }
@@ -145,7 +109,7 @@ public class DynamicTabFragment extends BaseFragment {
 
         @Override
         public Fragment getItem(int position) {
-            PagerInfo info = mInfoList[position];
+            LapinMainFragment.PagerInfo info = mInfoList[position];
             return Fragment.instantiate(getContext(), info.clx.getName(), info.args);
         }
 
@@ -163,5 +127,27 @@ public class DynamicTabFragment extends BaseFragment {
         public int getItemPosition(Object object) {
             return PagerAdapter.POSITION_NONE;
         }
+    }
+
+    private LapinMainFragment.PagerInfo[] getPagers() {
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("sub_tab", "tab_lapin");
+
+        return new LapinMainFragment.PagerInfo[]{
+                new LapinMainFragment.PagerInfo("全部", LapinAllFragment.class,
+                        bundle),
+                new LapinMainFragment.PagerInfo("辣榜", SubFragment.class,
+                        bundle),
+                new LapinMainFragment.PagerInfo("1元包邮", SubFragment.class,
+                        bundle),
+                new LapinMainFragment.PagerInfo("9块9", SubFragment.class,
+                        bundle),
+                new LapinMainFragment.PagerInfo("19块9", SubFragment.class,
+                        bundle),
+                new LapinMainFragment.PagerInfo("福包", SubFragment.class,
+                        bundle),
+
+        };
     }
 }

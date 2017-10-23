@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.danmo.commonapi.api.lapin.LapinApi;
+import com.danmo.commonapi.api.lapin.LapinImpl;
 import com.danmo.commonapi.api.newest.NewestAPI;
 import com.danmo.commonapi.api.newest.NewestImpl;
 import com.danmo.commonapi.api.news.NewsAPI;
@@ -21,19 +23,18 @@ import com.danmo.commonutil.log.Logger;
  * Created by danmo on 2017/9/16.
  */
 
-public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
+public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI,LapinApi {
 
     private static Context mContext;
     private static NewsImpl sNewsImpl;
     private static NewestImpl sNewestImpl;
     private static NewsDetailAPI sNewsDetailAPI;
+    private static LapinApi sLapinApi;
+
     //--- 单例 -----------------------------------------------------------------------------------
-
     private volatile static CommonApi mCommonApi;
-
     private CommonApi() {
     }
-
     public static CommonApi getSingleInstance() {
         if (null == mCommonApi) {
             synchronized (CommonApi.class) {
@@ -44,9 +45,7 @@ public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
         }
         return mCommonApi;
     }
-
     //--- 初始化 ---------------------------------------------------------------------------------
-
     public static CommonApi init(@NonNull Context context, @NonNull final String client_id,
                                  @NonNull final String client_secret) {
         initLogger(context);
@@ -76,6 +75,7 @@ public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
             sNewsImpl = new NewsImpl(context, Constant.PARSE_XML);
             sNewestImpl = new NewestImpl(context,Constant.PARSE_XML);
             sNewsDetailAPI = new NewsDetailImpl(context,Constant.PARSE_XML);
+            sLapinApi = new LapinImpl(context,Constant.PARSE_GSON);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,5 +114,20 @@ public class CommonApi implements NewsAPI, NewestAPI,NewsDetailAPI {
     public String getNewsDetailRecommend(String url) {
         sNewsDetailAPI = new NewsDetailImpl(mContext,Constant.PARSE_GSON);
         return sNewsDetailAPI.getNewsDetailRecommend(url);
+    }
+
+    @Override
+    public String getLapinBannerList(String url) {
+        return sLapinApi.getLapinBannerList(url);
+    }
+
+    @Override
+    public String getLapinRankList(String url) {
+        return sLapinApi.getLapinRankList(url);
+    }
+
+    @Override
+    public String getLapinList(String url) {
+        return sLapinApi.getLapinList(url);
     }
 }

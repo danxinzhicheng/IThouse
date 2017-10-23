@@ -1,6 +1,5 @@
 package com.danmo.ithouse.fragment.nav;
 
-
 import android.content.Context;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
@@ -11,13 +10,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
-import com.danmo.ithouse.fragment.DynamicTabFragment;
 import com.danmo.ithouse.fragment.ExploreFragment;
-import com.danmo.ithouse.fragment.TweetViewPagerFragment;
+import com.danmo.ithouse.fragment.LapinMainFragment;
+import com.danmo.ithouse.fragment.NewsMainFragment;
 import com.danmo.ithouse.fragment.UserInfoFragment;
 
 import java.util.List;
@@ -69,11 +67,11 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 
         mNavNews.init(R.drawable.tab_icon_news,
                 R.string.main_tab_name_news,
-                DynamicTabFragment.class);
+                NewsMainFragment.class);
 
         mNavTweet.init(R.drawable.tab_icon_lapin,
                 R.string.main_tab_name_tweet,
-                TweetViewPagerFragment.class);
+                LapinMainFragment.class);
 
         mNavExplore.init(R.drawable.tab_icon_quan,
                 R.string.main_tab_name_explore,

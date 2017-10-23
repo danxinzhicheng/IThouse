@@ -24,6 +24,7 @@ package com.danmo.ithouse.fragment.refresh;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
