@@ -15,12 +15,10 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -40,6 +38,7 @@ import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.provider.RecommentActicalProvider;
 import com.danmo.ithouse.provider.RelatedActicalProvider;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -178,14 +177,14 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     }
 
 
-    private String getDetailContentUrl(){
+    private String getDetailContentUrl() {
         String newsid = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_NEWSID); //345234
-        if(getIntent().getIntExtra(INTENT_FROM_TYPE,0) == TYPE_BANNER){
-            return String.format(Constant.NEWS_DETAIL_CONTENT_URL_BANNER,newsid);
+        if (getIntent().getIntExtra(INTENT_FROM_TYPE, 0) == TYPE_BANNER) {
+            return String.format(Constant.NEWS_DETAIL_CONTENT_URL_BANNER, newsid);
         }
         StringBuffer stringBuffer = new StringBuffer(newsid);
         String ss = stringBuffer.insert(2, "/").toString();
-        return String.format(Constant.NEWS_DETAIL_CONTENT_URL,ss);
+        return String.format(Constant.NEWS_DETAIL_CONTENT_URL, ss);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -247,8 +246,8 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         }
 
         if (!TextUtils.isEmpty(item.detail)) {
-            String replace = item.detail.replace("<a","<a style=\"color:#D22222\"");//超链接改为红色，方法比较low
-            String content = String.format(WEBVIEW_CONTENT,replace);
+            String replace = item.detail.replace("<a", "<a style=\"color:#D22222\"");//超链接改为红色，方法比较low
+            String content = String.format(WEBVIEW_CONTENT, replace);
             wvDetailContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
         }
 
@@ -297,10 +296,10 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         }
     }
 
-    public static void start(Context c, int fromType,String newsid) {
+    public static void start(Context c, int fromType, String newsid) {
         Intent intent = new Intent(c, NewsDetailActivity.class);
         intent.putExtra(INTENT_FROM_TYPE, fromType);
-        intent.putExtra(INTENT_DETAIL_CONTENT_NEWSID,newsid);
+        intent.putExtra(INTENT_DETAIL_CONTENT_NEWSID, newsid);
         c.startActivity(intent);
     }
 

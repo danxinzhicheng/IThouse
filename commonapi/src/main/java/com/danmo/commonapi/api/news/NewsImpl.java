@@ -34,8 +34,8 @@ import com.danmo.commonutil.UUIDGenerator;
 
 public class NewsImpl extends BaseImpl<NewsService> implements NewsAPI {
 
-    public NewsImpl(@NonNull Context context,int parsePattern) {
-        super(context,parsePattern);
+    public NewsImpl(@NonNull Context context, int parsePattern) {
+        super(context, parsePattern);
     }
 
     /**

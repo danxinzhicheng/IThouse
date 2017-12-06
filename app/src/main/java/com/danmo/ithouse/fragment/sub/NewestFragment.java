@@ -3,26 +3,17 @@ package com.danmo.ithouse.fragment.sub;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewConfiguration;
 
 import com.danmo.commonapi.CommonApi;
-import com.danmo.commonapi.base.BaseEvent;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.newest.NewestItem;
 import com.danmo.commonapi.bean.newest.NewestTopNode;
-import com.danmo.commonapi.event.GetNewestBannerEvent;
 import com.danmo.commonapi.event.GetNewestEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
 import com.danmo.ithouse.provider.NewestBannerProvider;
 import com.danmo.ithouse.provider.NewestProvider;
-import com.danmo.ithouse.util.EventBusMsg;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by danmo on 2017/9/16.

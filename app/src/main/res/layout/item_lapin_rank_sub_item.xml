@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="200dp"
+    android:layout_marginRight="7dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/lapin_rank_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/lapin_rank_num"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:background="@drawable/labang_flag_small"
+            android:padding="0dp"
+            android:text="20"
+            android:layout_marginRight="3dp"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/lapin_rank_title"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="的烦恼的四风师弟发士大夫"
+        android:textColor="@color/diy_black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/lapin_rank_promotion_price"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:singleLine="true"
+        android:text="券后10元"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/lapin_rank_quan_info"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/item_lapin_quan"
+        android:gravity="center_horizontal"
+        android:text="领100元券"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+</LinearLayout>

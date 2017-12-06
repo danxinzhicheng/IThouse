@@ -81,6 +81,19 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         notifyDataSetChanged();
     }
 
+    public void registerMiddle(@NonNull Object object, @NonNull BaseViewProvider provider) {
+        if (!hasHeader) {
+            Log.i("msg", "object.getClass:" + object.getClass());
+            mTypePool.register(object.getClass(), provider);
+            mItems.add(0, object);
+        } else {
+            Log.i("msg", "object.getClass111:" + object.getClass());
+            mTypePool.register(object.getClass(), provider);
+            mItems.add(1, object);
+        }
+        notifyDataSetChanged();
+    }
+
     public void unRegisterHeader() {
         if (!hasHeader) return;
         mItems.remove(0);

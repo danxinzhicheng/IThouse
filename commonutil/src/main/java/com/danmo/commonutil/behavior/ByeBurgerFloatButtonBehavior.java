@@ -8,20 +8,22 @@ import android.view.View;
 
 public class ByeBurgerFloatButtonBehavior extends ByeBurgerBehavior {
 
-  public ByeBurgerFloatButtonBehavior(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
-
-  @Override public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-    if(canInit) {
-      mAnimateHelper = ScaleAnimateHelper.get(child);
-      canInit = false;
+    public ByeBurgerFloatButtonBehavior(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
-    return super.layoutDependsOn(parent, child, dependency);
-  }
+
+    @Override
+    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
+        if (canInit) {
+            mAnimateHelper = ScaleAnimateHelper.get(child);
+            canInit = false;
+        }
+        return super.layoutDependsOn(parent, child, dependency);
+    }
 
 
-  @Override protected void onNestPreScrollInit(View child) {
+    @Override
+    protected void onNestPreScrollInit(View child) {
 
-  }
+    }
 }

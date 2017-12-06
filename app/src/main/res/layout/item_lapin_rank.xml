@@ -3,42 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="13dp">
 
         <ImageView
             android:layout_width="17dp"
             android:layout_height="17dp"
+            android:layout_gravity="center_vertical"
             android:paddingTop="2dp"
             android:scaleType="fitXY"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/lapin_rank_icon"/>
+            android:src="@drawable/lapin_rank_icon" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/colorPrimary"
-            android:text="辣榜"/>
+            android:text="辣榜"
+            android:textColor="@color/colorPrimary" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="right"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:text="更多"/>
+                android:text="更多"
+                android:textColor="@color/colorPrimary" />
+
             <ImageView
                 android:layout_width="12dp"
                 android:layout_height="12dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="2dp"
                 android:background="@drawable/item_lapin_rank_more_bg"
-                android:src="@drawable/lapin_arrow_more"/>
-
+                android:src="@drawable/lapin_arrow_more" />
         </LinearLayout>
 
     </LinearLayout>
@@ -46,5 +49,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_rank"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp" />
 </LinearLayout>

@@ -1,1 +1,1 @@
-include ':app', ':commonutil',':commonapi'
+include ':app', ':commonutil', ':commonapi'

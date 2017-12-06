@@ -18,7 +18,6 @@ package com.danmo.commonapi.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.danmo.commonapi.converter.StringConverterFactory;
 
@@ -78,14 +77,12 @@ public class BaseImpl<Service> {
                     .client(client)                                     // 设置 client
                     .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具
                     .build();
-            Log.i("msg","new gson parse....");
         } else if (currentParse == Constant.PARSE_XML) {
             Retrofit.Builder builder = new Retrofit.Builder();
             mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
                     .client(client)                                     // 设置 client
                     .addConverterFactory(SimpleXmlConverterFactory.create())// 设置xml转换工具
                     .build();
-            Log.i("msg","new xml parse....");
         } else {
             Retrofit.Builder builder = new Retrofit.Builder();
             mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url

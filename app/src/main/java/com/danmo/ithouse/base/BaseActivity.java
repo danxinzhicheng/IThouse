@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.danmo.commonutil.BarUtils;
 import com.danmo.commonutil.leak.IMMLeaks;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.util.Config;

@@ -73,6 +73,7 @@
         </RelativeLayout>
 
     </LinearLayout>
+
     <View
         android:layout_marginTop="10dp"
         android:id="@+id/detail_related_item_line"

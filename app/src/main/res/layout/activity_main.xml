@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/main_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <FrameLayout
-            android:id="@+id/fag_nav"
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_height="48dp" />
+    <FrameLayout
+        android:id="@+id/fag_nav"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_height="48dp" />
 
 </android.support.design.widget.CoordinatorLayout>

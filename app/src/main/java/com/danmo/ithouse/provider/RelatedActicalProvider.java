@@ -3,6 +3,7 @@ package com.danmo.ithouse.provider;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
+
 import com.danmo.commonapi.bean.newest.detail.DetailRelatedItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
@@ -20,20 +21,20 @@ public class RelatedActicalProvider extends BaseViewProvider<DetailRelatedItem> 
     @Override
     public void onBindView(RecyclerViewHolder holder, DetailRelatedItem bean) {
 
-        if(bean == null){
+        if (bean == null) {
             return;
         }
-        if(holder.getLayoutPosition() == 0){//todo
+        if (holder.getLayoutPosition() == 0) {//todo
             holder.get(R.id.detail_related_head).setVisibility(View.VISIBLE);
-            holder.setText(R.id.detail_related_head,bean.category);
-        }else{
+            holder.setText(R.id.detail_related_head, bean.category);
+        } else {
             holder.get(R.id.detail_related_head).setVisibility(View.GONE);
         }
 
-        holder.setText(R.id.detail_related_item_time,bean.postdate);
-        holder.setText(R.id.detail_related_item_title,bean.newstitle);
+        holder.setText(R.id.detail_related_item_time, bean.postdate);
+        holder.setText(R.id.detail_related_item_title, bean.newstitle);
 
-        if(holder.getLayoutPosition() == 2) {//todo
+        if (holder.getLayoutPosition() == 2) {//todo
             holder.get(R.id.detail_related_item_line).setVisibility(View.INVISIBLE);
         }
 

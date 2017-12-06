@@ -2,7 +2,6 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.danmo.commonapi.bean.newest.Newest;
 import com.danmo.commonutil.UrlUtil;
@@ -14,7 +13,6 @@ import com.danmo.ithouse.activity.WebViewActivity;
 import com.danmo.ithouse.util.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
-import com.youth.banner.listener.OnBannerClickListener;
 import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
@@ -57,7 +55,7 @@ public class NewestBannerProvider extends BaseViewProvider<Newest> {
                 if (position >= 0) {
                     String link = bean.item.get(position).link;
                     if (UrlUtil.isUrlPrefix(link)) {
-                        WebViewActivity.start(mContext,link);
+                        WebViewActivity.start(mContext, link);
                     } else {
                         NewsDetailActivity.start(mContext, NewsDetailActivity.TYPE_BANNER, link);
                     }

@@ -2,7 +2,6 @@ package com.danmo.commonapi.api.newsdetail;
 
 import com.danmo.commonapi.bean.newest.NewestTopNode;
 import com.danmo.commonapi.bean.newest.detail.DetailRecommendTopNode;
-import com.danmo.commonapi.bean.newest.detail.DetailRelatedTopNode;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

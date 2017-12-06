@@ -2,7 +2,6 @@ package com.danmo.commonapi.api.lapin;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.danmo.commonapi.base.BaseImpl;
 import com.danmo.commonapi.callback.BaseCallback;
@@ -30,7 +29,6 @@ public class LapinImpl extends BaseImpl<LapinService> implements LapinApi {
     @Override
     public String getLapinRankList(String url) {
         String uuid = UUIDGenerator.getUUID();
-        Log.i("nnn","getLapinRankList===");
         mService.getLapinRankList(url).enqueue(new BaseCallback<>(new GetLapinRankEvent(uuid)));
         return uuid;
     }

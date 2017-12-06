@@ -11,11 +11,11 @@ public class LapinItem implements Serializable {
     //===========幻灯片==========
     public String Title;
     public String Url;
-//    public String Picture;
+    //    public String Picture;
     public String PictureV2;
-//    public String productid;
+    //    public String productid;
     public String newsid;
-//    public String LastModifyTime;
+    //    public String LastModifyTime;
     public String Link;
 
     //==============辣品实体=====

@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -69,6 +68,7 @@ public class WebViewActivity extends AppCompatActivity {
         //设置Web视图
         webView.setWebViewClient(new webViewClient());
     }
+
     //设置不用系统浏览器打开,直接显示在当前Webview
     private class webViewClient extends WebViewClient {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -87,9 +87,9 @@ public class WebViewActivity extends AppCompatActivity {
         return false;
     }
 
-    public static void start(Context context, String link){
-        Intent intent = new Intent(context,WebViewActivity.class);
-        intent.putExtra(INTENT_DETAIL_CONTENT_LINK,link);
+    public static void start(Context context, String link) {
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra(INTENT_DETAIL_CONTENT_LINK, link);
         context.startActivity(intent);
     }
 
@@ -97,7 +97,7 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         String link = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_LINK);
-        if(!TextUtils.isEmpty(link)) {
+        if (!TextUtils.isEmpty(link)) {
             webView.loadUrl(link);
         }
     }

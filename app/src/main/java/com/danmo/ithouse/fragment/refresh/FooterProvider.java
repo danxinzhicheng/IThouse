@@ -24,7 +24,6 @@ package com.danmo.ithouse.fragment.refresh;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -53,7 +52,7 @@ public class FooterProvider extends BaseViewProvider<Footer> {
 
     @Override
     public void onBindView(RecyclerViewHolder holder, Footer bean) {
-            needLoadMore(holder);
+        needLoadMore(holder);
     }
 
     public void needLoadMore(RecyclerViewHolder holder) {

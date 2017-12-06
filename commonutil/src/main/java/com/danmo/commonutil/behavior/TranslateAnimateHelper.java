@@ -9,107 +9,111 @@ import android.view.View;
  */
 
 public class TranslateAnimateHelper implements AnimateHelper {
-  public View mTarget;
-  public float mStartY;
-  public int mCurrentState = STATE_SHOW;
-  public int mMode = MODE_TITLE;
-  public static int MODE_TITLE = 233;
-  public static int MODE_BOTTOM = 2333;
-  private float mFirstY = 0;
-  private float mMargin;
+    public View mTarget;
+    public float mStartY;
+    public int mCurrentState = STATE_SHOW;
+    public int mMode = MODE_TITLE;
+    public static int MODE_TITLE = 233;
+    public static int MODE_BOTTOM = 2333;
+    private float mFirstY = 0;
+    private float mMargin;
 
-  private TranslateAnimateHelper(View view) {
-    mTarget = view;
-    mFirstY = mTarget.getY();
-    mMargin = ((CoordinatorLayout.LayoutParams) mTarget.getLayoutParams()).topMargin
-        + ((CoordinatorLayout.LayoutParams) mTarget.getLayoutParams()).bottomMargin;
-  }
-
-  public static TranslateAnimateHelper get(View target) {
-    return new TranslateAnimateHelper(target);
-  }
-
-  public void show() {
-    if (mMode == MODE_TITLE) {
-      showTitle();
-    } else if (mMode == MODE_BOTTOM) {
-      showBottom();
+    private TranslateAnimateHelper(View view) {
+        mTarget = view;
+        mFirstY = mTarget.getY();
+        mMargin = ((CoordinatorLayout.LayoutParams) mTarget.getLayoutParams()).topMargin
+                + ((CoordinatorLayout.LayoutParams) mTarget.getLayoutParams()).bottomMargin;
     }
-  }
 
-  private void hideTitle() {
-    ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), -mTarget.getHeight());
-    va.setDuration(300);
-    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
-        mTarget.setY((Float) valueAnimator.getAnimatedValue());
-      }
-    });
-    va.start();
-    mCurrentState = STATE_HIDE;
-  }
-
-  private void showTitle() {
-
-    ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), 0);
-    va.setDuration(300);
-    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
-        mTarget.setY((Float) valueAnimator.getAnimatedValue());
-      }
-    });
-    va.start();
-    mCurrentState = STATE_SHOW;
-  }
-
-  public void hide() {
-    if (mMode == MODE_TITLE) {
-      hideTitle();
-    } else if (mMode == MODE_BOTTOM) {
-      hideBottom();
+    public static TranslateAnimateHelper get(View target) {
+        return new TranslateAnimateHelper(target);
     }
-  }
 
-  private void showBottom() {
+    public void show() {
+        if (mMode == MODE_TITLE) {
+            showTitle();
+        } else if (mMode == MODE_BOTTOM) {
+            showBottom();
+        }
+    }
 
-    ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), mFirstY);
-    va.setDuration(300);
-    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
-        mTarget.setY((Float) valueAnimator.getAnimatedValue());
-      }
-    });
+    private void hideTitle() {
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), -mTarget.getHeight());
+        va.setDuration(300);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+        va.start();
+        mCurrentState = STATE_HIDE;
+    }
 
-    va.start();
-    mCurrentState = STATE_SHOW;
-  }
+    private void showTitle() {
 
-  private void hideBottom() {
-    ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), mFirstY + mTarget.getHeight()+mMargin);
-    va.setDuration(300);
-    va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      @Override public void onAnimationUpdate(ValueAnimator valueAnimator) {
-        mTarget.setY((Float) valueAnimator.getAnimatedValue());
-      }
-    });
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), 0);
+        va.setDuration(300);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+        va.start();
+        mCurrentState = STATE_SHOW;
+    }
 
-    va.start();
-    mCurrentState = STATE_HIDE;
-  }
+    public void hide() {
+        if (mMode == MODE_TITLE) {
+            hideTitle();
+        } else if (mMode == MODE_BOTTOM) {
+            hideBottom();
+        }
+    }
 
-  public void setStartY(float y) {
-    mStartY = y;
-  }
+    private void showBottom() {
 
-  public int getState() {
-    return mCurrentState;
-  }
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), mFirstY);
+        va.setDuration(300);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
 
-  public void setMode(int mode) {
-    mMode = mode;
-  }
+        va.start();
+        mCurrentState = STATE_SHOW;
+    }
 
-  private void setState(int state) {
-    mCurrentState = state;
-  }
+    private void hideBottom() {
+        ValueAnimator va = ValueAnimator.ofFloat(mTarget.getY(), mFirstY + mTarget.getHeight() + mMargin);
+        va.setDuration(300);
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                mTarget.setY((Float) valueAnimator.getAnimatedValue());
+            }
+        });
+
+        va.start();
+        mCurrentState = STATE_HIDE;
+    }
+
+    public void setStartY(float y) {
+        mStartY = y;
+    }
+
+    public int getState() {
+        return mCurrentState;
+    }
+
+    public void setMode(int mode) {
+        mMode = mode;
+    }
+
+    private void setState(int state) {
+        mCurrentState = state;
+    }
 }

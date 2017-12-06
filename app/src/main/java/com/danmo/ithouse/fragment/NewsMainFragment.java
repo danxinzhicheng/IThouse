@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
@@ -72,8 +73,6 @@ public class NewsMainFragment extends BaseFragment {
         }
         super.onPrepareOptionsMenu(menu);
     }
-
-
 
 
     @Override

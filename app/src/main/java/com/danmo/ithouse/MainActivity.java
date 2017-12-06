@@ -4,14 +4,15 @@ import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.nav.NavFragment;
 import com.danmo.ithouse.fragment.nav.NavigationButton;
 import com.danmo.ithouse.fragment.nav.OnTabReselectListener;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
-import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.util.EventBusMsg;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -75,7 +76,7 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
     private void showOrHideNavAnim(int flag) {
         if (flag == RefreshRecyclerFragment.SCROLL_STATE_UP) {
             hideBottomNav(mNavBar.getView());
-        } else if(flag == RefreshRecyclerFragment.SCROLL_STATE_DOWN){
+        } else if (flag == RefreshRecyclerFragment.SCROLL_STATE_DOWN) {
             showBottomNav(mNavBar.getView());
         }
 

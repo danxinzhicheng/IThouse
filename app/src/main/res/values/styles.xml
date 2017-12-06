@@ -29,11 +29,13 @@
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 
-    <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title"/>
-    <style name="CollapsingTextAppearance.Inverse" >
+    <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title" />
+
+    <style name="CollapsingTextAppearance.Inverse">
         <item name="android:textSize">22sp</item>
     </style>
-    <style name="CollapsingTextAppearance.Collapsing" >
+
+    <style name="CollapsingTextAppearance.Collapsing">
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -42,7 +44,8 @@
         <item name="android:colorBackground">@color/white</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">14sp</item>
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item> <!--新增一个item，用于控制menu-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle
+        </item> <!--新增一个item，用于控制menu-->
     </style>
     <!--修改toolbar弹出菜单的位置-->
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
@@ -54,12 +57,15 @@
     </style>
 
 
-    <style name="TextComponent"/>
+    <style name="TextComponent" />
+
     <style name="TextComponent.ItemRow">
         <item name="android:gravity">center_vertical</item>
         <item name="android:minHeight">48dp</item>
     </style>
-    <style name="TextAppearance" parent="TextAppearance.AppCompat"/>
+
+    <style name="TextAppearance" parent="TextAppearance.AppCompat" />
+
     <style name="TextAppearance.Header">
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">sans-serif-medium</item>

@@ -2,7 +2,6 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,9 +16,7 @@ import com.danmo.ithouse.R;
 import com.danmo.ithouse.activity.NewsDetailActivity;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +24,8 @@ import java.util.Map;
  */
 
 public class NewestProvider extends BaseViewProvider<NewestItem> {
-    private Map<String,Integer> mapClicked = new HashMap<String,Integer>();
+    private Map<String, Integer> mapClicked = new HashMap<String, Integer>();
+
     public NewestProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest);
     }
@@ -64,19 +62,19 @@ public class NewestProvider extends BaseViewProvider<NewestItem> {
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 
         final TextView title = holder.get(R.id.item_title);
-        if(mapClicked.containsKey(bean.newsid)){
+        if (mapClicked.containsKey(bean.newsid)) {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
-        }else{
+        } else {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_black));
         }
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewsDetailActivity.start(mContext,NewsDetailActivity.TYPE_LIST,bean.newsid);
+                NewsDetailActivity.start(mContext, NewsDetailActivity.TYPE_LIST, bean.newsid);
                 title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
-                mapClicked.put(bean.newsid,position);
+                mapClicked.put(bean.newsid, position);
             }
-        },R.id.item_container);
+        }, R.id.item_container);
 
     }
 }

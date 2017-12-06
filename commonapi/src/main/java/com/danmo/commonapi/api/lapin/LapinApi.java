@@ -6,6 +6,8 @@ package com.danmo.commonapi.api.lapin;
 
 public interface LapinApi {
     String getLapinBannerList(String url);
+
     String getLapinRankList(String url);
+
     String getLapinList(String url);
 }

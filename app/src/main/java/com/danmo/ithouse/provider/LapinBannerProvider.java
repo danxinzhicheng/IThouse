@@ -27,8 +27,7 @@ public class LapinBannerProvider extends BaseViewProvider<List<LapinItem>> {
 
     @Override
     public void onBindView(RecyclerViewHolder holder, List<LapinItem> bean) {
-
-        if(bean == null){
+        if (bean == null) {
             return;
         }
         List<String> images = new ArrayList<String>();

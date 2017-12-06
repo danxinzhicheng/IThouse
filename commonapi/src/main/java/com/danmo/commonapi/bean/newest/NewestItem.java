@@ -44,6 +44,7 @@ public class NewestItem {
     public String opentype;
     @Element(name = "device", required = false)
     public String device;
+
     public NewestItem() {
     }
 

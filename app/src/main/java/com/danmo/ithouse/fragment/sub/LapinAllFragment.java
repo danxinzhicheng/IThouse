@@ -3,29 +3,30 @@ package com.danmo.ithouse.fragment.sub;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.lapin.LapinItem;
 import com.danmo.commonapi.bean.lapin.LapinTopNode;
+import com.danmo.commonapi.bean.lapin.RankBeanTmp;
 import com.danmo.commonapi.event.GetLapinListEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
 import com.danmo.ithouse.provider.LapinBannerProvider;
 import com.danmo.ithouse.provider.LapinListProvider;
-import java.util.ArrayList;
-import java.util.List;
+import com.danmo.ithouse.provider.LapinRankListProvider;
 
 /**
  * Created by user on 2017/10/16.
  */
 
-public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode,GetLapinListEvent>{
+public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode, GetLapinListEvent> {
     @Override
     public void initData(HeaderFooterAdapter adapter) {
-        setLoadMoreEnable(true);
         loadHeader();
         loadMiddle();
+        setLoadMoreEnable(true);
     }
 
     @Override
@@ -55,7 +56,7 @@ public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode,GetLa
     @NonNull
     @Override
     protected String requestMiddle() {
-        return  CommonApi.getSingleInstance().getLapinRankList(Constant.LAPIN_RANK_URL);
+        return CommonApi.getSingleInstance().getLapinRankList(Constant.LAPIN_RANK_URL);
     }
 
     @Override
@@ -78,11 +79,17 @@ public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode,GetLa
 
     @Override
     protected void onLoadMiddle(GetLapinListEvent event, HeaderFooterAdapter adapter) {
-
+        if (event.getBean() != null && event.getBean().content.size() > 0) {
+            RankBeanTmp tmp = new RankBeanTmp();
+            tmp.setContent(event.getBean().content);
+            mAdapter.registerMiddle(tmp, new LapinRankListProvider(mContext));
+        }
     }
 
     @Override
     protected void onError(GetLapinListEvent event, String postType) {
 
     }
+
+
 }

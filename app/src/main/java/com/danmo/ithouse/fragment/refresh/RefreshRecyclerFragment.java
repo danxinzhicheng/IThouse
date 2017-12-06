@@ -292,7 +292,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
      * @return LayoutManager
      */
     @NonNull
-    protected abstract android.support.v7.widget.RecyclerView.LayoutManager getRecyclerViewLayoutManager();
+    protected abstract RecyclerView.LayoutManager getRecyclerViewLayoutManager();
 
     /**
      * 请求数据，并返回请求的 uuid

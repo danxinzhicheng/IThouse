@@ -19,7 +19,6 @@ import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.LapinAllFragment;
-import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 
 import java.lang.reflect.Method;
@@ -31,6 +30,7 @@ import java.lang.reflect.Method;
 public class LapinMainFragment extends BaseFragment {
     private TabLayout mTabNav;
     private ViewPager mBaseViewPager;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_lapin_main;
@@ -58,6 +58,7 @@ public class LapinMainFragment extends BaseFragment {
         menu.clear();
         inflater.inflate(R.menu.main_toolbar_menu, menu);
     }
+
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         if (menu != null) {
