@@ -12,6 +12,8 @@ import com.danmo.commonapi.api.news.NewsAPI;
 import com.danmo.commonapi.api.news.NewsImpl;
 import com.danmo.commonapi.api.newsdetail.NewsDetailAPI;
 import com.danmo.commonapi.api.newsdetail.NewsDetailImpl;
+import com.danmo.commonapi.api.quanzi.QuanziApi;
+import com.danmo.commonapi.api.quanzi.QuanziImpl;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.base.OAuth;
 import com.danmo.commonutil.DebugUtil;
@@ -22,13 +24,14 @@ import com.danmo.commonutil.log.Logger;
  * Created by danmo on 2017/9/16.
  */
 
-public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi {
+public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi,QuanziApi {
 
     private static Context mContext;
     private static NewsImpl sNewsImpl;
     private static NewestImpl sNewestImpl;
     private static NewsDetailAPI sNewsDetailAPI;
     private static LapinApi sLapinApi;
+    private static QuanziApi sQuanziApi;
 
     //--- 单例 -----------------------------------------------------------------------------------
     private volatile static CommonApi mCommonApi;
@@ -51,7 +54,7 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi {
     public static CommonApi init(@NonNull Context context, @NonNull final String client_id,
                                  @NonNull final String client_secret) {
         initLogger(context);
-        Logger.i("初始化 diycode");
+        Logger.i("初始化IThouse");
 
         OAuth.client_id = client_id;
         OAuth.client_secret = client_secret;
@@ -64,9 +67,9 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi {
     private static void initLogger(@NonNull Context context) {
         // 在 debug 模式输出日志， release 模式自动移除
         if (DebugUtil.isInDebug(context)) {
-            Logger.init("Diycode").setLevel(Config.LEVEL_FULL);
+            Logger.init("IThouse").setLevel(Config.LEVEL_FULL);
         } else {
-            Logger.init("Diycode").setLevel(Config.LEVEL_NONE);
+            Logger.init("IThouse").setLevel(Config.LEVEL_NONE);
         }
     }
 
@@ -78,6 +81,7 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi {
             sNewestImpl = new NewestImpl(context, Constant.PARSE_XML);
             sNewsDetailAPI = new NewsDetailImpl(context, Constant.PARSE_XML);
             sLapinApi = new LapinImpl(context, Constant.PARSE_GSON);
+            sQuanziApi = new QuanziImpl(context, Constant.PARSE_GSON);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,5 +135,20 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi {
     @Override
     public String getLapinList(String url) {
         return sLapinApi.getLapinList(url);
+    }
+
+    @Override
+    public String getQuanziCategory(String url) {
+        return sQuanziApi.getQuanziCategory(url);
+    }
+
+    @Override
+    public String getQuanziListNewest(String url) {
+        return sQuanziApi.getQuanziListNewest(url);
+    }
+
+    @Override
+    public String getQuanziListHotest(String url) {
+        return sQuanziApi.getQuanziListHotest(url);
     }
 }

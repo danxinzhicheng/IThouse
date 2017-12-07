@@ -31,7 +31,6 @@ public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode, GetL
 
     @Override
     protected void setAdapterRegister(Context context, RecyclerView recyclerView, HeaderFooterAdapter adapter) {
-//        adapter.register(LapinItem.class, new LapinRankListProvider(getContext()));
         adapter.register(LapinItem.class, new LapinListProvider(getContext()));
     }
 
@@ -88,7 +87,11 @@ public class LapinAllFragment extends RefreshRecyclerFragment<LapinTopNode, GetL
 
     @Override
     protected void onError(GetLapinListEvent event, String postType) {
-
+        if (postType.equals(POST_LOAD_MORE)) {
+            toast("加载更多失败");
+        } else if (postType.equals(POST_REFRESH)) {
+            toast("刷新数据失败");
+        }
     }
 
 

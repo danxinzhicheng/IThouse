@@ -53,5 +53,15 @@ public class Constant {
     //图片加载
     //http://img.lapin365.com/productpictures/gitem/2017/10/14/165340094.jpg@s_0,w_180,h_180
 
+    //============================圈子====================================
+    public static final String QUANZI_CATEGORY="http://apiquan.ithome.com/api/category?client=2";
+    public static final String QUANZI_LIST_NEWEST="http://apiquan.ithome.com/api/post?categoryid=0&type=0&orderTime&visistCount&pageLength";
+    public static final String QUANZI_LIST_HOTEST="http://apiquan.ithome.com/api/post/?categoryid=0&type=3&orderTime&visistCount&pageLength";
+    public static final String QUANZI_PIC_URL = "http://avatar.ithome.com/avatars";//图片路径前缀
+    //图片加载
+    //uid:uid	1415703---/001/41/57/03_60.jpg
+    //http://avatar.ithome.com/avatars/000/34/32/36_60.jpg
+    //http://avatar.ithome.com/avatars/001/06/85/81_60.jpg
+    //http://avatar.ithome.com/avatars/001/41/57/03_60.jpg
 
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="quanzi_category">
+        <item>畅谈</item>
+        <item>极客圈</item>
+        <item>安卓圈</item>
+        <item>Win10圈</item>
+        <item>Win10M圈</item>
+        <item>iOS圈</item>
+        <item>软媒产品</item>
+        <item>站务处理</item>
+    </string-array>
+    <integer-array name="quanzi_icon" >
+        <item>@drawable/quan_zatan</item>
+        <item>@drawable/quan_jike</item>
+        <item>@drawable/quan_android</item>
+        <item>@drawable/quan_win10</item>
+        <item>@drawable/quan_wp10</item>
+        <item>@drawable/quan_ios</item>
+        <item>@drawable/quan_ruanmei</item>
+        <item>@drawable/quan_zhanwu</item>
+    </integer-array>
+    <integer-array name="quanzi_icon_night" >
+        <item>@drawable/quan_zatan_night</item>
+        <item>@drawable/quan_jike_night</item>
+        <item>@drawable/quan_android_night</item>
+        <item>@drawable/quan_win10_night</item>
+        <item>@drawable/quan_wp10_night</item>
+        <item>@drawable/quan_ios_night</item>
+        <item>@drawable/quan_ruanmei_night</item>
+        <item>@drawable/quan_zhanwu_night</item>
+    </integer-array>
+</resources>

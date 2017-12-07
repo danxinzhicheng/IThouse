@@ -72,4 +72,7 @@
         <item name="android:textColor">?colorAccent</item>
     </style>
 
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+    </style>
 </resources>

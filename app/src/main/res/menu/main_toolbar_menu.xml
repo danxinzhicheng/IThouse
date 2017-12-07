@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/option_cal"
-        android:icon="@drawable/icon_toolbar_calendar"
+        app:actionProviderClass="com.danmo.ithouse.widget.menu.NewsCalMenu"
         app:showAsAction="always" />
     <item
         android:id="@+id/option_search"

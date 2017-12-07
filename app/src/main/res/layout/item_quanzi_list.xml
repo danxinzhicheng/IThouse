@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:layout_height="100dp"
+    android:layout_marginBottom=".1dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/quanzi_item_avatar"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/settings_fontsize_checked" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/quanzi_item_avatar"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/quanzi_item_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="[系统]" />
+
+            <TextView
+                android:id="@+id/quanzi_item_t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:text="求翻墙ssr推荐" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/quanzi_item_un"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="关中老马甲"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/quanzi_item_pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="1秒前"
+                android:textColor="@color/diy_gray2"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/quanzi_item_rn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:text="时间让自己改变"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/quanzi_item_rt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="10秒前"
+                android:textColor="@color/diy_gray2"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingRight="15dp"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/quanzi_item_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iOS圈"
+                android:textColor="@color/diy_gray2"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/quanzi_item_vc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:drawableLeft="@drawable/icon_liulan"
+                android:text="550"
+                android:drawablePadding="3dp"
+                android:textColor="@color/diy_gray2"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/quanzi_item_rc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:drawableLeft="@drawable/icon_comment"
+                android:text="43"
+                android:drawablePadding="3dp"
+                android:textColor="@color/diy_gray2"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

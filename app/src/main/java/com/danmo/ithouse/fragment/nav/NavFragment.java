@@ -14,7 +14,7 @@ import android.view.View;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
-import com.danmo.ithouse.fragment.ExploreFragment;
+import com.danmo.ithouse.fragment.QuanziFragment;
 import com.danmo.ithouse.fragment.LapinMainFragment;
 import com.danmo.ithouse.fragment.NewsMainFragment;
 import com.danmo.ithouse.fragment.UserInfoFragment;
@@ -76,7 +76,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 
         mNavExplore.init(R.drawable.tab_icon_quan,
                 R.string.main_tab_name_explore,
-                ExploreFragment.class);
+                QuanziFragment.class);
 
         mNavMe.init(R.drawable.tab_icon_me,
                 R.string.main_tab_name_my,

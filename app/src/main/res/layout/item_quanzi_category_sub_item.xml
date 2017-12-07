@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginBottom=".2dp"
+    android:layout_marginRight=".2dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:paddingLeft="20dp">
+
+    <ImageView
+        android:id="@+id/item_quanzi_category_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/quan_zhanwu" />
+
+    <TextView
+        android:id="@+id/item_quanzi_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="站务处理"
+        android:textColor="@color/diy_black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/item_quanzi_category_addnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="+50"
+        android:textColor="@color/colorPrimary"
+        android:textSize="11sp" />
+
+</LinearLayout>
