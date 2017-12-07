@@ -56,7 +56,7 @@ public class NavigationButton extends FrameLayout {
         mDot.setText(String.valueOf(count));
     }
 
-    public void init(@DrawableRes int resId, @StringRes int strId, Class<?> clx) {
+    public void init(@DrawableRes int resId, String strId, Class<?> clx) {
         mIconView.setImageResource(resId);
         mTitleView.setText(strId);
         mClx = clx;

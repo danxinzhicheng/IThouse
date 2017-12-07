@@ -13,6 +13,7 @@ import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.commonutil.recyclerview.adapter.singletype.SingleTypeAdapter;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.util.Config;
 import com.danmo.ithouse.util.EventBusMsg;
 
 import org.greenrobot.eventbus.EventBus;
@@ -70,15 +71,8 @@ public class QuanziCategoryProvider extends BaseViewProvider<List<QuanziListItem
 
     class QuanziCategoryRecyclerAdapter extends SingleTypeAdapter<QuanziListItem> {
 
-        String[] titles = {"畅谈", "极客圈", "安卓圈", "Win10圈", "Win10M圈", "iOS圈", "软媒产品", "站务处理"};
-        int[] icons = {R.drawable.quan_zatan,
-                R.drawable.quan_jike,
-                R.drawable.quan_android,
-                R.drawable.quan_win10,
-                R.drawable.quan_wp10,
-                R.drawable.quan_ios,
-                R.drawable.quan_ruanmei,
-                R.drawable.quan_zhanwu};
+        String[] titles = Config.quanziTitles;
+        int[] icons = Config.quanziIcons;
 
         public QuanziCategoryRecyclerAdapter(@NonNull Context context, int layoutId) {
             super(context, layoutId);

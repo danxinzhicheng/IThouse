@@ -20,8 +20,13 @@ import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
+import com.danmo.ithouse.util.Config;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
+import static android.os.Build.MANUFACTURER;
 
 /**
  * Created by user on 2017/9/13.
@@ -85,22 +90,27 @@ public class NewsMainFragment extends BaseFragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("sub_tab", "tab");
 
+        if (Config.newsTabTitles.length < 8) {
+            return null;
+        }
+
+        Config.newsTabTitles[2] = MANUFACTURER;//手机厂商
         return new PagerInfo[]{
-                new PagerInfo("最新", NewestFragment.class,
+                new PagerInfo(Config.newsTabTitles[0], NewestFragment.class,
                         bundle),
-                new PagerInfo("排行榜", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[1], SubFragment.class,
                         bundle),
-                new PagerInfo("华为", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[2], SubFragment.class,
                         bundle),
-                new PagerInfo("上热评", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[3], SubFragment.class,
                         bundle),
-                new PagerInfo("评测室", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[4], SubFragment.class,
                         bundle),
-                new PagerInfo("发布会", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[5], SubFragment.class,
                         bundle),
-                new PagerInfo("安卓", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[6], SubFragment.class,
                         bundle),
-                new PagerInfo("苹果", SubFragment.class,
+                new PagerInfo(Config.newsTabTitles[7], SubFragment.class,
                         bundle)
 
         };

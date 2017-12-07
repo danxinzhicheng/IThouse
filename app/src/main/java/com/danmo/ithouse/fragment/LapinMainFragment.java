@@ -21,6 +21,7 @@ import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.LapinAllFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
+import com.danmo.ithouse.util.Config;
 import com.danmo.ithouse.widget.menu.LapinAppMenu;
 
 /**
@@ -120,18 +121,21 @@ public class LapinMainFragment extends BaseFragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("sub_tab", "tab_lapin");
 
+        if (Config.lapinTabTitles.length < 6) {
+            return null;
+        }
         return new LapinMainFragment.PagerInfo[]{
-                new LapinMainFragment.PagerInfo("全部", LapinAllFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[0], LapinAllFragment.class,
                         bundle),
-                new LapinMainFragment.PagerInfo("辣榜", SubFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[1], SubFragment.class,
                         bundle),
-                new LapinMainFragment.PagerInfo("1元包邮", SubFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[2], SubFragment.class,
                         bundle),
-                new LapinMainFragment.PagerInfo("9块9", SubFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[3], SubFragment.class,
                         bundle),
-                new LapinMainFragment.PagerInfo("19块9", SubFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[4], SubFragment.class,
                         bundle),
-                new LapinMainFragment.PagerInfo("福包", SubFragment.class,
+                new LapinMainFragment.PagerInfo(Config.lapinTabTitles[5], SubFragment.class,
                         bundle),
 
         };

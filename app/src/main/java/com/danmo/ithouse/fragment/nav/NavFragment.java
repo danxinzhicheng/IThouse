@@ -14,10 +14,11 @@ import android.view.View;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
-import com.danmo.ithouse.fragment.QuanziFragment;
 import com.danmo.ithouse.fragment.LapinMainFragment;
 import com.danmo.ithouse.fragment.NewsMainFragment;
+import com.danmo.ithouse.fragment.QuanziFragment;
 import com.danmo.ithouse.fragment.UserInfoFragment;
+import com.danmo.ithouse.util.Config;
 
 import java.util.List;
 
@@ -66,20 +67,23 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         });
         root.setBackgroundDrawable(layerDrawable);
 
+        if (Config.navigationTitles.length < 4) {
+            return;
+        }
         mNavNews.init(R.drawable.tab_icon_news,
-                R.string.main_tab_name_news,
+                Config.navigationTitles[0],
                 NewsMainFragment.class);
 
         mNavTweet.init(R.drawable.tab_icon_lapin,
-                R.string.main_tab_name_tweet,
+                Config.navigationTitles[1],
                 LapinMainFragment.class);
 
         mNavExplore.init(R.drawable.tab_icon_quan,
-                R.string.main_tab_name_explore,
+                Config.navigationTitles[2],
                 QuanziFragment.class);
 
         mNavMe.init(R.drawable.tab_icon_me,
-                R.string.main_tab_name_my,
+                Config.navigationTitles[3],
                 UserInfoFragment.class);
 
         clearOldFragment();
