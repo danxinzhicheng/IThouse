@@ -23,10 +23,10 @@ public class UserInfoFragment extends BaseFragment {
 
     @Override
     protected void initViews(ViewHolder holder, View root) {
-        Toolbar toolbar = holder.get(R.id.toolbar);
-        CollapsingToolbarLayout ctl = holder.get(R.id.ctl);
-        ctl.setExpandedTitleColor(Color.parseColor("#00FFFFFF"));
-        ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
-        BarUtils.addMarginTopEqualStatusBarHeight(toolbar);
+//        Toolbar toolbar = holder.get(R.id.toolbar);
+//        CollapsingToolbarLayout ctl = holder.get(R.id.ctl);
+//        ctl.setExpandedTitleColor(Color.parseColor("#00FFFFFF"));
+//        ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
+//        BarUtils.addMarginTopEqualStatusBarHeight(toolbar);
     }
 }

@@ -13,25 +13,6 @@
     <string name="just">刚刚</string>
     <string name="comment_text">评</string>
 
-    <string name="flexible_title">标题</string>
-    <string name="lorem">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		In mollis est vitae erat laoreet consectetur. Mauris dui mauris,
-		dictum vel egestas vel, porta sed ante. Phasellus congue viverra ipsum,
-		in elementum arcu ultricies nec.Morbi tincidunt nisl lacinia, placerat nisi eget, luctus tortor.
-		Morbi efficitur dictum leo, sit amet volutpat lorem sodales nec. Quisque et erat et turpis fringilla condimentum.
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor vulputate libero vitae iaculis.
-		Curabitur id blandit quam. Praesent massa ante, pulvinar vitae sagittis commodo, scelerisque porttitor eros.
-		Mauris suscipit a enim nec congue. Mauris tristique cursus aliquet. Nunc quis hendrerit nunc. Praesent tristique tellus purus,
-		a pretium ex gravida id. Cras laoreet malesuada nulla, at bibendum metus ultricies a. Fusce eu ornare arcu. Proin ut molestie est.
-		Vestibulum quis vehicula erat. Nam sed tempus nibh. Sed tortor ante, maximus venenatis odio sed, ultricies maximus lectus.
-		Aliquam sed volutpat ligula. Integer bibendum, magna ac lacinia suscipit,
-		risus libero rutrum justo, sed tempus augue tellus eget est. Curabitur convallis augue nisl,
-		id efficitur urna posuere faucibus. Ut sed egestas nulla, eu finibus metus. Nunc a arcu ante.
-		Aenean ullamcorper dolor non condimentum congue. Aenean mauris nunc, pellentesque at placerat vitae,
-		aliquet quis orci. Curabitur maximus augue ut bibendum sagittis.
-	</string>
-
 
     <string name="option_title_refresh">刷新</string>
     <string name="option_title_font">字体大小</string>
