@@ -5,7 +5,7 @@
 
 ## APP下载
 
-当前Release版本：[点击下载](http://note.youdao.com/)
+当前Release版本：[点击下载](https://github.com/danxinzhicheng/IThouse/blob/master/app/release/app-release.apk?raw=true)
 
 ## 编译环境
 
