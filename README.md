@@ -56,6 +56,16 @@
 - 文章详情页的布局及数据展示
 
 ## 项目截图
+![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_1.png)
+
+
+![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_2.png)
+
+
+![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_3.png)
+
+
+![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_4.png)
 
 ## Bug改进与开发思考
 1. 资讯，辣品 Banner展示偶现不显示
