@@ -14,17 +14,15 @@
 3. Gradle版本：gradle-4.1-all.zip
 
    classpath 'com.android.tools.build:gradle:3.0.0'
+
    注：可根据自己环境修改版本，只要编译通过就可
 
 4. Android Support库：26.0.1
 
-    compile 'com.android.support:appcompat-v7:26.0.1'
-
-    compile 'com.android.support:design:26.0.1'
-
-    compile 'com.android.support:cardview-v7:26.0.1'
-
-    compile 'com.android.support:support-v4:26.0.1'
+- com.android.support:appcompat-v7:26.0.1
+- com.android.support:design:26.0.1
+- com.android.support:cardview-v7:26.0.1
+- com.android.support:support-v4:26.0.1
 
 
 ## 第三方库
@@ -37,7 +35,7 @@
 ## 项目架构参考
 - DiyCode
 
-  整个项目结构，包括组件化，http请求，列表刷新等等
+  整个项目结构，包括组件化，http请求，下拉刷新recycerview封装，带头底Adapter封装等等
 
   Github：https://github.com/GcsSloop/diycode
 
@@ -56,20 +54,31 @@
 - 文章详情页的布局及数据展示
 
 ## 项目截图
+资讯：
+
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_1.png)
 
+辣品：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_2.png)
 
+圈子：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_3.png)
 
+个人：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/master/Screenshots/Screenshot_4.png)
 
 ## Bug改进与开发思考
 1. 资讯，辣品 Banner展示偶现不显示
 2. 辣品 排行榜布局偶现不显示
+3. 欢迎反馈Bug或建议
+
+## 作者联系方式
+- 微信：danxinzhicheng
+- QQ：742671635
+> 两年多Android开发经验，商业APP开发，系统应用开发，Application Framework定制等，欢迎添加骚扰，技术交流。
 
 ****
-> 本项目属仿IT之家Android版本，仅供学习交流，勿用于商业用途。
+> 声明：本项目属仿IT之家Android版本，仅供学习交流，勿用于商业用途。
