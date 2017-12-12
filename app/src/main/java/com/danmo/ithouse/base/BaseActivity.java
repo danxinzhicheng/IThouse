@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,6 +25,7 @@ import com.danmo.ithouse.R;
 import com.danmo.ithouse.util.Config;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,6 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ViewHolder mViewHolder;
     private Toast mToast;
     private Fragment mFragment;
+    private List<TurnBackListener> mTurnBackListeners = new ArrayList<>();
     private NavigationView.OnNavigationItemSelectedListener mListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -81,14 +84,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化 View， 调用位置在 initDatas 之后
      */
     protected void initViews(ViewHolder holder, View root) {
-        flActivityContainer = (FrameLayout) findViewById(R.id.activity_container);
+        flActivityContainer = findViewById(R.id.activity_container);
         flActivityContainer.addView(LayoutInflater.from(this).inflate(getLayoutId(), flActivityContainer, false));
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mListener);
-
-//        View fakeStatusBar = findViewById(R.id.fake_status_bar);
-        rootLayout = (DrawerLayout) findViewById(R.id.root_layout);
-//        BarUtils.setStatusBarAlpha4Drawer(this, rootLayout, fakeStatusBar, 0, false);
+        rootLayout = findViewById(R.id.root_layout);
     }
 
     // 默认点击左上角是结束当前 Activity
@@ -194,6 +194,31 @@ public abstract class BaseActivity extends AppCompatActivity {
             mFragment = fragment;
             transaction.commit();
             getSupportFragmentManager().executePendingTransactions();
+        }
+    }
+
+    public interface TurnBackListener {
+        boolean onTurnBack();
+    }
+
+    public void addOnTurnBackListener(TurnBackListener l) {
+        this.mTurnBackListeners.add(l);
+    }
+
+    private long mBackPressedTime;
+
+    @Override
+    public void onBackPressed() {
+        for (TurnBackListener l : mTurnBackListeners) {
+            if (l.onTurnBack()) return;
+        }
+
+        long curTime = SystemClock.uptimeMillis();
+        if ((curTime - mBackPressedTime) < (3 * 1000)) {
+            finish();
+        } else {
+            mBackPressedTime = curTime;
+            toastLong(this.getString(R.string.tip_double_click_exit));
         }
     }
 }

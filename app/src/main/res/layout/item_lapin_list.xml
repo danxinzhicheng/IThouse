@@ -46,6 +46,8 @@
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     android:layout_marginLeft="5dp"
+                    android:letterSpacing=".1"
+                    android:lineSpacingExtra="5dp"
                     android:text="2017年新鲜烟台苹果海果海阳红富士苹果阳红富士苹果5斤大果" />
             </LinearLayout>
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_margin="6dp"
+        android:background="@drawable/selector_tab_pick"
+        android:clickable="true"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_bubble"
+        android:text="移动开发"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/shape_tab_pick_bubble"
+        android:gravity="center"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textColor="#FFF"
+        android:textSize="8sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:padding="4dp"
+        android:src="@drawable/ic_unsubscribe"
+        android:visibility="gone" />
+</FrameLayout>

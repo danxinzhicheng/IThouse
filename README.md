@@ -42,11 +42,17 @@
 
 - OSChina
 
-  底部导航栏参考
+  底部导航栏参考,自定义TAB选项等
 
-  Github：https://gitee.com/oschina/android-app
+  Gitee：https://gitee.com/oschina/android-app
+
+## 抓包工具
+  > 使用Fiddler抓包工具抓取IT之家的xml和json，作为样本数据，项目中全部以URL完整地址请求数据。
 
 ## 版本
+### v1.0.1
+- 添加资讯栏目中自定义TAB导航页
+
 
 ### v1.0.0
 - 整个项目的架构，从无到有
@@ -72,13 +78,13 @@
 
 ## Bug改进与开发思考
 1. 资讯，辣品 Banner展示偶现不显示
-2. 辣品 排行榜布局偶现不显示
+2. 辣品 排行榜布局偶现不显示，其他BUG等
 3. 欢迎反馈Bug或建议
 
 ## 作者联系方式
 - 微信：danxinzhicheng
 - QQ：742671635
-> 两年多Android开发经验，商业APP开发，系统应用开发，Application Framework定制等，欢迎添加骚扰，技术交流。
+> 两年多Android开发经验，商业APP开发，系统应用开发，Application Framework定制等，欢迎添加骚扰，技术交流等。
 
 ****
 > 声明：本项目属仿IT之家Android版本，仅供学习交流，勿用于商业用途。
