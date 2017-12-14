@@ -10,10 +10,6 @@ import com.danmo.commonapi.event.GetNewestEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 
-/**
- * Created by danmo on 2017/9/16.
- */
-
 public class NewestImpl extends BaseImpl<NewestService> implements NewestAPI {
     public NewestImpl(@NonNull Context context, int parsePattern) {
         super(context, parsePattern);

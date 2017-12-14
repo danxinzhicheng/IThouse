@@ -8,9 +8,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 
-/**
- * Created by user on 2017/10/10.
- */
 
 public class StringConverterFactory extends Converter.Factory {
     public static StringConverterFactory create() {

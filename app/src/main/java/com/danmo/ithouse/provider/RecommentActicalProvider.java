@@ -13,7 +13,7 @@ import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
 
 /**
- * Created by user on 2017/9/27.
+ * 内容详情页 大家都在买 数据绑定
  */
 
 public class RecommentActicalProvider extends BaseViewProvider<DetailRecommendItem> {

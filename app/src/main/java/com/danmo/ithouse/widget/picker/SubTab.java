@@ -2,6 +2,9 @@ package com.danmo.ithouse.widget.picker;
 
 import java.io.Serializable;
 
+/**
+ * 自定义资讯分类实体
+ */
 public class SubTab implements Serializable {
 
     private String name;

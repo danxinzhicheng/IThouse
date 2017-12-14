@@ -10,7 +10,7 @@ import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
 
 /**
- * Created by user on 2017/9/27.
+ * 内容详情页相关文章数据绑定
  */
 
 public class RelatedActicalProvider extends BaseViewProvider<DetailRelatedItem> {

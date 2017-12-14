@@ -7,10 +7,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
-/**
- * Created by user on 2017/9/30.
- */
-
 public interface NewsDetailService {
 
     @GET

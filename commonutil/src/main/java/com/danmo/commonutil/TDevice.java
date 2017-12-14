@@ -4,9 +4,6 @@ package com.danmo.commonutil;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-/**
- *
- */
 public class TDevice {
 
     public static int getVersionCode(Context context) {

@@ -2,7 +2,6 @@ package com.danmo.ithouse.fragment.nav;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,7 +11,9 @@ import android.widget.TextView;
 
 import com.danmo.ithouse.R;
 
-
+/**
+ * 底部导航栏自定义button
+ */
 public class NavigationButton extends FrameLayout {
     private Fragment mFragment = null;
     private Class<?> mClx;

@@ -2,36 +2,29 @@ package com.danmo.commonapi;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import com.danmo.commonapi.api.lapin.LapinApi;
-import com.danmo.commonapi.api.lapin.LapinImpl;
+import com.danmo.commonapi.api.community.CommunityApi;
+import com.danmo.commonapi.api.community.CommunityImpl;
+import com.danmo.commonapi.api.hotgoods.HotGoodsApi;
+import com.danmo.commonapi.api.hotgoods.HotGoodsImpl;
 import com.danmo.commonapi.api.newest.NewestAPI;
 import com.danmo.commonapi.api.newest.NewestImpl;
-import com.danmo.commonapi.api.news.NewsAPI;
-import com.danmo.commonapi.api.news.NewsImpl;
 import com.danmo.commonapi.api.newsdetail.NewsDetailAPI;
 import com.danmo.commonapi.api.newsdetail.NewsDetailImpl;
-import com.danmo.commonapi.api.quanzi.QuanziApi;
-import com.danmo.commonapi.api.quanzi.QuanziImpl;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.base.OAuth;
 import com.danmo.commonutil.DebugUtil;
 import com.danmo.commonutil.log.Config;
 import com.danmo.commonutil.log.Logger;
 
-/**
- * Created by danmo on 2017/9/16.
- */
 
-public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi,QuanziApi {
+public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, CommunityApi {
 
     private static Context mContext;
-    private static NewsImpl sNewsImpl;
     private static NewestImpl sNewestImpl;
     private static NewsDetailAPI sNewsDetailAPI;
-    private static LapinApi sLapinApi;
-    private static QuanziApi sQuanziApi;
+    private static HotGoodsApi sHotGoodsApi;
+    private static CommunityApi sCommunityApi;
 
     //--- 单例 -----------------------------------------------------------------------------------
     private volatile static CommonApi mCommonApi;
@@ -77,21 +70,14 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi,Qu
         mContext = context;
         Logger.i("初始化 implement");
         try {
-            sNewsImpl = new NewsImpl(context, Constant.PARSE_XML);
             sNewestImpl = new NewestImpl(context, Constant.PARSE_XML);
             sNewsDetailAPI = new NewsDetailImpl(context, Constant.PARSE_XML);
-            sLapinApi = new LapinImpl(context, Constant.PARSE_GSON);
-            sQuanziApi = new QuanziImpl(context, Constant.PARSE_GSON);
+            sHotGoodsApi = new HotGoodsImpl(context, Constant.PARSE_GSON);
+            sCommunityApi = new CommunityImpl(context, Constant.PARSE_GSON);
         } catch (Exception e) {
             e.printStackTrace();
         }
         Logger.i("初始化 implement 结束");
-    }
-
-    @Override
-    public String getNewsList(@Nullable Integer node_id, @Nullable Integer offset, @Nullable Integer limit) {
-
-        return sNewsImpl.getNewsList(node_id, offset, limit);
     }
 
     @Override
@@ -124,31 +110,31 @@ public class CommonApi implements NewsAPI, NewestAPI, NewsDetailAPI, LapinApi,Qu
 
     @Override
     public String getLapinBannerList(String url) {
-        return sLapinApi.getLapinBannerList(url);
+        return sHotGoodsApi.getLapinBannerList(url);
     }
 
     @Override
     public String getLapinRankList(String url) {
-        return sLapinApi.getLapinRankList(url);
+        return sHotGoodsApi.getLapinRankList(url);
     }
 
     @Override
     public String getLapinList(String url) {
-        return sLapinApi.getLapinList(url);
+        return sHotGoodsApi.getLapinList(url);
     }
 
     @Override
     public String getQuanziCategory(String url) {
-        return sQuanziApi.getQuanziCategory(url);
+        return sCommunityApi.getQuanziCategory(url);
     }
 
     @Override
     public String getQuanziListNewest(String url) {
-        return sQuanziApi.getQuanziListNewest(url);
+        return sCommunityApi.getQuanziListNewest(url);
     }
 
     @Override
     public String getQuanziListHotest(String url) {
-        return sQuanziApi.getQuanziListHotest(url);
+        return sCommunityApi.getQuanziListHotest(url);
     }
 }

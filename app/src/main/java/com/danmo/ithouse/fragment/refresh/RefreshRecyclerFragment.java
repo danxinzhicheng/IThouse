@@ -30,7 +30,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.danmo.commonapi.base.BaseEvent;
-import com.danmo.commonapi.bean.lapin.LapinTopNode;
+import com.danmo.commonapi.bean.hotgoods.HotGoodsTopNode;
 import com.danmo.commonapi.bean.newest.NewestTopNode;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
@@ -44,7 +44,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 /**
- * 具有下拉刷新和上拉加载的 Fragment
+ * 具有下拉刷新和上拉加载的Fragment
  */
 public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> extends
         BaseFragment {
@@ -181,8 +181,8 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
                 mFooterProvider.setFooterNormal();
             }
 
-        } else if (event.getBean() instanceof LapinTopNode) {
-            if (((LapinTopNode) event.getBean()).content.size() < pageCount) {
+        } else if (event.getBean() instanceof HotGoodsTopNode) {
+            if (((HotGoodsTopNode) event.getBean()).content.size() < pageCount) {
                 mState = STATE_NO_MORE;
                 mFooterProvider.setFooterNormal();
             } else {

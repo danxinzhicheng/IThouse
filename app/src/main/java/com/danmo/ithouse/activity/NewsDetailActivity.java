@@ -52,9 +52,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by user on 2017/9/22.
+ * 普通内容详情页类型页面
  */
-
 public class NewsDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
 
     private static final int PERCENTAGE_TO_SHOW_IMAGE = 10;

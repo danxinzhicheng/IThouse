@@ -32,6 +32,9 @@ import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
 
+/**
+ * 必要的底部刷新footer绑定适配器
+ */
 public class FooterProvider extends BaseViewProvider<Footer> {
     private static final String FOOTER_LOADING = "正在加载中...";
     private static final String FOOTER_NORMAL = "已加载全部";

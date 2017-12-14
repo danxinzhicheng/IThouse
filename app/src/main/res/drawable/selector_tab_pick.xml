@@ -3,33 +3,33 @@
 
     <item android:state_selected="true">
         <shape>
-            <corners android:radius="16dp"/>
+            <corners android:radius="16dp" />
             <solid android:color="#80FFFFFF" />
-            <stroke android:color="@color/colorPrimary" android:dashWidth="0px" android:width="2px"/>
+            <stroke android:color="@color/colorPrimary" android:dashWidth="0px" android:width="2px" />
         </shape>
     </item>
 
     <item android:state_pressed="true">
         <shape>
-            <corners android:radius="16dp"/>
-            <solid android:color="#80FFFFFF"/>
-            <stroke android:color="@color/colorPrimary" android:dashWidth="0px" android:width="2px"/>
+            <corners android:radius="16dp" />
+            <solid android:color="#80FFFFFF" />
+            <stroke android:color="@color/colorPrimary" android:dashWidth="0px" android:width="2px" />
         </shape>
     </item>
 
     <item android:state_activated="false">
         <shape>
-            <corners android:radius="16dp"/>
-            <solid android:color="#00000000"/>
-            <stroke android:color="#70EBEBEB" android:dashWidth="0px" android:width="2px"/>
+            <corners android:radius="16dp" />
+            <solid android:color="#00000000" />
+            <stroke android:color="#70EBEBEB" android:dashWidth="0px" android:width="2px" />
         </shape>
     </item>
 
     <item>
         <shape>
-            <corners android:radius="16dp"/>
-            <solid android:color="#80FFFFFF"/>
-            <stroke android:color="#CDCDCD" android:dashWidth="0px" android:width="2px"/>
+            <corners android:radius="16dp" />
+            <solid android:color="#80FFFFFF" />
+            <stroke android:color="#CDCDCD" android:dashWidth="0px" android:width="2px" />
         </shape>
     </item>
 </selector>

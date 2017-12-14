@@ -5,13 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,15 +17,13 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.danmo.commonutil.SharedPreferencesHelper;
 import com.danmo.commonutil.TDevice;
 import com.danmo.ithouse.BuildConfig;
 import com.danmo.ithouse.R;
-import com.danmo.ithouse.base.DanmoApplication;
+import com.danmo.ithouse.base.BaseApplication;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,6 +31,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * 自定义分类栏目
+ * <p>
  * 动态栏目View 请通过{@link #setTabPickerManager(TabPickerDataManager)}来设置活动数据和原始数据，数据
  * 对象根据需要实现{@link Object#hashCode()}和{@link Object#equals(Object)}方法，因为非活动数据是通过使用
  * {@link List#contains(Object)}方法从原始数据剔除活动数据实现的。
@@ -46,7 +44,6 @@ import java.util.List;
  * <p>
  * <p>通过{@link #onTurnBack()}响应回退事件。
  * <p>
- * <p>Created by thanatosx on 16/10/27.
  */
 @SuppressWarnings("all")
 public class TabPickerView extends FrameLayout {
@@ -626,8 +623,7 @@ public class TabPickerView extends FrameLayout {
                     }
                 }
                 restoreActiveDataSet(mActiveDataSet);
-            }
-            else if (isUpdate(DanmoApplication.sAppContext)) {
+            } else if (isUpdate(BaseApplication.sAppContext)) {
                 List<SubTab> mActiveList = new ArrayList<>();
                 // 替换老列表项
                 for (SubTab item : mActiveDataSet) {

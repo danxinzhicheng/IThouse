@@ -10,10 +10,6 @@ import com.danmo.commonapi.event.GetNewsDetailRecommendEvent;
 import com.danmo.commonapi.event.GetNewsDetailRelatedEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
-/**
- * Created by user on 2017/9/30.
- */
-
 public class NewsDetailImpl extends BaseImpl<NewsDetailService> implements NewsDetailAPI {
     public NewsDetailImpl(@NonNull Context context, int parsePattern) {
         super(context, parsePattern);

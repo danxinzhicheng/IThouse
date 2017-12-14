@@ -10,13 +10,14 @@ import com.danmo.commonutil.TimeUtil;
 import com.danmo.ithouse.R;
 
 /**
- * Created by user on 2017/12/6.
+ * 自定义menu:资讯 日历
  */
 
 public class NewsCalMenu extends ActionProvider {
 
     private Context mContext;
     private TextView tvMenu_calendar;
+
     /**
      * Creates a new instance.
      *
@@ -30,7 +31,7 @@ public class NewsCalMenu extends ActionProvider {
     @Override
     public View onCreateActionView() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view =inflater.inflate(R.layout.menu_news_cal, null);
+        View view = inflater.inflate(R.layout.menu_news_cal, null);
         tvMenu_calendar = view.findViewById(R.id.menu_calendar);
         int day = TimeUtil.getCurrentDay();
         tvMenu_calendar.setText(String.valueOf(day));

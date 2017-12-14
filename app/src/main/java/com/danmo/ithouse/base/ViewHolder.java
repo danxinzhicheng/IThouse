@@ -35,6 +35,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.danmo.commonutil.log.Logger;
 
+/**
+ * 普通view的获取，管理，缓存
+ */
 public class ViewHolder {
 
     private SparseArray<View> mViews;

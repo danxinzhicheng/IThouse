@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by user on 2017/9/20.
+ * 资讯banner数据绑定
  */
 
 public class NewestBannerProvider extends BaseViewProvider<Newest> {

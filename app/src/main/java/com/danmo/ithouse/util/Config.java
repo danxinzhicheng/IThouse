@@ -1,8 +1,10 @@
 package com.danmo.ithouse.util;
 
-
 import com.danmo.ithouse.R;
 
+/**
+ * 应用相关配置
+ */
 public class Config {
     public static final String GITHUB = "https://github.com/danxinzhicheng";
     public static final String BLOG = "http://blog.csdn.net/danxinzhicheng";

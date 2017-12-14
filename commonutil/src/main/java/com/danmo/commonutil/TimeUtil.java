@@ -96,7 +96,7 @@ public class TimeUtil {
         return DateLocal.get();
     }
 
-    public static int getCurrentDay(){
+    public static int getCurrentDay() {
         Calendar c = Calendar.getInstance();//可以对每个时间域单独修改
         int date = c.get(Calendar.DATE);
         return date;

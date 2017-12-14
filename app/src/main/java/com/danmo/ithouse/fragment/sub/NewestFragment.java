@@ -16,9 +16,8 @@ import com.danmo.ithouse.provider.NewestBannerProvider;
 import com.danmo.ithouse.provider.NewestProvider;
 
 /**
- * Created by danmo on 2017/9/16.
+ * 资讯viewpager的填充首页面:最新
  */
-
 public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNewestEvent> {
 
     private Boolean isFirst = true;

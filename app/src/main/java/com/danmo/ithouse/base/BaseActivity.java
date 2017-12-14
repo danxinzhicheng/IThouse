@@ -28,9 +28,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 2017/9/12.
- */
 
 public abstract class BaseActivity extends AppCompatActivity {
 

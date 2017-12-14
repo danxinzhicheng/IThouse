@@ -10,9 +10,6 @@ import okhttp3.RequestBody;
 import okio.Buffer;
 import retrofit2.Converter;
 
-/**
- * Created by user on 2017/10/10.
- */
 
 public class StringRequestBodyConverter implements Converter<String, RequestBody> {
     private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");

@@ -3,10 +3,6 @@ package com.danmo.commonapi.bean.newest;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-/**
- * Created by danmo on 2017/9/16.
- */
-
 @Root(name = "item", strict = false)
 public class NewestItem {
     //==========newlist special==============

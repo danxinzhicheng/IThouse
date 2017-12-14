@@ -18,9 +18,8 @@ import android.webkit.WebViewClient;
 import com.danmo.ithouse.R;
 
 /**
- * Created by user on 2017/10/13.
+ * 普通详情页，webview类型页面
  */
-
 public class WebViewActivity extends AppCompatActivity {
     private WebView webView;
     public static final String INTENT_DETAIL_CONTENT_LINK = "link";

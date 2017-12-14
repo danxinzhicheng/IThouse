@@ -12,11 +12,6 @@ import android.graphics.drawable.shapes.Shape;
  * Line is support dash line
  * This class is extend shape
  * Use to ShapeDrawable class
- * <p>
- * Form:https://github.com/qiujuer/Genius-Android
- *
- * @author qiujuer Email:qiujuer@live.cn
- * @version 1.0.0
  */
 public class BorderShape extends Shape {
     private RectF mBorder = null;

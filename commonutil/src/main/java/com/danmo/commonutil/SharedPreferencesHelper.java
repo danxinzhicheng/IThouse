@@ -156,6 +156,7 @@ public class SharedPreferencesHelper {
             return null;
         }
     }
+
     /**
      * 使用Base64解密String，返回Object对象
      *

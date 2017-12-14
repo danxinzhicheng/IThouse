@@ -6,10 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
-/**
- * Created by danmo on 2017/9/16.
- */
-
 public interface NewestService {
     @GET
     Call<NewestTopNode> getNewestList(@Url String url);

@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by danmo on 2017/9/16.
+ * 资讯列表数据绑定
  */
 
 public class NewestProvider extends BaseViewProvider<NewestItem> {

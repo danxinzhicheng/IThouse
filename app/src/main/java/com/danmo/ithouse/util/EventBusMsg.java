@@ -1,7 +1,7 @@
 package com.danmo.ithouse.util;
 
 /**
- * Created by user on 2017/10/13.
+ * EventBus实体类
  */
 
 public class EventBusMsg {

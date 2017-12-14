@@ -5,9 +5,6 @@ import java.io.IOException;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 
-/**
- * Created by user on 2017/10/10.
- */
 
 public class StringResponseBodyConverter implements Converter<ResponseBody, String> {
     @Override

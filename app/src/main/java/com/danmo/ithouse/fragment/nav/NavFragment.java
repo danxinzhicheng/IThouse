@@ -14,17 +14,16 @@ import android.view.View;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
-import com.danmo.ithouse.fragment.LapinMainFragment;
-import com.danmo.ithouse.fragment.NewsMainFragment;
-import com.danmo.ithouse.fragment.QuanziFragment;
-import com.danmo.ithouse.fragment.UserInfoFragment;
+import com.danmo.ithouse.fragment.CommunityFragment;
+import com.danmo.ithouse.fragment.HotGoodsFragment;
+import com.danmo.ithouse.fragment.NewsFragment;
+import com.danmo.ithouse.fragment.UserFragment;
 import com.danmo.ithouse.util.Config;
 
 import java.util.List;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * 底部导航栏内容
  */
 public class NavFragment extends BaseFragment implements View.OnClickListener {
     private NavigationButton mNavNews;
@@ -39,7 +38,6 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
     private OnNavigationReselectListener mOnNavigationReselectListener;
 
     public NavFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -72,19 +70,19 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         }
         mNavNews.init(R.drawable.tab_icon_news,
                 Config.navigationTitles[0],
-                NewsMainFragment.class);
+                NewsFragment.class);
 
         mNavTweet.init(R.drawable.tab_icon_lapin,
                 Config.navigationTitles[1],
-                LapinMainFragment.class);
+                HotGoodsFragment.class);
 
         mNavExplore.init(R.drawable.tab_icon_quan,
                 Config.navigationTitles[2],
-                QuanziFragment.class);
+                CommunityFragment.class);
 
         mNavMe.init(R.drawable.tab_icon_me,
                 Config.navigationTitles[3],
-                UserInfoFragment.class);
+                UserFragment.class);
 
         clearOldFragment();
         doSelect(mNavNews);
