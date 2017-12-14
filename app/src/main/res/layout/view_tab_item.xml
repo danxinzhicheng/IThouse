@@ -15,11 +15,12 @@
         android:lines="1"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
+        android:text="移动开发"
         android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_bubble"
-        android:text="移动开发"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

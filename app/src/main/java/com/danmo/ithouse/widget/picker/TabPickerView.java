@@ -79,6 +79,13 @@ public class TabPickerView extends FrameLayout {
     }
 
     /**
+     * must bind the head tip view first
+     * @param mViewOperator
+     */
+    public void bindViewOperator(TextView mViewOperator){
+        this.mViewOperator = mViewOperator;
+    }
+    /**
      * The Tab Picking Listener Interface
      */
     public interface OnTabPickingListener {
@@ -132,7 +139,7 @@ public class TabPickerView extends FrameLayout {
         mRootView.setClickable(true);
         mRecyclerActive = (RecyclerView) mRootView.findViewById(R.id.view_recycler_active);
         mRecyclerInactive = (RecyclerView) mRootView.findViewById(R.id.view_recycler_inactive);
-        mViewOperator = (TextView) mRootView.findViewById(R.id.tv_operator);
+//        mViewOperator = (TextView) mRootView.findViewById(R.id.tv_operator);
         addView(mRootView);
     }
 
@@ -474,14 +481,7 @@ public class TabPickerView extends FrameLayout {
                 mViewTab = (TextView) view.findViewById(R.id.tv_content);
                 mViewBubble = (TextView) view.findViewById(R.id.tv_bubble);
                 mViewDel = (ImageView) view.findViewById(R.id.iv_delete);
-
-                mViewTab.setTextColor(new ColorStateList(new int[][]{
-                                new int[]{-android.R.attr.state_activated},
-                                new int[]{}
-                        }, new int[]{0XFF24CF5F, 0XFF6A6A6A})
-                );
                 mViewTab.setActivated(true);
-
                 mViewTab.setTag(this);
                 mViewDel.setTag(this);
                 mViewDel.setOnClickListener(getDeleteItemListener());

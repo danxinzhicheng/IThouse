@@ -1,5 +1,7 @@
 package com.danmo.ithouse.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,12 +14,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.danmo.commonutil.SharedPreferencesHelper;
 import com.danmo.ithouse.R;
@@ -28,8 +32,11 @@ import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 import com.danmo.ithouse.util.Config;
+import com.danmo.ithouse.util.EventBusMsg;
 import com.danmo.ithouse.widget.picker.SubTab;
 import com.danmo.ithouse.widget.picker.TabPickerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -50,6 +57,7 @@ public class NewsFragment extends BaseFragment {
     private static TabPickerView.TabPickerDataManager mTabPickerDataManager;
     private BaseViewPagerAdapter mAdapter;
     private BaseActivity activity;
+    private TextView tvPickOperator;
 
     @Override
     public void onAttach(Context context) {
@@ -77,8 +85,11 @@ public class NewsFragment extends BaseFragment {
         setHasOptionsMenu(true);
         ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
 
+        tvPickOperator = holder.get(R.id.tv_pick_operator);
         pickerCustomArrow = holder.get(R.id.icon_toolbar_custom);
         pickerViewLayout = holder.get(R.id.view_tab_picker);
+        pickerViewLayout.bindViewOperator(tvPickOperator);//设置提示view
+
         pickerCustomArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,12 +136,23 @@ public class NewsFragment extends BaseFragment {
         pickerViewLayout.setOnShowAnimation(new TabPickerView.Action1<ViewPropertyAnimator>() {
             @Override
             public void call(ViewPropertyAnimator viewPropertyAnimator) {
-
+                mTabNav.setVisibility(View.GONE);
+                tvPickOperator.setVisibility(View.VISIBLE);
+                EventBus.getDefault().post(new EventBusMsg(1));//隐藏底部导航栏
+                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth()/2);
+                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight()/2);
+                pickerCustomArrow.setRotation(180);
             }
         });
         pickerViewLayout.setOnHideAnimator(new TabPickerView.Action1<ViewPropertyAnimator>() {
             @Override
             public void call(ViewPropertyAnimator viewPropertyAnimator) {
+                mTabNav.setVisibility(View.VISIBLE);
+                tvPickOperator.setVisibility(View.GONE);
+                EventBus.getDefault().post(new EventBusMsg(0));//显示底部导航栏
+                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth()/2);
+                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight()/2);
+                pickerCustomArrow.setRotation(0);
 
             }
         });
@@ -143,7 +165,7 @@ public class NewsFragment extends BaseFragment {
 
     }
 
-    public static TabPickerView.TabPickerDataManager initTabPickerManager() {
+    public  TabPickerView.TabPickerDataManager initTabPickerManager() {
         if (mTabPickerDataManager == null) {
             mTabPickerDataManager = new TabPickerView.TabPickerDataManager() {
                 @Override
@@ -152,12 +174,7 @@ public class NewsFragment extends BaseFragment {
                     Object obj = SharedPreferencesHelper.getObject(BaseApplication.sAppContext, "TabPickerActiveData");
                     List<SubTab> list = (List<SubTab>) obj;
                     if (list == null || list.size() <= 0) {
-                        list = new ArrayList<>();
-                        for (int i = 0; i < 13; i++) {
-                            SubTab tab = new SubTab();
-                            tab.setName(Config.newsTabTitles[i]);
-                            list.add(tab);
-                        }
+                        list = buildPickActiveData();
                         SharedPreferencesHelper.putObject(BaseApplication.sAppContext, "TabPickerActiveData", list);
                     }
                     return list;
@@ -172,7 +189,14 @@ public class NewsFragment extends BaseFragment {
                         list = new ArrayList<>();
                         for (int i = 0; i < Config.newsTabTitles.length; i++) {
                             SubTab tab = new SubTab();
-                            tab.setName(Config.newsTabTitles[i]);
+                            if (i == 0) {
+                                tab.setFixed(true);
+                            }
+                            if (i == 2) {
+                                tab.setName(MANUFACTURER);
+                            } else {
+                                tab.setName(Config.newsTabTitles[i]);
+                            }
                             list.add(tab);
                         }
                         SharedPreferencesHelper.putObject(BaseApplication.sAppContext, "TabPickerOriginalData", list);
@@ -212,6 +236,22 @@ public class NewsFragment extends BaseFragment {
         super.onPrepareOptionsMenu(menu);
     }
 
+    public List<SubTab> buildPickActiveData(){
+        List<SubTab> list = new ArrayList<>();
+        for (int i = 0; i < 13; i++) {
+            SubTab tab = new SubTab();
+            if (i == 0) {
+                tab.setFixed(true);
+            }
+            if (i == 2) {
+                tab.setName(MANUFACTURER);
+            } else {
+                tab.setName(Config.newsTabTitles[i]);
+            }
+            list.add(tab);
+        }
+        return list;
+    }
 
     @Override
     protected void initData() {
@@ -227,12 +267,7 @@ public class NewsFragment extends BaseFragment {
         List<SubTab> list = (List<SubTab>) obj;
 
         if (list == null || list.size() <= 0) {
-            list = new ArrayList<>();
-            for (int i = 0; i < 13; i++) {
-                SubTab tab = new SubTab();
-                tab.setName(Config.newsTabTitles[i]);
-                list.add(tab);
-            }
+            list = buildPickActiveData();
             SharedPreferencesHelper.putObject(BaseApplication.sAppContext, "TabPickerActiveData", list);
         }
 
