@@ -12,7 +12,6 @@
 1. Android Studio：3.0正式版
 2. 编译SDK： 26
 3. Gradle版本：gradle-4.1-all.zip
-
    classpath 'com.android.tools.build:gradle:3.0.0'
 
    注：可根据自己环境修改版本，只要编译通过就可
@@ -27,24 +26,15 @@
 
 ## 第三方库
 
-1. Banner幻灯片：YouthBanner  (com.youth.banner:banner:1.4.10)
+1. Banner幻灯片：YouthBanner(com.youth.banner:banner:1.4.10)
 2. 通信总线 : EventBus
 3. Http请求 : Retrofit
 4. 图片加载 ：Glide
 
 ## 项目架构参考
 - DiyCode
-
-  整个项目结构，包括组件化，http请求，下拉刷新recycerview封装，带头底Adapter封装等等
-
-  Github：https://github.com/GcsSloop/diycode
-
-
 - OSChina
-
-  底部导航栏参考,自定义TAB选项等
-
-  Gitee：https://gitee.com/oschina/android-app
+> 感谢github，感谢开源.
 
 ## 抓包工具
   > 使用Fiddler抓包工具抓取IT之家的xml和json，作为样本数据，项目中全部以URL完整地址请求数据。
@@ -52,7 +42,7 @@
 ## 版本
 ### v1.0.1
 - 添加资讯栏目中自定义TAB导航页
-
+- 支持辣品栏目跳转到详情页
 
 ### v1.0.0
 - 整个项目的架构，从无到有
