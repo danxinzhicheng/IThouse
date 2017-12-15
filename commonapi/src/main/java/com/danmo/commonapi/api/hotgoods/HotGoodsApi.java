@@ -1,9 +1,9 @@
 package com.danmo.commonapi.api.hotgoods;
 
 public interface HotGoodsApi {
-    String getLapinBannerList(String url);
+    String getHotGoodsBannerList(String url);
 
-    String getLapinRankList(String url);
+    String getHotGoodsRankList(String url);
 
-    String getLapinList(String url);
+    String getHotGoodsList(String url);
 }

@@ -15,7 +15,7 @@
             android:layout_gravity="center_vertical"
             android:paddingTop="2dp"
             android:scaleType="fitXY"
-            android:src="@drawable/lapin_rank_icon" />
+            android:src="@drawable/hotgoods_rank_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,8 +40,8 @@
                 android:layout_height="12dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="2dp"
-                android:background="@drawable/item_lapin_rank_more_bg"
-                android:src="@drawable/lapin_arrow_more" />
+                android:background="@drawable/item_hotgoods_rank_more_bg"
+                android:src="@drawable/hotgoods_arrow_more" />
         </LinearLayout>
 
     </LinearLayout>

@@ -7,7 +7,7 @@ package com.danmo.ithouse.util;
 public class EventBusMsg {
     private String msg;
     private int flag;
-    private int quanzi_fresh_new_or_hot;//0,new; 1,hot;
+    private int community_fresh_new_or_hot;//0,new; 1,hot;
 
     public EventBusMsg() {
     }
@@ -36,11 +36,11 @@ public class EventBusMsg {
         this.msg = msg;
     }
 
-    public int getQuanzi_fresh_new_or_hot() {
-        return quanzi_fresh_new_or_hot;
+    public int getCommunity_fresh_new_or_hot() {
+        return community_fresh_new_or_hot;
     }
 
-    public void setQuanzi_fresh_new_or_hot(int quanzi_fresh_new_or_hot) {
-        this.quanzi_fresh_new_or_hot = quanzi_fresh_new_or_hot;
+    public void setCommunity_fresh_new_or_hot(int community_fresh_new_or_hot) {
+        this.community_fresh_new_or_hot = community_fresh_new_or_hot;
     }
 }

@@ -72,7 +72,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
                 Config.navigationTitles[0],
                 NewsFragment.class);
 
-        mNavTweet.init(R.drawable.tab_icon_lapin,
+        mNavTweet.init(R.drawable.tab_icon_hotgoods,
                 Config.navigationTitles[1],
                 HotGoodsFragment.class);
 

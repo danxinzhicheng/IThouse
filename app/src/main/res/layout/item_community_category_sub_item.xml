@@ -9,13 +9,13 @@
     android:paddingLeft="20dp">
 
     <ImageView
-        android:id="@+id/item_quanzi_category_icon"
+        android:id="@+id/item_community_category_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/quan_zhanwu" />
 
     <TextView
-        android:id="@+id/item_quanzi_category_title"
+        android:id="@+id/item_community_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -24,7 +24,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/item_quanzi_category_addnum"
+        android:id="@+id/item_community_category_addnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

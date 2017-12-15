@@ -109,32 +109,32 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
     }
 
     @Override
-    public String getLapinBannerList(String url) {
-        return sHotGoodsApi.getLapinBannerList(url);
+    public String getHotGoodsBannerList(String url) {
+        return sHotGoodsApi.getHotGoodsBannerList(url);
     }
 
     @Override
-    public String getLapinRankList(String url) {
-        return sHotGoodsApi.getLapinRankList(url);
+    public String getHotGoodsRankList(String url) {
+        return sHotGoodsApi.getHotGoodsRankList(url);
     }
 
     @Override
-    public String getLapinList(String url) {
-        return sHotGoodsApi.getLapinList(url);
+    public String getHotGoodsList(String url) {
+        return sHotGoodsApi.getHotGoodsList(url);
     }
 
     @Override
-    public String getQuanziCategory(String url) {
-        return sCommunityApi.getQuanziCategory(url);
+    public String getCommunityCategory(String url) {
+        return sCommunityApi.getCommunityCategory(url);
     }
 
     @Override
-    public String getQuanziListNewest(String url) {
-        return sCommunityApi.getQuanziListNewest(url);
+    public String getCommunityListNewest(String url) {
+        return sCommunityApi.getCommunityListNewest(url);
     }
 
     @Override
-    public String getQuanziListHotest(String url) {
-        return sCommunityApi.getQuanziListHotest(url);
+    public String getCommunityListHotest(String url) {
+        return sCommunityApi.getCommunityListHotest(url);
     }
 }

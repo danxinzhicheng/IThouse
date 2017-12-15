@@ -1,9 +1,9 @@
 package com.danmo.commonapi.api.community;
 
 public interface CommunityApi {
-    String getQuanziCategory(String url);
+    String getCommunityCategory(String url);
 
-    String getQuanziListNewest(String url);
+    String getCommunityListNewest(String url);
 
-    String getQuanziListHotest(String url);
+    String getCommunityListHotest(String url);
 }

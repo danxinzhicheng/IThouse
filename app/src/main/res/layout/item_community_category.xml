@@ -5,14 +5,14 @@
     android:layout_marginBottom=".1dp">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_quanzi_catetory"
+        android:id="@+id/recycler_view_community_catetory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/recycler_view_quanzi_catetory"
+        android:layout_below="@+id/recycler_view_community_catetory"
         android:layout_marginTop="15dp"
         android:background="@color/white"
         android:gravity="center">
@@ -33,13 +33,13 @@
             android:gravity="right|center_vertical">
 
             <RadioGroup
-                android:id="@+id/quanzi_category_group"
+                android:id="@+id/community_category_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/quanzi_category_newest"
+                    android:id="@+id/community_category_newest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="最新"
@@ -48,7 +48,7 @@
                     android:textSize="13sp" />
 
                 <RadioButton
-                    android:id="@+id/quanzi_category_hotest"
+                    android:id="@+id/community_category_hotest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"

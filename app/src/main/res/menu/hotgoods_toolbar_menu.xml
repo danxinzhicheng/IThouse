@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/option_cal"
-        app:actionProviderClass="com.danmo.ithouse.widget.menu.LapinAppMenu"
+        app:actionProviderClass="com.danmo.ithouse.widget.menu.HotGoodsAppMenu"
         app:showAsAction="always" />
     <item
         android:id="@+id/option_search"

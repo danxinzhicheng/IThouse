@@ -10,13 +10,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/lapin_rank_pic"
+            android:id="@+id/hotgoods_rank_pic"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/lapin_rank_num"
+            android:id="@+id/hotgoods_rank_num"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_alignParentRight="true"
@@ -31,7 +31,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/lapin_rank_title"
+        android:id="@+id/hotgoods_rank_title"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -44,7 +44,7 @@
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/lapin_rank_promotion_price"
+        android:id="@+id/hotgoods_rank_promotion_price"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -56,12 +56,12 @@
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/lapin_rank_quan_info"
+        android:id="@+id/hotgoods_rank_quan_info"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:background="@drawable/item_lapin_quan"
+        android:background="@drawable/item_hotgoods_quan"
         android:gravity="center_horizontal"
         android:text="领100元券"
         android:textColor="@color/white"

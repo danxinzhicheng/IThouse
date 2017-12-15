@@ -20,12 +20,12 @@ import com.danmo.ithouse.util.GlideRoundTransform;
 
 public class CommunityListProvider extends BaseViewProvider<CommunityListItem> {
     public CommunityListProvider(@NonNull Context context) {
-        super(context, R.layout.item_quanzi_list);
+        super(context, R.layout.item_community_list);
     }
 
     @Override
     public void onBindView(RecyclerViewHolder holder, CommunityListItem item) {
-        ImageView ivAvatar = holder.get(R.id.quanzi_item_avatar);
+        ImageView ivAvatar = holder.get(R.id.community_item_avatar);
         String url = convertRealPicUrl(item.uid);//解析头像url
         Glide.with(mContext)
                 .load(url)
@@ -33,15 +33,15 @@ public class CommunityListProvider extends BaseViewProvider<CommunityListItem> {
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(ivAvatar);
 
-        holder.setText(R.id.quanzi_item_c, item.c);
-        holder.setText(R.id.quanzi_item_cn, item.cn);
-//        holder.setText(R.id.quanzi_item_pt,item.pt);
-        holder.setText(R.id.quanzi_item_rc, item.rc);
-        holder.setText(R.id.quanzi_item_rn, item.rn);
-//        holder.setText(R.id.quanzi_item_rt,item.rt);
-        holder.setText(R.id.quanzi_item_un, item.un);
-        holder.setText(R.id.quanzi_item_t, item.t);
-        holder.setText(R.id.quanzi_item_vc, item.vc);
+        holder.setText(R.id.community_item_c, item.c);
+        holder.setText(R.id.community_item_cn, item.cn);
+//        holder.setText(R.id.community_item_pt,item.pt);
+        holder.setText(R.id.community_item_rc, item.rc);
+        holder.setText(R.id.community_item_rn, item.rn);
+//        holder.setText(R.id.community_item_rt,item.rt);
+        holder.setText(R.id.community_item_un, item.un);
+        holder.setText(R.id.community_item_t, item.t);
+        holder.setText(R.id.community_item_vc, item.vc);
     }
 
     public String convertRealPicUrl(String uid) {

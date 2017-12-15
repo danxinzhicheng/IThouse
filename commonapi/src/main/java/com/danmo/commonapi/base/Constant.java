@@ -51,7 +51,7 @@ public class Constant {
 
     public static final String LAPIN_PIC_URL = "http://img.lapin365.com/productpictures";//图片路径前缀
     //图片加载
-    //http://img.lapin365.com/productpictures/gitem/2017/10/14/165340094.jpg@s_0,w_180,h_180
+    //http://img.hotgoods365.com/productpictures/gitem/2017/10/14/165340094.jpg@s_0,w_180,h_180
 
     //============================圈子====================================
     public static final String QUANZI_CATEGORY = "http://apiquan.ithome.com/api/category?client=2";

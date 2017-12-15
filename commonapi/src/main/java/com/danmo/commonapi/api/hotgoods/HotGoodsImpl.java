@@ -10,29 +10,29 @@ import com.danmo.commonapi.event.GetHotGoodsListEvent;
 import com.danmo.commonapi.event.GetHotGoodsRankEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
-public class HotGoodsImpl extends BaseImpl<LapinService> implements HotGoodsApi {
+public class HotGoodsImpl extends BaseImpl<HotGoodsService> implements HotGoodsApi {
     public HotGoodsImpl(@NonNull Context context, int currentParse) {
         super(context, currentParse);
     }
 
     @Override
-    public String getLapinBannerList(String url) {
+    public String getHotGoodsBannerList(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getLapinBannerList(url).enqueue(new BaseCallback<>(new GetHotGoodsBannerEvent(uuid)));
+        mService.getHotGoodsBannerList(url).enqueue(new BaseCallback<>(new GetHotGoodsBannerEvent(uuid)));
         return uuid;
     }
 
     @Override
-    public String getLapinRankList(String url) {
+    public String getHotGoodsRankList(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getLapinRankList(url).enqueue(new BaseCallback<>(new GetHotGoodsRankEvent(uuid)));
+        mService.getHotGoodsRankList(url).enqueue(new BaseCallback<>(new GetHotGoodsRankEvent(uuid)));
         return uuid;
     }
 
     @Override
-    public String getLapinList(String url) {
+    public String getHotGoodsList(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getLapinList(url).enqueue(new BaseCallback<>(new GetHotGoodsListEvent(uuid)));
+        mService.getHotGoodsList(url).enqueue(new BaseCallback<>(new GetHotGoodsListEvent(uuid)));
         return uuid;
     }
 }

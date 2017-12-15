@@ -50,7 +50,7 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @Override
     protected String request(int offset, int limit) {
         if (TextUtils.isEmpty(currentRefeshUrl)) {
-            currentRefeshUrl = CommonApi.getSingleInstance().getQuanziListNewest(Constant.QUANZI_LIST_NEWEST);
+            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
         }
         return currentRefeshUrl;
     }
@@ -58,7 +58,7 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @NonNull
     @Override
     protected String requestHeader() {
-        return CommonApi.getSingleInstance().getQuanziCategory(Constant.QUANZI_CATEGORY);
+        return CommonApi.getSingleInstance().getCommunityCategory(Constant.QUANZI_CATEGORY);
     }
 
     @NonNull
@@ -102,12 +102,12 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(EventBusMsg event) {
-        int flag = event.getQuanzi_fresh_new_or_hot();
+        int flag = event.getCommunity_fresh_new_or_hot();
         if (flag == 0) {
-            currentRefeshUrl = CommonApi.getSingleInstance().getQuanziListNewest(Constant.QUANZI_LIST_NEWEST);
+            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
             refresh();
         } else {
-            currentRefeshUrl = CommonApi.getSingleInstance().getQuanziListNewest(Constant.QUANZI_LIST_HOTEST);
+            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_HOTEST);
             refresh();
         }
     }

@@ -28,17 +28,17 @@ import java.util.List;
 public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityListItem>> {
 
     public CommunityCategoryProvider(@NonNull Context context) {
-        super(context, R.layout.item_quanzi_category);
+        super(context, R.layout.item_community_category);
     }
 
     @Override
     public void onBindView(RecyclerViewHolder holder, List<CommunityListItem> bean) {
 
-        RecyclerView mRecyclerView = holder.get(R.id.recycler_view_quanzi_catetory);
+        RecyclerView mRecyclerView = holder.get(R.id.recycler_view_community_catetory);
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        QuanziCategoryRecyclerAdapter adapter = new QuanziCategoryRecyclerAdapter(mContext, R.layout.item_quanzi_category_sub_item);
+        CommunityCategoryRecyclerAdapter adapter = new CommunityCategoryRecyclerAdapter(mContext, R.layout.item_community_category_sub_item);
 
 //      bean.remove(0);//原始第一个bean是全部分类，去除
         List<CommunityListItem> tmpItemList = new ArrayList<>();
@@ -48,9 +48,9 @@ public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityLi
         adapter.addDatas(tmpItemList);
         mRecyclerView.setAdapter(adapter);
 
-        RadioGroup group = holder.get(R.id.quanzi_category_group);
-        RadioButton btnNew = holder.get(R.id.quanzi_category_newest);
-        RadioButton btnHot = holder.get(R.id.quanzi_category_hotest);
+        RadioGroup group = holder.get(R.id.community_category_group);
+        RadioButton btnNew = holder.get(R.id.community_category_newest);
+        RadioButton btnHot = holder.get(R.id.community_category_hotest);
         group.setOnCheckedChangeListener(new RadioGroupListener());
     }
 
@@ -59,32 +59,32 @@ public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityLi
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             EventBusMsg eventBusMsg = new EventBusMsg();
 
-            if (checkedId == R.id.quanzi_category_newest) {
-                eventBusMsg.setQuanzi_fresh_new_or_hot(0);
+            if (checkedId == R.id.community_category_newest) {
+                eventBusMsg.setCommunity_fresh_new_or_hot(0);
                 EventBus.getDefault().post(eventBusMsg);
-            } else if (checkedId == R.id.quanzi_category_hotest) {
-                eventBusMsg.setQuanzi_fresh_new_or_hot(1);
+            } else if (checkedId == R.id.community_category_hotest) {
+                eventBusMsg.setCommunity_fresh_new_or_hot(1);
                 EventBus.getDefault().post(eventBusMsg);
             }
         }
     }
 
-    class QuanziCategoryRecyclerAdapter extends SingleTypeAdapter<CommunityListItem> {
+    class CommunityCategoryRecyclerAdapter extends SingleTypeAdapter<CommunityListItem> {
 
-        String[] titles = Config.quanziTitles;
-        int[] icons = Config.quanziIcons;
+        String[] titles = Config.communityTitles;
+        int[] icons = Config.communityIcons;
 
-        public QuanziCategoryRecyclerAdapter(@NonNull Context context, int layoutId) {
+        public CommunityCategoryRecyclerAdapter(@NonNull Context context, int layoutId) {
             super(context, layoutId);
         }
 
         @Override
         public void convert(int position, RecyclerViewHolder holder, CommunityListItem bean) {
-            ImageView icon = holder.get(R.id.item_quanzi_category_icon);
+            ImageView icon = holder.get(R.id.item_community_category_icon);
             icon.setImageResource(icons[position]);
 
-            holder.setText(R.id.item_quanzi_category_title, titles[position]);
-            holder.setText(R.id.item_quanzi_category_addnum, "+" + bean.c);
+            holder.setText(R.id.item_community_category_title, titles[position]);
+            holder.setText(R.id.item_community_category_addnum, "+" + bean.c);
         }
     }
 

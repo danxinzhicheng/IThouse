@@ -10,11 +10,11 @@ import retrofit2.http.Url;
 
 public interface CommunityService {
     @GET
-    Call<List<CommunityListItem>> getQuanziCategory(@Url String url);
+    Call<List<CommunityListItem>> getCommunityCategory(@Url String url);
 
     @GET
-    Call<List<CommunityListItem>> getQuanziListNewest(@Url String url);
+    Call<List<CommunityListItem>> getCommunityListNewest(@Url String url);
 
     @GET
-    Call<List<CommunityListItem>> getQuanziListHotest(@Url String url);
+    Call<List<CommunityListItem>> getCommunityListHotest(@Url String url);
 }

@@ -15,23 +15,23 @@ public class CommunityImpl extends BaseImpl<CommunityService> implements Communi
     }
 
     @Override
-    public String getQuanziCategory(String url) {
+    public String getCommunityCategory(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getQuanziCategory(url).enqueue(new BaseCallback<>(new GetCommunityCatetoryEvent(uuid)));
+        mService.getCommunityCategory(url).enqueue(new BaseCallback<>(new GetCommunityCatetoryEvent(uuid)));
         return uuid;
     }
 
     @Override
-    public String getQuanziListNewest(String url) {
+    public String getCommunityListNewest(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getQuanziListNewest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
+        mService.getCommunityListNewest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
         return uuid;
     }
 
     @Override
-    public String getQuanziListHotest(String url) {
+    public String getCommunityListHotest(String url) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getQuanziListHotest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
+        mService.getCommunityListHotest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
         return uuid;
     }
 }

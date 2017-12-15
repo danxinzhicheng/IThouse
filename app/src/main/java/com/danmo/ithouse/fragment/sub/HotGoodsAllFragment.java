@@ -42,19 +42,19 @@ public class HotGoodsAllFragment extends RefreshRecyclerFragment<HotGoodsTopNode
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        return CommonApi.getSingleInstance().getLapinList(Constant.LAPIN_LIST_URL);
+        return CommonApi.getSingleInstance().getHotGoodsList(Constant.LAPIN_LIST_URL);
     }
 
     @NonNull
     @Override
     protected String requestHeader() {
-        return CommonApi.getSingleInstance().getLapinBannerList(Constant.LAPIN_BANNER_URL);
+        return CommonApi.getSingleInstance().getHotGoodsBannerList(Constant.LAPIN_BANNER_URL);
     }
 
     @NonNull
     @Override
     protected String requestMiddle() {
-        return CommonApi.getSingleInstance().getLapinRankList(Constant.LAPIN_RANK_URL);
+        return CommonApi.getSingleInstance().getHotGoodsRankList(Constant.LAPIN_RANK_URL);
     }
 
     @Override

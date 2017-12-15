@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HotGoodsBannerProvider extends BaseViewProvider<List<HotGoodsItem>> {
     public HotGoodsBannerProvider(@NonNull Context context) {
-        super(context, R.layout.item_lapin_banner);
+        super(context, R.layout.item_hotgoods_banner);
     }
 
     @Override

@@ -20,7 +20,7 @@ import com.danmo.ithouse.R;
 
 public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
     public HotGoodsListProvider(@NonNull Context context) {
-        super(context, R.layout.item_lapin_list);
+        super(context, R.layout.item_hotgoods_list);
     }
 
     @Override
@@ -28,23 +28,23 @@ public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
         if (bean == null) {
             return;
         }
-        holder.setText(R.id.lapin_item_store, bean.OriginStoreName);
-        holder.setText(R.id.lapin_item_title, bean.ProductName);
+        holder.setText(R.id.hotgoods_item_store, bean.OriginStoreName);
+        holder.setText(R.id.hotgoods_item_title, bean.ProductName);
 
-        TextView price = holder.get(R.id.lapin_item_price);
-        holder.setText(R.id.lapin_item_price, "￥" + bean.RealPrice);
+        TextView price = holder.get(R.id.hotgoods_item_price);
+        holder.setText(R.id.hotgoods_item_price, "￥" + bean.RealPrice);
         price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
         float f = (1 - Float.parseFloat(bean.DiscountRate)) * 10;
         float ff = (float) (Math.round(f * 10)) / 10;
         StringBuilder sb = new StringBuilder();
         sb.append("(").append(ff).append("折").append(")");
-        holder.setText(R.id.lapin_item_discount, sb.toString());
+        holder.setText(R.id.hotgoods_item_discount, sb.toString());
 
-        holder.setText(R.id.lapin_promotion_price, bean.PromotionInfoPrice);
-        holder.setText(R.id.lapin_item_quan_info, bean.QuanInfo);
+        holder.setText(R.id.hotgoods_promotion_price, bean.PromotionInfoPrice);
+        holder.setText(R.id.hotgoods_item_quan_info, bean.QuanInfo);
 
-        ImageView imageView = holder.get(R.id.lapin_item_pic);
+        ImageView imageView = holder.get(R.id.hotgoods_item_pic);
         String url = Constant.LAPIN_PIC_URL + bean.Picture;
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 

@@ -34,7 +34,7 @@ public class HotGoodsFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_lapin_main;
+        return R.layout.fragment_hotgoods_main;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class HotGoodsFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.lapin_toolbar_menu, menu);
+        inflater.inflate(R.menu.hotgoods_toolbar_menu, menu);
         MenuItem item = menu.findItem(R.id.option_cal);
         HotGoodsAppMenu cartActionProvider = (HotGoodsAppMenu) MenuItemCompat.getActionProvider(item);
         super.onCreateOptionsMenu(menu, inflater);
@@ -119,23 +119,23 @@ public class HotGoodsFragment extends BaseFragment {
     private HotGoodsFragment.PagerInfo[] getPagers() {
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("sub_tab", "tab_lapin");
+        bundle.putSerializable("sub_tab", "tab_hotgoods");
 
-        if (Config.lapinTabTitles.length < 6) {
+        if (Config.hotgoodsTabTitles.length < 6) {
             return null;
         }
         return new HotGoodsFragment.PagerInfo[]{
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[0], HotGoodsAllFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[0], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[1], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[1], SubFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[2], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[2], SubFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[3], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[3], SubFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[4], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[4], SubFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.lapinTabTitles[5], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[5], SubFragment.class,
                         bundle),
 
         };

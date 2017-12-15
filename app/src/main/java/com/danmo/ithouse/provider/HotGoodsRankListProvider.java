@@ -24,7 +24,7 @@ import com.danmo.ithouse.R;
 public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
 
     public HotGoodsRankListProvider(@NonNull Context context) {
-        super(context, R.layout.item_lapin_rank);
+        super(context, R.layout.item_hotgoods_rank);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
         layoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        RankRecyclerAdapter adapter = new RankRecyclerAdapter(mContext, R.layout.item_lapin_rank_sub_item);
+        RankRecyclerAdapter adapter = new RankRecyclerAdapter(mContext, R.layout.item_hotgoods_rank_sub_item);
         adapter.addDatas(bean.getContent());
         mRecyclerView.setAdapter(adapter);
 
@@ -51,16 +51,16 @@ public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
             if (bean == null) {
                 return;
             }
-            ImageView ivRankPic = holder.get(R.id.lapin_rank_pic);
+            ImageView ivRankPic = holder.get(R.id.hotgoods_rank_pic);
             String url = Constant.LAPIN_PIC_URL + bean.Picture;
             Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivRankPic);
 
             String ranknum = String.valueOf(holder.getLayoutPosition() + 1);
-            holder.setText(R.id.lapin_rank_num, ranknum);
+            holder.setText(R.id.hotgoods_rank_num, ranknum);
 
-            holder.setText(R.id.lapin_rank_title, bean.ProductName);
-            holder.setText(R.id.lapin_rank_promotion_price, bean.PromotionInfoPrice);
-            holder.setText(R.id.lapin_rank_quan_info, bean.QuanInfo);
+            holder.setText(R.id.hotgoods_rank_title, bean.ProductName);
+            holder.setText(R.id.hotgoods_rank_promotion_price, bean.PromotionInfoPrice);
+            holder.setText(R.id.hotgoods_rank_quan_info, bean.QuanInfo);
 
         }
 

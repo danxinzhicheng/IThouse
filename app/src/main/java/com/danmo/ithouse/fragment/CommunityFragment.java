@@ -22,7 +22,7 @@ public class CommunityFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_quanzi;
+        return R.layout.fragment_community;
     }
 
     @Override

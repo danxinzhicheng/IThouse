@@ -27,7 +27,7 @@ public class HotGoodsAppMenu extends ActionProvider {
     @Override
     public View onCreateActionView() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.menu_lapin_app, null);
+        View view = inflater.inflate(R.layout.menu_hotgoods_app, null);
         return view;
     }
 }

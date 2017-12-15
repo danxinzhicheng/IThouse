@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="quanzi_category">
+    <string-array name="community_category">
         <item>畅谈</item>
         <item>极客圈</item>
         <item>安卓圈</item>
@@ -11,7 +11,7 @@
         <item>软媒产品</item>
         <item>站务处理</item>
     </string-array>
-    <integer-array name="quanzi_icon">
+    <integer-array name="community_icon">
         <item>@drawable/quan_zatan</item>
         <item>@drawable/quan_jike</item>
         <item>@drawable/quan_android</item>
@@ -21,7 +21,7 @@
         <item>@drawable/quan_ruanmei</item>
         <item>@drawable/quan_zhanwu</item>
     </integer-array>
-    <integer-array name="quanzi_icon_night">
+    <integer-array name="community_icon_night">
         <item>@drawable/quan_zatan_night</item>
         <item>@drawable/quan_jike_night</item>
         <item>@drawable/quan_android_night</item>

@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="30dp"
         android:layout_height="20dp"
-        android:background="@drawable/detail_shape_corner_lapin_menu"
+        android:background="@drawable/detail_shape_corner_hotgoods_menu"
         android:gravity="center"
         android:text="APP"
         android:textColor="@android:color/white"
