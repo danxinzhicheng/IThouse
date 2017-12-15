@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.hotgoods.HotGoodsItem;
+import com.danmo.commonutil.UrlUtil;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.WebViewActivity;
 import com.danmo.ithouse.util.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -26,7 +28,7 @@ public class HotGoodsBannerProvider extends BaseViewProvider<List<HotGoodsItem>>
     }
 
     @Override
-    public void onBindView(RecyclerViewHolder holder, List<HotGoodsItem> bean) {
+    public void onBindView(RecyclerViewHolder holder, final List<HotGoodsItem> bean) {
         if (bean == null) {
             return;
         }
@@ -49,6 +51,10 @@ public class HotGoodsBannerProvider extends BaseViewProvider<List<HotGoodsItem>>
             @Override
             public void OnBannerClick(int position) {
                 if (position >= 0) {
+                    String link = bean.get(position).Url;
+                    if (UrlUtil.isUrlPrefix(link)) {
+                        WebViewActivity.start(mContext, link, WebViewActivity.PAGE_TYPE_HOTGOODS);
+                    }
                 }
             }
         });

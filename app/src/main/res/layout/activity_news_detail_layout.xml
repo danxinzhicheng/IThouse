@@ -22,8 +22,7 @@
             app:expandedTitleMarginBottom="40dp"
             app:expandedTitleMarginStart="20dp"
             app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:title="mmmmm">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <RelativeLayout
                 android:id="@+id/detail_top_sub"

@@ -24,7 +24,6 @@ package com.danmo.commonutil.recyclerview.adapter.multitype;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
@@ -49,6 +48,7 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     private boolean hasHeader = false;
     private boolean hasFooter = false;
+    private boolean hasMid = false;
 
     public HeaderFooterAdapter() {
         mTypePool = new MultiTypePool();
@@ -74,23 +74,13 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
     }
 
     public void registerHeader(@NonNull Object object, @NonNull BaseViewProvider provider) {
-        if (hasHeader) return;
         mTypePool.register(object.getClass(), provider);
-        mItems.add(0, object);
-        hasHeader = true;
-        notifyDataSetChanged();
-    }
-
-    public void registerMiddle(@NonNull Object object, @NonNull BaseViewProvider provider) {
-        if (!hasHeader) {
-            Log.i("msg", "object.getClass:" + object.getClass());
-            mTypePool.register(object.getClass(), provider);
-            mItems.add(0, object);
+        if (hasHeader) {
+            mItems.set(0, object);
         } else {
-            Log.i("msg", "object.getClass111:" + object.getClass());
-            mTypePool.register(object.getClass(), provider);
-            mItems.add(1, object);
+            mItems.add(0, object);
         }
+        hasHeader = true;
         notifyDataSetChanged();
     }
 
@@ -115,6 +105,40 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         hasFooter = false;
         notifyDataSetChanged();
     }
+
+    public void registerMiddle(@NonNull Object object, @NonNull BaseViewProvider provider) {
+        if (hasMid) {
+            if (!hasHeader) {
+                mTypePool.register(object.getClass(), provider);
+                mItems.set(0, object);
+            } else {
+                mTypePool.register(object.getClass(), provider);
+                mItems.set(1, object);
+            }
+        } else {
+            if (!hasHeader) {
+                mTypePool.register(object.getClass(), provider);
+                mItems.add(0, object);
+            } else {
+                mTypePool.register(object.getClass(), provider);
+                mItems.add(1, object);
+            }
+        }
+        hasMid = true;
+        notifyDataSetChanged();
+    }
+
+    public void unRegisterMiddle() {
+        if (!hasMid) return;
+        if (hasHeader) {
+            mItems.remove(1);
+        } else {
+            mItems.remove(0);
+        }
+        hasMid = false;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int indexViewType) {
@@ -187,9 +211,13 @@ public class HeaderFooterAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         if (hasHeader) {
             startIndex++;
         }
+        if (hasMid) {
+            startIndex++;
+        }
         if (hasFooter) {
             endIndex--;
         }
+
         for (int i = endIndex - 1; i >= startIndex; i--) {
             mItems.remove(i);
         }

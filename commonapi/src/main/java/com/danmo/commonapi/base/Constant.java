@@ -51,7 +51,7 @@ public class Constant {
 
     public static final String LAPIN_PIC_URL = "http://img.lapin365.com/productpictures";//图片路径前缀
     //图片加载
-    //http://img.hotgoods365.com/productpictures/gitem/2017/10/14/165340094.jpg@s_0,w_180,h_180
+    //http://img.lapin365.com/productpictures/gitem/2017/10/14/165340094.jpg@s_0,w_180,h_180
 
     //============================圈子====================================
     public static final String QUANZI_CATEGORY = "http://apiquan.ithome.com/api/category?client=2";
@@ -61,7 +61,8 @@ public class Constant {
     //图片加载
     //uid:uid	1415703---/001/41/57/03_60.jpg
     //http://avatar.ithome.com/avatars/000/34/32/36_60.jpg
-    //http://avatar.ithome.com/avatars/001/06/85/81_60.jpg
-    //http://avatar.ithome.com/avatars/001/41/57/03_60.jpg
 
+    //http://api.lapin365.com/api/apps/focus?signature=E1A764634B0E111424B6A958AB060608&timestamp=1513314814&r=1513314814817&platform=ithome_android
+    //http://api.lapin365.com/api/apps/tag?tag=%E7%88%86%E5%93%81&count=20&ver=2&platform=ithome_android&l=all
+    //http://api.lapin365.com/api/apps/indexlistsegbyId?productid=0&count=20&ver=3&platform=ithome_android
 }

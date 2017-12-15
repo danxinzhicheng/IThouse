@@ -23,10 +23,10 @@ import java.util.Map;
  * 资讯列表数据绑定
  */
 
-public class NewestProvider extends BaseViewProvider<NewestItem> {
+public class NewestListProvider extends BaseViewProvider<NewestItem> {
     private Map<String, Integer> mapClicked = new HashMap<String, Integer>();
 
-    public NewestProvider(@NonNull Context context) {
+    public NewestListProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest);
     }
 

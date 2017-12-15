@@ -13,7 +13,7 @@ import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
 import com.danmo.ithouse.provider.NewestBannerProvider;
-import com.danmo.ithouse.provider.NewestProvider;
+import com.danmo.ithouse.provider.NewestListProvider;
 
 /**
  * 资讯viewpager的填充首页面:最新
@@ -30,7 +30,7 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
 
     @Override
     protected void setAdapterRegister(Context context, RecyclerView recyclerView, HeaderFooterAdapter adapter) {
-        adapter.register(NewestItem.class, new NewestProvider(getContext()));
+        adapter.register(NewestItem.class, new NewestListProvider(getContext()));
     }
 
     @NonNull
@@ -73,7 +73,6 @@ public class NewestFragment extends RefreshRecyclerFragment<NewestTopNode, GetNe
     protected void onLoadMiddle(GetNewestEvent event, HeaderFooterAdapter adapter) {
 
     }
-
 
     @Override
     protected void onRefresh(GetNewestEvent event, HeaderFooterAdapter adapter) {

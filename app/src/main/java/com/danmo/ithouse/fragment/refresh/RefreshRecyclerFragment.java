@@ -43,6 +43,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.logging.Handler;
+
 /**
  * 具有下拉刷新和上拉加载的Fragment
  */
@@ -111,19 +113,33 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refresh();
+                refresh(POST_HEADER);
+                refresh(POST_REFRESH);
+                refresh(POST_MID);
+                mRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                },200);
             }
         });
         initData(mAdapter);
     }
 
-    protected void refresh() {
+    protected void refresh(String freshType) {
         if (!refreshEnable) return;
-        pageIndex = 0;
-        String uuid = request(pageIndex * pageCount, pageCount);
-        mPostTypes.put(uuid, POST_REFRESH);
-        pageIndex++;
-        mState = STATE_REFRESH;
+        if (freshType.equals(POST_REFRESH)) {
+            pageIndex = 0;
+            String uuid = request(pageIndex * pageCount, pageCount);
+            mPostTypes.put(uuid, POST_REFRESH);
+            pageIndex++;
+            mState = STATE_REFRESH;
+        } else if (freshType.equals(POST_HEADER)) {
+            loadHeader();
+        } else if (freshType.equals(POST_MID)) {
+            loadMiddle();
+        }
     }
 
     protected void loadMore() {

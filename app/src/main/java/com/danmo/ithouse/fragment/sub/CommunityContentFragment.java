@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.base.Constant;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class CommunityContentFragment extends RefreshRecyclerFragment<List<CommunityListItem>, GetCommunityListEvent> {
 
-    private String currentRefeshUrl;
+    private String currentRefeshUrl = Constant.QUANZI_LIST_NEWEST;
 
     @Override
     public void initData(HeaderFooterAdapter adapter) {
@@ -49,10 +50,7 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        if (TextUtils.isEmpty(currentRefeshUrl)) {
-            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
-        }
-        return currentRefeshUrl;
+        return  CommonApi.getSingleInstance().getCommunityListNewest(currentRefeshUrl);
     }
 
     @NonNull
@@ -81,7 +79,6 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @Override
     protected void onLoadHeader(GetCommunityListEvent event, HeaderFooterAdapter adapter) {
         if (event.getBean() != null && event.getBean().size() > 0) {
-            mAdapter.unRegisterHeader();
             mAdapter.registerHeader(event.getBean(), new CommunityCategoryProvider(mContext));//添加分类
         }
     }
@@ -105,10 +102,12 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
         int flag = event.getCommunity_fresh_new_or_hot();
         if (flag == 0) {
             currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
-            refresh();
+            refresh(POST_HEADER);
+            refresh(POST_REFRESH);
         } else {
             currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_HOTEST);
-            refresh();
+            refresh(POST_HEADER);
+            refresh(POST_REFRESH);
         }
     }
 

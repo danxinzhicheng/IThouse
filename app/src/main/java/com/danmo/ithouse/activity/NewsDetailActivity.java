@@ -79,23 +79,20 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
     private CollapsingToolbarLayout detailTitle;
     private WebView wvDetailContent;
-    private NestedScrollView nestedScrollView;
 
     //文字左右对齐；文字间隔
-    private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;letter-spacing:2;\">%s</body></html>";
+    private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;letter-spacing:1.2;\">%s</body></html>";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail_layout);
-//        Slidr.attach(this);
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nsv_detail_content);
-        mTopSub = (ViewGroup) findViewById(R.id.detail_top_sub);
-        tvTime = (TextView) findViewById(R.id.detail_time);
-        tvAuthor = (TextView) findViewById(R.id.detail_author);
-        tvZebian = (TextView) findViewById(R.id.tv_detail_zebian);
+        mTopSub = findViewById(R.id.detail_top_sub);
+        tvTime = findViewById(R.id.detail_time);
+        tvAuthor = findViewById(R.id.detail_author);
+        tvZebian = findViewById(R.id.tv_detail_zebian);
 
-        wvDetailContent = (WebView) findViewById(R.id.wv_detail_content);
+        wvDetailContent = findViewById(R.id.wv_detail_content);
         WebSettings webSettings = wvDetailContent.getSettings();//获取webview设置属性
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
@@ -105,8 +102,8 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         wvDetailContent.getSettings().setDefaultFontSize(16);
         wvDetailContent.setWebViewClient(new MyWebViewClient());
 
-        detailTitle = (CollapsingToolbarLayout) findViewById(R.id.detail_title);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.flexible_toolbar);
+        detailTitle = findViewById(R.id.detail_title);
+        Toolbar toolbar = findViewById(R.id.flexible_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +111,11 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
                 NewsDetailActivity.this.onBackPressed();
             }
         });
-        AppBarLayout appbar = (AppBarLayout) findViewById(R.id.appbar);
+        AppBarLayout appbar = findViewById(R.id.appbar);
         appbar.addOnOffsetChangedListener(this);
 
         mAdapter = new HeaderFooterAdapter();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new SpeedyLinearLayoutManager(this));

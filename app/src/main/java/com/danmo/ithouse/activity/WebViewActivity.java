@@ -2,6 +2,7 @@ package com.danmo.ithouse.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,10 @@ import com.danmo.ithouse.R;
  */
 public class WebViewActivity extends AppCompatActivity {
     private WebView webView;
+    private Toolbar toolbar;
     public static final String INTENT_DETAIL_CONTENT_LINK = "link";
+    public static final String PAGE_TYPE = "page_type";
+    public static int PAGE_TYPE_HOTGOODS = 1;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,7 +38,7 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview_layout);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.flexible_toolbar);
+        toolbar = findViewById(R.id.flexible_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +47,7 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
-        webView = (WebView) findViewById(R.id.wv_detail_content);
+        webView = findViewById(R.id.wv_detail_content);
         WebSettings webSettings = webView.getSettings();//获取webview设置属性
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
@@ -71,7 +75,11 @@ public class WebViewActivity extends AppCompatActivity {
     //设置不用系统浏览器打开,直接显示在当前Webview
     private class webViewClient extends WebViewClient {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
+
+            if( url.startsWith("http:") || url.startsWith("https:") ) {
+                view.loadUrl(url);
+                return false;
+            }
             return true;
         }
     }
@@ -80,7 +88,7 @@ public class WebViewActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
             webView.goBack(); //goBack()表示返回WebView的上一页面
-            return true;
+//            return true;
         }
         finish();//结束退出程序
         return false;
@@ -92,12 +100,23 @@ public class WebViewActivity extends AppCompatActivity {
         context.startActivity(intent);
     }
 
+    public static void start(Context context, String link, int type) {
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra(INTENT_DETAIL_CONTENT_LINK, link);
+        intent.putExtra(PAGE_TYPE, type);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         String link = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_LINK);
         if (!TextUtils.isEmpty(link)) {
             webView.loadUrl(link);
+        }
+        int type = getIntent().getIntExtra(PAGE_TYPE, 0);
+        if (type == PAGE_TYPE_HOTGOODS) {
+            toolbar.setVisibility(View.GONE);
         }
     }
 
