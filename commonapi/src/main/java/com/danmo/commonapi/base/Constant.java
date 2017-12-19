@@ -62,7 +62,8 @@ public class Constant {
     //uid:uid	1415703---/001/41/57/03_60.jpg
     //http://avatar.ithome.com/avatars/000/34/32/36_60.jpg
 
-    //http://api.lapin365.com/api/apps/focus?signature=E1A764634B0E111424B6A958AB060608&timestamp=1513314814&r=1513314814817&platform=ithome_android
-    //http://api.lapin365.com/api/apps/tag?tag=%E7%88%86%E5%93%81&count=20&ver=2&platform=ithome_android&l=all
-    //http://api.lapin365.com/api/apps/indexlistsegbyId?productid=0&count=20&ver=3&platform=ithome_android
+    //搜索yyy
+    //http://dyn.ithome.com/xml/search/e1fde91f200a6274.xml?client=android&r=1513668650253 //文章
+    //http://s.lapin365.com/callback/searchp?platform=ithome_android&key=yyy&userid=1467532&pagenumber=1 //辣品
+    //http://apiquan.ithome.com/api/post/getsearch?keyword=e1fde91f200a6274&maxnewsid=0&r=1513668555501 //圈子
 }

@@ -14,17 +14,22 @@ import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.activity.NewsDetailActivity;
+import com.danmo.ithouse.base.BaseApplication;
+import com.danmo.ithouse.realm.NewsHistoryBean;
 
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * 资讯列表数据绑定
  */
 
 public class NewestListProvider extends BaseViewProvider<NewestItem> {
-    private Map<String, Integer> mapClicked = new HashMap<String, Integer>();
+    private Map<String, Integer> mapClicked = new HashMap<>();
 
     public NewestListProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest);
@@ -62,6 +67,8 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 
         final TextView title = holder.get(R.id.item_title);
+
+        final RealmResults realmResults = BaseApplication.sRealm.where(NewsHistoryBean.class).findAll();
         if (mapClicked.containsKey(bean.newsid)) {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
         } else {
@@ -73,6 +80,25 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
                 NewsDetailActivity.start(mContext, NewsDetailActivity.TYPE_LIST, bean.newsid);
                 title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
                 mapClicked.put(bean.newsid, position);
+
+                if (realmResults != null && realmResults.size() >= 20) {
+                    BaseApplication.sRealm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            realmResults.deleteFirstFromRealm();
+                        }
+                    });
+                }
+
+                final NewsHistoryBean newsHistoryBean = new NewsHistoryBean();
+                newsHistoryBean.setImage(bean.image).setNewsid(bean.newsid).setTitle(bean.title).setUrl(bean.url);
+                //存入本地数据库
+                BaseApplication.sRealm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        BaseApplication.sRealm.copyToRealmOrUpdate(newsHistoryBean);
+                    }
+                });
             }
         }, R.id.item_container);
 

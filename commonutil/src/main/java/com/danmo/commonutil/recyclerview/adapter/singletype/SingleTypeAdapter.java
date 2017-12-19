@@ -83,6 +83,10 @@ public abstract class SingleTypeAdapter<T> extends RecyclerView.Adapter<Recycler
         notifyDataSetChanged();
     }
 
+    public void setDatas(List<T> datas){
+        clearDatas();
+        addDatas(datas);
+    }
     public List<T> getDatas() {
         return mDatas;
     }

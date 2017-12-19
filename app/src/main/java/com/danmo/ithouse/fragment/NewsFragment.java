@@ -1,7 +1,5 @@
 package com.danmo.ithouse.fragment;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +12,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
@@ -33,10 +31,13 @@ import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
 import com.danmo.ithouse.util.Config;
 import com.danmo.ithouse.util.EventBusMsg;
+import com.danmo.ithouse.widget.CustomSearchView;
 import com.danmo.ithouse.widget.picker.SubTab;
 import com.danmo.ithouse.widget.picker.TabPickerView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -58,6 +59,8 @@ public class NewsFragment extends BaseFragment {
     private BaseViewPagerAdapter mAdapter;
     private BaseActivity activity;
     private TextView tvPickOperator;
+    private CustomSearchView searchView;
+    private Toolbar toolbar;
 
     @Override
     public void onAttach(Context context) {
@@ -65,7 +68,7 @@ public class NewsFragment extends BaseFragment {
         activity.addOnTurnBackListener(new BaseActivity.TurnBackListener() {
             @Override
             public boolean onTurnBack() {
-                return pickerViewLayout != null && pickerViewLayout.onTurnBack();
+                return (pickerViewLayout != null && pickerViewLayout.onTurnBack()) || (searchView != null && searchView.onTurnBack());
             }
         });
         super.onAttach(context);
@@ -76,11 +79,36 @@ public class NewsFragment extends BaseFragment {
         return R.layout.fragment_news_main;
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onResultEvent(EventBusMsg eventBusMsg) {
+        if (eventBusMsg.getFlag() == 0 || eventBusMsg.getFlag() == 1) {
+            if (searchView.isShown()) {
+                searchView.hide();
+            }
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+        if (searchView.isShown()) {
+            searchView.hide();
+        }
+    }
+
     @Override
     protected void initViews(ViewHolder holder, View root) {
         mTabNav = holder.get(R.id.tab_nav);
         mBaseViewPager = holder.get(R.id.viewPager);
-        Toolbar toolbar = holder.get(R.id.toolbar);
+        toolbar = holder.get(R.id.toolbar);
         toolbar.setTitle("");
         setHasOptionsMenu(true);
         ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
@@ -88,12 +116,15 @@ public class NewsFragment extends BaseFragment {
         tvPickOperator = holder.get(R.id.tv_pick_operator);
         pickerCustomArrow = holder.get(R.id.icon_toolbar_custom);
         pickerViewLayout = holder.get(R.id.view_tab_picker);
+        searchView = holder.get(R.id.view_custom_search);
+
         pickerViewLayout.bindViewOperator(tvPickOperator);//设置提示view
 
         pickerCustomArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (pickerCustomArrow.getRotation() != 0) {
+                    pickerViewLayout.hide();
                     pickerViewLayout.onTurnBack();
                 } else {
                     pickerViewLayout.show(mTabNav.getSelectedTabPosition());
@@ -139,8 +170,8 @@ public class NewsFragment extends BaseFragment {
                 mTabNav.setVisibility(View.GONE);
                 tvPickOperator.setVisibility(View.VISIBLE);
                 EventBus.getDefault().post(new EventBusMsg(1));//隐藏底部导航栏
-                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth()/2);
-                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight()/2);
+                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth() / 2);
+                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight() / 2);
                 pickerCustomArrow.setRotation(180);
             }
         });
@@ -150,8 +181,8 @@ public class NewsFragment extends BaseFragment {
                 mTabNav.setVisibility(View.VISIBLE);
                 tvPickOperator.setVisibility(View.GONE);
                 EventBus.getDefault().post(new EventBusMsg(0));//显示底部导航栏
-                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth()/2);
-                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight()/2);
+                pickerCustomArrow.setPivotX(pickerCustomArrow.getMeasuredWidth() / 2);
+                pickerCustomArrow.setPivotY(pickerCustomArrow.getMeasuredHeight() / 2);
                 pickerCustomArrow.setRotation(0);
 
             }
@@ -165,7 +196,7 @@ public class NewsFragment extends BaseFragment {
 
     }
 
-    public  TabPickerView.TabPickerDataManager initTabPickerManager() {
+    public TabPickerView.TabPickerDataManager initTabPickerManager() {
         if (mTabPickerDataManager == null) {
             mTabPickerDataManager = new TabPickerView.TabPickerDataManager() {
                 @Override
@@ -236,7 +267,21 @@ public class NewsFragment extends BaseFragment {
         super.onPrepareOptionsMenu(menu);
     }
 
-    public List<SubTab> buildPickActiveData(){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.option_search:
+                if (!searchView.isShown()) {
+                    searchView.show();
+                } else {
+                    searchView.hide();
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public List<SubTab> buildPickActiveData() {
         List<SubTab> list = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
             SubTab tab = new SubTab();
@@ -252,6 +297,7 @@ public class NewsFragment extends BaseFragment {
         }
         return list;
     }
+
 
     @Override
     protected void initData() {

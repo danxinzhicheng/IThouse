@@ -32,27 +32,27 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@color/colorPrimary"
-            android:layout_height="45dp">
+            android:layout_height="45dp"
+            android:background="@color/colorPrimary">
 
             <TextView
                 android:id="@+id/tv_pick_operator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="15dp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="长按切换栏目"
                 android:textColor="@color/diy_white"
-                android:text="长按切换栏目"/>
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/icon_toolbar_custom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="12dp"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
                 android:src="@drawable/icon_toolbar_custom" />
 
             <android.support.design.widget.TabLayout
@@ -84,4 +84,12 @@
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         android:visibility="invisible" />
+
+    <com.danmo.ithouse.widget.CustomSearchView
+        android:layout_margin="5dp"
+        android:id="@+id/view_custom_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
 </android.support.design.widget.CoordinatorLayout>

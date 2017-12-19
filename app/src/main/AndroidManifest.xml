@@ -21,6 +21,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.danmo.ithouse.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

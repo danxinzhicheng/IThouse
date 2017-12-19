@@ -6,7 +6,7 @@ package com.danmo.ithouse.util;
 
 public class EventBusMsg {
     private String msg;
-    private int flag;
+    private int flag;//1,up; 0,down
     private int community_fresh_new_or_hot;//0,new; 1,hot;
 
     public EventBusMsg() {
