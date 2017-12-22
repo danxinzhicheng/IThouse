@@ -1,7 +1,6 @@
 package com.danmo.commonutil;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

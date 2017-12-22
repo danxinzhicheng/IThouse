@@ -40,7 +40,7 @@ public class HotGoodsFragment extends BaseFragment {
     @Override
     protected void initViews(ViewHolder holder, View root) {
         mTabNav = holder.get(R.id.tab_nav);
-        mBaseViewPager = holder.get(R.id.viewPager);
+        mBaseViewPager = holder.get(R.id.viewpager);
         Toolbar toolbar = holder.get(R.id.toolbar);
         toolbar.setTitle("辣品");
         setHasOptionsMenu(true);
@@ -127,15 +127,15 @@ public class HotGoodsFragment extends BaseFragment {
         return new HotGoodsFragment.PagerInfo[]{
                 new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[0], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[1], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[1], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[2], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[2], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[3], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[3], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[4], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[4], HotGoodsAllFragment.class,
                         bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[5], SubFragment.class,
+                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[5], HotGoodsAllFragment.class,
                         bundle),
 
         };

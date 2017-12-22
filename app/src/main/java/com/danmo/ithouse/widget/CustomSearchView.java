@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.danmo.commonutil.SecurityUtils;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.singletype.SingleTypeAdapter;
 import com.danmo.ithouse.R;
@@ -44,11 +42,15 @@ import io.realm.RealmResults;
 public class CustomSearchView extends LinearLayout {
     private View mRootView;
     private EditText editTextSearch;
-    private RealmResults newsHistoryList, searchHistoryList;
+    private RealmResults typeHistoryList, searchHistoryList;
     private LinearLayout linearLayoutRead, linearLayoutSearch;
     private AutoLinefeedLayout autoLinefeedLayout;
     private RecyclerView recyclerViewReadHistory;
     private ReadHistoryRecyclerAdapter readHistoryRecyclerAdapter;
+    private int mSearchType;
+    public static final int SEARCH_TYPE_NEWS = 0;
+    public static final int SEARCH_TYPE_HOTGOODS = 1;
+    public static final int SEARCH_TYPE_COMMUNITY = 2;
 
     public CustomSearchView(Context context) {
         this(context, null);
@@ -63,8 +65,18 @@ public class CustomSearchView extends LinearLayout {
         init();
     }
 
+    public void setSearchType(int type) {
+        this.mSearchType = type;
+    }
+
     public void initHistoryData() {
-        newsHistoryList = BaseApplication.sRealm.where(NewsHistoryBean.class).findAll();
+        if (mSearchType == SEARCH_TYPE_NEWS) {
+            typeHistoryList = BaseApplication.sRealm.where(NewsHistoryBean.class).findAll();
+        } else if (mSearchType == SEARCH_TYPE_HOTGOODS) {
+
+        } else if (mSearchType == SEARCH_TYPE_COMMUNITY) {
+
+        }
         searchHistoryList = BaseApplication.sRealm.where(SearchHistoryBean.class).findAll();
     }
 
@@ -86,6 +98,7 @@ public class CustomSearchView extends LinearLayout {
             @Override
             public void clickMark(int position) {
                 //todo 跳转
+                Toast.makeText(getContext(), "功能待开发", Toast.LENGTH_LONG).show();
             }
         });
         recyclerViewReadHistory = mRootView.findViewById(R.id.recycler_view_read_history);
@@ -143,6 +156,8 @@ public class CustomSearchView extends LinearLayout {
                                 realm.copyToRealmOrUpdate(searchHistoryBean);
                             }
                         });
+
+                        Toast.makeText(getContext(), "功能待开发", Toast.LENGTH_LONG).show();
                     }
                     return true;
                 }
@@ -153,9 +168,9 @@ public class CustomSearchView extends LinearLayout {
     }
 
     private void refreshView() {
-        if (newsHistoryList != null && newsHistoryList.size() > 0) {
+        if (typeHistoryList != null && typeHistoryList.size() > 0) {
             linearLayoutRead.setVisibility(View.VISIBLE);
-            readHistoryRecyclerAdapter.setDatas(newsHistoryList);
+            readHistoryRecyclerAdapter.setDatas(typeHistoryList);
         }
         if (searchHistoryList != null && searchHistoryList.size() > 0) {
             linearLayoutSearch.setVisibility(View.VISIBLE);

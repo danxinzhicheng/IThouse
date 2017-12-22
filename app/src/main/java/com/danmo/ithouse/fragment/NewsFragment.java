@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 import com.danmo.commonutil.SharedPreferencesHelper;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.CalendarActivity;
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.BaseApplication;
 import com.danmo.ithouse.base.BaseFragment;
@@ -107,7 +109,7 @@ public class NewsFragment extends BaseFragment {
     @Override
     protected void initViews(ViewHolder holder, View root) {
         mTabNav = holder.get(R.id.tab_nav);
-        mBaseViewPager = holder.get(R.id.viewPager);
+        mBaseViewPager = holder.get(R.id.viewpager);
         toolbar = holder.get(R.id.toolbar);
         toolbar.setTitle("");
         setHasOptionsMenu(true);
@@ -276,6 +278,9 @@ public class NewsFragment extends BaseFragment {
                 } else {
                     searchView.hide();
                 }
+                break;
+            case R.id.option_cal:
+                CalendarActivity.start(mContext);
                 break;
         }
         return super.onOptionsItemSelected(item);

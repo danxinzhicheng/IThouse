@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/flexible_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_collapseMode="pin"
+        app:navigationIcon="@drawable/abc_ic_ab_back_material"
+        app:popupTheme="@style/ToolbarPopupTheme"
+        app:title="2017年12月22日"
+        app:titleTextAppearance="@style/TextAppearance.Toolbar" />
+
+    <com.haibin.calendarview.CalendarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical"
+        app:calendar_content_view_id="@+id/calendar_content">
+
+        <com.haibin.calendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:calendar_card_view="com.danmo.ithouse.widget.calendar.SimpleCalendarCardView"
+            app:calendar_height="35dp"
+            app:current_month_lunar_text_color="#CFCFCF"
+            app:current_month_text_color="#333333"
+            app:day_text_size="13sp"
+            app:min_year="1970"
+            app:other_month_text_color="#e1e1e1"
+            app:scheme_text="假"
+            app:scheme_text_color="#333"
+            app:scheme_theme_color="#333"
+            app:selected_text_color="#fff"
+            app:selected_theme_color="@color/colorPrimary"
+            app:week_background="#fff"
+            app:week_text_color="#fff"
+            app:week_view="com.danmo.ithouse.widget.calendar.SimpleWeekView" />
+
+        <LinearLayout
+            android:id="@+id/calendar_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/calendar_tab_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextAppearance="@style/TextAppearance.Tab"
+                app:tabTextColor="@color/diy_gray2" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/calendar_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        </LinearLayout>
+
+
+    </com.haibin.calendarview.CalendarLayout>
+
+</LinearLayout>

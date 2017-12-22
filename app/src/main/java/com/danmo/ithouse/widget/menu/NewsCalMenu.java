@@ -2,12 +2,14 @@ package com.danmo.ithouse.widget.menu;
 
 import android.content.Context;
 import android.support.v4.view.ActionProvider;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.danmo.commonutil.TimeUtil;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.CalendarActivity;
 
 /**
  * 自定义menu:资讯 日历
@@ -35,6 +37,12 @@ public class NewsCalMenu extends ActionProvider {
         tvMenu_calendar = view.findViewById(R.id.menu_calendar);
         int day = TimeUtil.getCurrentDay();
         tvMenu_calendar.setText(String.valueOf(day));
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CalendarActivity.start(mContext);
+            }
+        });
         return view;
     }
 }

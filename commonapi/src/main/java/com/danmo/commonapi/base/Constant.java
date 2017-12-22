@@ -62,8 +62,9 @@ public class Constant {
     //uid:uid	1415703---/001/41/57/03_60.jpg
     //http://avatar.ithome.com/avatars/000/34/32/36_60.jpg
 
-    //搜索yyy
-    //http://dyn.ithome.com/xml/search/e1fde91f200a6274.xml?client=android&r=1513668650253 //文章
-    //http://s.lapin365.com/callback/searchp?platform=ithome_android&key=yyy&userid=1467532&pagenumber=1 //辣品
-    //http://apiquan.ithome.com/api/post/getsearch?keyword=e1fde91f200a6274&maxnewsid=0&r=1513668555501 //圈子
+    //============================搜索：Android====================================
+    public static final String SEARCH_NEWS = "http://dyn.ithome.com/xml/search/ce3f2d7f0740b24b.xml?client=android&r=1513750892472";
+    public static final String SEARCH_LAPIN = "http://s.lapin365.com/callback/searchp?platform=ithome_android&key=Android&userid=1467532&pagenumber=1";
+    public static final String SEARCH_QUANZI = "http://apiquan.ithome.com/api/post/getsearch?keyword=ce3f2d7f0740b24b&maxnewsid=0&r=1513750956822";
+
 }
