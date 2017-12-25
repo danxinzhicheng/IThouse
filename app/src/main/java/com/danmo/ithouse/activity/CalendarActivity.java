@@ -12,7 +12,10 @@ import android.view.View;
 
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseViewPagerAdapter;
-import com.danmo.ithouse.fragment.sub.SubFragment;
+import com.danmo.ithouse.fragment.sub.calendar.NewsEventFragment;
+import com.danmo.ithouse.fragment.sub.calendar.NewsPushFragment;
+import com.danmo.ithouse.fragment.sub.calendar.ReadHistoryFragment;
+import com.danmo.ithouse.fragment.sub.calendar.TodayNewsFragment;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarView;
 
@@ -51,18 +54,19 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
 
         mCalendarView.setOnYearChangeListener(this);
         mCalendarView.setOnDateSelectedListener(this);
-        List<Calendar> schemes = new ArrayList<>();
-        int year = mCalendarView.getCurYear();
-        int month = mCalendarView.getCurMonth();
-        schemes.add(getSchemeCalendar(year, month, 3, 0, "假"));
-        schemes.add(getSchemeCalendar(year, month, 6, 0, "事"));
-        schemes.add(getSchemeCalendar(year, month, 9, 0, "议"));
-        schemes.add(getSchemeCalendar(year, month, 13, 0, "记"));
-        schemes.add(getSchemeCalendar(year, month, 14, 0, "记"));
-        schemes.add(getSchemeCalendar(year, month, 15, 0, "假"));
-        schemes.add(getSchemeCalendar(year, month, 18, 0, "记"));
-        schemes.add(getSchemeCalendar(year, month, 25, 0, "假"));
-        mCalendarView.setSchemeDate(schemes);
+
+//        List<Calendar> schemes = new ArrayList<>();
+//        int year = mCalendarView.getCurYear();
+//        int month = mCalendarView.getCurMonth();
+//        schemes.add(getSchemeCalendar(year, month, 3, 0, "假"));
+//        schemes.add(getSchemeCalendar(year, month, 6, 0, "事"));
+//        schemes.add(getSchemeCalendar(year, month, 9, 0, "议"));
+//        schemes.add(getSchemeCalendar(year, month, 13, 0, "记"));
+//        schemes.add(getSchemeCalendar(year, month, 14, 0, "记"));
+//        schemes.add(getSchemeCalendar(year, month, 15, 0, "假"));
+//        schemes.add(getSchemeCalendar(year, month, 18, 0, "记"));
+//        schemes.add(getSchemeCalendar(year, month, 25, 0, "假"));
+//        mCalendarView.setSchemeDate(schemes);
 
         BaseViewPagerAdapter adapter = new BaseViewPagerAdapter(this, getSupportFragmentManager(), getPagers());
         mViewPager.setAdapter(adapter);
@@ -97,21 +101,21 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
 
     }
 
-
-    private BaseViewPagerAdapter.PagerInfo[] getPagers() {
+    private List<BaseViewPagerAdapter.PagerInfo> getPagers() {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("sub_tab", "tab_calendar");
 
-        return new BaseViewPagerAdapter.PagerInfo[]{
-                new BaseViewPagerAdapter.PagerInfo("要闻推送", SubFragment.class,
-                        bundle),
-                new BaseViewPagerAdapter.PagerInfo("当日新闻", SubFragment.class,
-                        bundle),
-                new BaseViewPagerAdapter.PagerInfo("事件", SubFragment.class,
-                        bundle),
-                new BaseViewPagerAdapter.PagerInfo("浏览历史", SubFragment.class,
-                        bundle),
-        };
+        List<BaseViewPagerAdapter.PagerInfo> list = new ArrayList<>();
+        list.add(new BaseViewPagerAdapter.PagerInfo("要闻推送", NewsPushFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo("当日新闻", TodayNewsFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo("事件", NewsEventFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo("浏览历史", ReadHistoryFragment.class,
+                bundle));
+        return list;
+
     }
 }

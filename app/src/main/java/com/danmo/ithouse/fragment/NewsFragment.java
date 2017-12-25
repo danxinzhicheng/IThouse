@@ -28,6 +28,7 @@ import com.danmo.ithouse.activity.CalendarActivity;
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.BaseApplication;
 import com.danmo.ithouse.base.BaseFragment;
+import com.danmo.ithouse.base.BaseViewPagerAdapter;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.NewestFragment;
 import com.danmo.ithouse.fragment.sub.SubFragment;
@@ -190,8 +191,12 @@ public class NewsFragment extends BaseFragment {
             }
         });
 
-        mAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
+//        mAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
+//        mBaseViewPager.setAdapter(mAdapter);
+//        mTabNav.setupWithViewPager(mBaseViewPager);
+//        mBaseViewPager.setCurrentItem(0, true);
 
+        mAdapter = new BaseViewPagerAdapter(mContext, getChildFragmentManager(), getPagers());
         mBaseViewPager.setAdapter(mAdapter);
         mTabNav.setupWithViewPager(mBaseViewPager);
         mBaseViewPager.setCurrentItem(0, true);
@@ -309,8 +314,8 @@ public class NewsFragment extends BaseFragment {
         super.initData();
     }
 
-    private List<PagerInfo> getPagers() {
-        List<PagerInfo> listPage = new ArrayList<>();
+    private List<BaseViewPagerAdapter.PagerInfo> getPagers() {
+        List<BaseViewPagerAdapter.PagerInfo> listPage = new ArrayList<>();
         Bundle bundle = new Bundle();
         bundle.putSerializable("sub_tab", "tab");
 
@@ -329,78 +334,18 @@ public class NewsFragment extends BaseFragment {
             }
             switch (item.getType()) {
                 case 0:
-                    listPage.add(new PagerInfo(item.getName(), NewestFragment.class, bundle));
+                    listPage.add(new BaseViewPagerAdapter.PagerInfo(item.getName(), NewestFragment.class, bundle));
                     break;
                 case 1:
-                    listPage.add(new PagerInfo(item.getName(), SubFragment.class, bundle));
+                    listPage.add(new BaseViewPagerAdapter.PagerInfo(item.getName(), SubFragment.class, bundle));
                     break;
                 case 2:
-                    listPage.add(new PagerInfo(item.getName(), SubFragment.class, bundle));
+                    listPage.add(new BaseViewPagerAdapter.PagerInfo(item.getName(), SubFragment.class, bundle));
                     break;
             }
         }
 
         return listPage;
-    }
-
-    public static class PagerInfo {
-        private String title;
-        private Class<?> clx;
-        private Bundle args;
-
-        public PagerInfo(String title, Class<?> clx, Bundle args) {
-            this.title = title;
-            this.clx = clx;
-            this.args = args;
-        }
-    }
-
-    public class BaseViewPagerAdapter extends FragmentPagerAdapter {
-        private List<PagerInfo> mInfoList;
-        private Fragment mCurFragment;
-
-        public BaseViewPagerAdapter(FragmentManager fm, List<PagerInfo> infoList) {
-            super(fm);
-            mInfoList = infoList;
-        }
-
-        public void setPageInfo(List<PagerInfo> infoList) {
-            mInfoList.clear();
-            mInfoList.addAll(infoList);
-        }
-
-        @Override
-        public void setPrimaryItem(ViewGroup container, int position, Object object) {
-            super.setPrimaryItem(container, position, object);
-            if (object instanceof Fragment) {
-                mCurFragment = (Fragment) object;
-            }
-        }
-
-        public Fragment getCurFragment() {
-            return mCurFragment;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            PagerInfo info = mInfoList.get(position);
-            return Fragment.instantiate(getContext(), info.clx.getName(), info.args);
-        }
-
-        @Override
-        public int getCount() {
-            return mInfoList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mInfoList.get(position).title;
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            return PagerAdapter.POSITION_NONE;
-        }
     }
 
 }

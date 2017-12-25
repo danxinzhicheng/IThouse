@@ -2,11 +2,7 @@ package com.danmo.ithouse.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,15 +10,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseFragment;
+import com.danmo.ithouse.base.BaseViewPagerAdapter;
 import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.HotGoodsAllFragment;
-import com.danmo.ithouse.fragment.sub.SubFragment;
 import com.danmo.ithouse.util.Config;
 import com.danmo.ithouse.widget.menu.HotGoodsAppMenu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 辣品
@@ -46,7 +44,7 @@ public class HotGoodsFragment extends BaseFragment {
         setHasOptionsMenu(true);
         ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
 
-        HotGoodsFragment.BaseViewPagerAdapter adapter = new HotGoodsFragment.BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
+        BaseViewPagerAdapter adapter = new BaseViewPagerAdapter(mContext, getChildFragmentManager(), getPagers());
         mBaseViewPager.setAdapter(adapter);
         mTabNav.setupWithViewPager(mBaseViewPager);
         mBaseViewPager.setCurrentItem(0, true);
@@ -61,83 +59,29 @@ public class HotGoodsFragment extends BaseFragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public static class PagerInfo {
-        private String title;
-        private Class<?> clx;
-        private Bundle args;
-
-        public PagerInfo(String title, Class<?> clx, Bundle args) {
-            this.title = title;
-            this.clx = clx;
-            this.args = args;
-        }
-    }
-
-    public class BaseViewPagerAdapter extends FragmentPagerAdapter {
-        private HotGoodsFragment.PagerInfo[] mInfoList;
-        private Fragment mCurFragment;
-
-        public BaseViewPagerAdapter(FragmentManager fm, HotGoodsFragment.PagerInfo[] infoList) {
-            super(fm);
-            mInfoList = infoList;
-        }
-
-        @Override
-        public void setPrimaryItem(ViewGroup container, int position, Object object) {
-            super.setPrimaryItem(container, position, object);
-            if (object instanceof Fragment) {
-                mCurFragment = (Fragment) object;
-            }
-        }
-
-        public Fragment getCurFragment() {
-            return mCurFragment;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            HotGoodsFragment.PagerInfo info = mInfoList[position];
-            return Fragment.instantiate(getContext(), info.clx.getName(), info.args);
-        }
-
-        @Override
-        public int getCount() {
-            return mInfoList.length;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mInfoList[position].title;
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            return PagerAdapter.POSITION_NONE;
-        }
-    }
-
-    private HotGoodsFragment.PagerInfo[] getPagers() {
+    private List<BaseViewPagerAdapter.PagerInfo> getPagers() {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("sub_tab", "tab_hotgoods");
 
+        List<BaseViewPagerAdapter.PagerInfo> list = new ArrayList<>();
+
         if (Config.hotgoodsTabTitles.length < 6) {
             return null;
         }
-        return new HotGoodsFragment.PagerInfo[]{
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[0], HotGoodsAllFragment.class,
-                        bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[1], HotGoodsAllFragment.class,
-                        bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[2], HotGoodsAllFragment.class,
-                        bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[3], HotGoodsAllFragment.class,
-                        bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[4], HotGoodsAllFragment.class,
-                        bundle),
-                new HotGoodsFragment.PagerInfo(Config.hotgoodsTabTitles[5], HotGoodsAllFragment.class,
-                        bundle),
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[0], HotGoodsAllFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[1], HotGoodsAllFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[2], HotGoodsAllFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[3], HotGoodsAllFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[4], HotGoodsAllFragment.class,
+                bundle));
+        list.add(new BaseViewPagerAdapter.PagerInfo(Config.hotgoodsTabTitles[5], HotGoodsAllFragment.class,
+                bundle));
 
-        };
+        return list;
     }
 }

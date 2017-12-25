@@ -8,21 +8,29 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 
 /**
  * Created by user on 2017/12/22.
  */
 
 public class BaseViewPagerAdapter extends FragmentPagerAdapter {
-    private PagerInfo[] mInfoList;
+    private List<PagerInfo> mInfoList;
     private Fragment mCurFragment;
     private Context mContext;
 
-    public BaseViewPagerAdapter(Context context,FragmentManager fm, PagerInfo[] infoList) {
+    public BaseViewPagerAdapter(Context context, FragmentManager fm, List<PagerInfo> infoList) {
         super(fm);
         mContext = context;
         mInfoList = infoList;
     }
+
+    public void setPageInfo(List<PagerInfo> infoList) {
+        mInfoList.clear();
+        mInfoList.addAll(infoList);
+    }
+
 
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
@@ -38,18 +46,18 @@ public class BaseViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        PagerInfo info = mInfoList[position];
+        PagerInfo info = mInfoList.get(position);
         return Fragment.instantiate(mContext, info.clx.getName(), info.args);
     }
 
     @Override
     public int getCount() {
-        return mInfoList.length;
+        return mInfoList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mInfoList[position].title;
+        return mInfoList.get(position).title;
     }
 
     @Override
