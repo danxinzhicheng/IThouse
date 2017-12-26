@@ -2,7 +2,6 @@ package com.danmo.ithouse.widget.menu;
 
 import android.content.Context;
 import android.support.v4.view.ActionProvider;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;

@@ -70,10 +70,10 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
         mContext = context;
         Logger.i("初始化 implement");
         try {
-            sNewestImpl = new NewestImpl(context, Constant.PARSE_XML);
-            sNewsDetailAPI = new NewsDetailImpl(context, Constant.PARSE_XML);
-            sHotGoodsApi = new HotGoodsImpl(context, Constant.PARSE_GSON);
-            sCommunityApi = new CommunityImpl(context, Constant.PARSE_GSON);
+            sNewestImpl = new NewestImpl(context, Constant.BASE_URL_NEWS, Constant.PARSE_XML);
+            sNewsDetailAPI = new NewsDetailImpl(context, Constant.BASE_URL_NEWS, Constant.PARSE_XML);
+            sHotGoodsApi = new HotGoodsImpl(context, Constant.BASE_URL_LAPIN, Constant.PARSE_GSON);
+            sCommunityApi = new CommunityImpl(context, Constant.BASE_URL_QUANZI, Constant.PARSE_GSON);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,19 +92,19 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
 
     @Override
     public String getNewsDetailContent(String url) {
-        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.PARSE_XML);
+        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.BASE_URL_NEWS, Constant.PARSE_XML);
         return sNewsDetailAPI.getNewsDetailContent(url);
     }
 
     @Override
     public String getNewsDetailRelated(String url) {
-        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.PARSE_DEFAULT);
+        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.BASE_URL_NEWS, Constant.PARSE_DEFAULT);
         return sNewsDetailAPI.getNewsDetailRelated(url);
     }
 
     @Override
     public String getNewsDetailRecommend(String url) {
-        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.PARSE_GSON);
+        sNewsDetailAPI = new NewsDetailImpl(mContext, Constant.BASE_URL_NEWS, Constant.PARSE_GSON);
         return sNewsDetailAPI.getNewsDetailRecommend(url);
     }
 
@@ -136,5 +136,10 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
     @Override
     public String getCommunityListHotest(String url) {
         return sCommunityApi.getCommunityListHotest(url);
+    }
+
+    @Override
+    public String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
+        return sCommunityApi.getCommunityCategoryList(categoryid, type, orderTime, visistCount, pageLength);
     }
 }

@@ -8,6 +8,7 @@ import com.danmo.ithouse.R;
 public class Config {
     public static final String GITHUB = "https://github.com/danxinzhicheng";
     public static final String BLOG = "http://blog.csdn.net/danxinzhicheng";
+    public static final String WORDPRESS = "http://danmoit.cn";
 
     public static final String[] navigationTitles = {"资讯", "辣品", "圈子", "我"};
 

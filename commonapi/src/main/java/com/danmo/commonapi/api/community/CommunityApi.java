@@ -6,4 +6,6 @@ public interface CommunityApi {
     String getCommunityListNewest(String url);
 
     String getCommunityListHotest(String url);
+
+    String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength);
 }

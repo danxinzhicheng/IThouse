@@ -2,7 +2,8 @@
     <string name="app_name">IT家园</string>
     <string name="author">Danmo</string>
     <string name="git_hub">GitHub</string>
-    <string name="blog">Blog</string>
+    <string name="blog">Csdn</string>
+    <string name="wordpress">WordPress</string>
     <string name="demo_of_android_util_code">Owner the World</string>
 
     <string name="main_tab_name_news">资讯</string>

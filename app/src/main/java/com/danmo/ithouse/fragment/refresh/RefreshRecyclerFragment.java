@@ -43,8 +43,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.logging.Handler;
-
 /**
  * 具有下拉刷新和上拉加载的Fragment
  */
@@ -121,7 +119,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
                     public void run() {
 
                     }
-                },200);
+                }, 200);
             }
         });
         initData(mAdapter);

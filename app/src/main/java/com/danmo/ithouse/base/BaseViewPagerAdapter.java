@@ -31,7 +31,6 @@ public class BaseViewPagerAdapter extends FragmentPagerAdapter {
         mInfoList.addAll(infoList);
     }
 
-
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, position, object);

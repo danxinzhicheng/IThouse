@@ -3,7 +3,6 @@ package com.danmo.ithouse.widget.picker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -80,11 +79,13 @@ public class TabPickerView extends FrameLayout {
 
     /**
      * must bind the head tip view first
+     *
      * @param mViewOperator
      */
-    public void bindViewOperator(TextView mViewOperator){
+    public void bindViewOperator(TextView mViewOperator) {
         this.mViewOperator = mViewOperator;
     }
+
     /**
      * The Tab Picking Listener Interface
      */

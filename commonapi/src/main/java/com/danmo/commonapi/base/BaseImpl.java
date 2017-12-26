@@ -40,22 +40,24 @@ public class BaseImpl<Service> {
     protected CacheUtil mCacheUtil;
     protected Service mService;
     protected static int currentParse;
+    private static String currentBaseUrl;
 
-
-    public BaseImpl(@NonNull Context context, int currentParse) {
+    public BaseImpl(@NonNull Context context, String baseUrl, int currentParse) {
         mCacheUtil = new CacheUtil(context.getApplicationContext());
-        initRetrofit(currentParse);
+        if (null != mRetrofit && this.currentParse == currentParse && this.currentBaseUrl.equals(baseUrl)) {
+            return;
+        }
+        initRetrofit(baseUrl, currentParse);
         this.mService = mRetrofit.create(getServiceClass());
         this.currentParse = currentParse;
+        this.currentBaseUrl = baseUrl;
     }
 
     private Class<Service> getServiceClass() {
         return (Class<Service>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
-    private void initRetrofit(int currentParse) {
-        if (null != mRetrofit && this.currentParse == currentParse)
-            return;
+    private void initRetrofit(String baseUrl, int currentParse) {
 
         // 设置 Log 拦截器，可以用于以后处理一些异常情况
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -73,19 +75,19 @@ public class BaseImpl<Service> {
 
         if (currentParse == Constant.PARSE_GSON) {
             Retrofit.Builder builder = new Retrofit.Builder();
-            mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
+            mRetrofit = builder.baseUrl(baseUrl)                         // 设置 base url
                     .client(client)                                     // 设置 client
                     .addConverterFactory(GsonConverterFactory.create()) // 设置 Json 转换工具
                     .build();
         } else if (currentParse == Constant.PARSE_XML) {
             Retrofit.Builder builder = new Retrofit.Builder();
-            mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
+            mRetrofit = builder.baseUrl(baseUrl)                         // 设置 base url
                     .client(client)                                     // 设置 client
                     .addConverterFactory(SimpleXmlConverterFactory.create())// 设置xml转换工具
                     .build();
         } else {
             Retrofit.Builder builder = new Retrofit.Builder();
-            mRetrofit = builder.baseUrl(Constant.BASE_URL)                         // 设置 base url
+            mRetrofit = builder.baseUrl(baseUrl)                         // 设置 base url
                     .client(client)                                     // 设置 client
                     .addConverterFactory(StringConverterFactory.create()) // 设置 string 转换工具
                     .build();

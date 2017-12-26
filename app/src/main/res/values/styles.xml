@@ -75,10 +75,6 @@
     <style name="TextAppearance.Tab">
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="TextAppearance.Toolbar">
-        <item name="android:textSize">18sp</item>
-    </style>
-
 
     <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/checkbox_selector</item>

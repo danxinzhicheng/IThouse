@@ -9,16 +9,16 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/lay_12"
-        android:paddingRight="@dimen/lay_12" />
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
 
     <com.danmo.ithouse.fragment.nav.NavigationButton
         android:id="@+id/nav_item_tweet"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/lay_12"
-        android:paddingRight="@dimen/lay_12" />
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
 
     <!--加号发表动态的，暂时不需要-->
     <ImageView
@@ -38,14 +38,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/lay_12"
-        android:paddingRight="@dimen/lay_12" />
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
 
     <com.danmo.ithouse.fragment.nav.NavigationButton
         android:id="@+id/nav_item_me"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingLeft="@dimen/lay_12"
-        android:paddingRight="@dimen/lay_12" />
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp" />
 </LinearLayout>

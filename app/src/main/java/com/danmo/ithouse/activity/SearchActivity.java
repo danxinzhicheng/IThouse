@@ -1,18 +1,23 @@
 package com.danmo.ithouse.activity;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import com.danmo.ithouse.base.BaseActivity;
+import com.danmo.ithouse.base.ViewHolder;
 
 /**
  * Created by user on 2017/12/19.
  */
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends BaseActivity {
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
+        return 0;
     }
 
+    @Override
+    protected void initViews(ViewHolder holder, View root) {
+        super.initViews(holder, root);
+    }
 }

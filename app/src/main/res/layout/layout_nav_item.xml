@@ -16,9 +16,9 @@
             android:layout_height="25dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/app_name"
-            android:paddingLeft="@dimen/lay_2"
-            android:paddingRight="@dimen/lay_2"
-            android:paddingTop="@dimen/lay_2"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
             android:scaleType="fitCenter"
             android:src="@drawable/tab_icon_news" />
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="14dp"
             android:layout_gravity="top|center"
-            android:layout_marginLeft="@dimen/lay_8"
+            android:layout_marginLeft="8dp"
             android:background="@drawable/ic_red_dot"
             android:ellipsize="none"
             android:gravity="center"
@@ -36,7 +36,7 @@
             android:paddingRight="3dp"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/font_10"
+            android:textSize="10sp"
             android:visibility="gone"
             tools:text="1"
             tools:visibility="visible" />

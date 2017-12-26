@@ -3,15 +3,15 @@ package com.danmo.ithouse.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.BaseViewPagerAdapter;
+import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.calendar.NewsEventFragment;
 import com.danmo.ithouse.fragment.sub.calendar.NewsPushFragment;
 import com.danmo.ithouse.fragment.sub.calendar.ReadHistoryFragment;
@@ -26,7 +26,7 @@ import java.util.List;
  * Created by user on 2017/12/22.
  */
 
-public class CalendarActivity extends AppCompatActivity implements CalendarView.OnDateSelectedListener,
+public class CalendarActivity extends BaseActivity implements CalendarView.OnDateSelectedListener,
         CalendarView.OnYearChangeListener {
 
     private Toolbar mToolbar;
@@ -35,9 +35,13 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
     private ViewPager mViewPager;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar_layout);
+    protected int getLayoutId() {
+        return R.layout.activity_calendar_layout;
+    }
+
+    @Override
+    protected void initViews(ViewHolder holder, View root) {
+        super.initViews(holder, root);
         mCalendarView = findViewById(R.id.calendarView);
         mTabLayout = findViewById(R.id.calendar_tab_nav);
         mViewPager = findViewById(R.id.calendar_viewpager);
@@ -72,9 +76,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
         mViewPager.setAdapter(adapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setCurrentItem(0, true);
-
     }
-
 
     private Calendar getSchemeCalendar(int year, int month, int day, int color, String text) {
         Calendar calendar = new Calendar();

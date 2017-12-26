@@ -11,8 +11,8 @@ import com.danmo.commonutil.UUIDGenerator;
 
 
 public class NewestImpl extends BaseImpl<NewestService> implements NewestAPI {
-    public NewestImpl(@NonNull Context context, int parsePattern) {
-        super(context, parsePattern);
+    public NewestImpl(@NonNull Context context, String baseUrl, int parsePattern) {
+        super(context, baseUrl, parsePattern);
     }
 
     @Override

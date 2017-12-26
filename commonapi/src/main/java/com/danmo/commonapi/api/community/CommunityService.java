@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 public interface CommunityService {
@@ -17,4 +18,11 @@ public interface CommunityService {
 
     @GET
     Call<List<CommunityListItem>> getCommunityListHotest(@Url String url);
+
+    @GET("post")
+    Call<List<CommunityListItem>> getCommunityCategoryList(@Query("categoryid") String categoryid,
+                                                           @Query("type") String type,
+                                                           @Query("orderTime") String orderTime,
+                                                           @Query("visistCount") String visistCount,
+                                                           @Query("pageLength") String pageLength);
 }

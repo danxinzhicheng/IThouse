@@ -29,7 +29,7 @@ public class SimpleWeekView extends WeekView {
     @Override
     protected void onDrawSelected(Canvas canvas, Calendar calendar, int x, boolean hasScheme) {
         int cx = x + mItemWidth / 2;
-        int cy =  mItemHeight / 2;
+        int cy = mItemHeight / 2;
         canvas.drawCircle(cx, cy, mRadius, mSelectedPaint);
     }
 
@@ -42,7 +42,7 @@ public class SimpleWeekView extends WeekView {
 
     @Override
     protected void onDrawText(Canvas canvas, Calendar calendar, int x, boolean hasScheme, boolean isSelected) {
-        float baselineY = mTextBaseLine ;
+        float baselineY = mTextBaseLine;
         int cx = x + mItemWidth / 2;
         if (hasScheme) {
             canvas.drawText(String.valueOf(calendar.getDay()),

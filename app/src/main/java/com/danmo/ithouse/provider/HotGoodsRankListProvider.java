@@ -97,7 +97,7 @@ public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
                         WebViewActivity.start(mContext, link, WebViewActivity.PAGE_TYPE_HOTGOODS);
                     }
                 }
-            },R.id.hotgoods_rank_quan_info);
+            }, R.id.hotgoods_rank_quan_info);
 
         }
 

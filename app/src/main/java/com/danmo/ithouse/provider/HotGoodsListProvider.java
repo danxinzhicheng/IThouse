@@ -3,7 +3,6 @@ package com.danmo.ithouse.provider;
 import android.content.Context;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +26,7 @@ import java.util.Map;
 
 public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
     private Map<String, Integer> mapClicked = new HashMap<String, Integer>();
+
     public HotGoodsListProvider(@NonNull Context context) {
         super(context, R.layout.item_hotgoods_list);
     }

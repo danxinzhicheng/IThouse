@@ -27,7 +27,8 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/iv_avatar"
         android:gravity="center_vertical"
-        android:text="@string/author"
+        android:text="淡漠"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="bold" />
@@ -40,7 +41,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/demo_of_android_util_code"
+        android:text="这里没有陌路，你从不孤独 ---by Danmo"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_16" />
+        android:textSize="16sp" />
 </RelativeLayout>

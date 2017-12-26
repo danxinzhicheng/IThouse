@@ -49,6 +49,10 @@
             android:name="com.danmo.ithouse.activity.CalendarActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name="com.danmo.ithouse.activity.CommunityCategoryListActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

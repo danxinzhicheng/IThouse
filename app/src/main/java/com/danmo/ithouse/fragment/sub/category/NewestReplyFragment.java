@@ -1,36 +1,33 @@
-package com.danmo.ithouse.fragment.sub;
+package com.danmo.ithouse.fragment.sub.category;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
 import com.danmo.commonapi.CommonApi;
-import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.community.CommunityListItem;
 import com.danmo.commonapi.event.GetCommunityListEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
+import com.danmo.ithouse.activity.CommunityCategoryListActivity;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;
-import com.danmo.ithouse.provider.CommunityCategoryProvider;
 import com.danmo.ithouse.provider.CommunityListProvider;
-import com.danmo.ithouse.util.EventBusMsg;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
 /**
- * 圈子的内容填充页面
+ * Created by user on 2017/12/26.
  */
 
-public class CommunityContentFragment extends RefreshRecyclerFragment<List<CommunityListItem>, GetCommunityListEvent> {
-
-    private String currentRefeshUrl = Constant.QUANZI_LIST_NEWEST;
+public class NewestReplyFragment extends RefreshRecyclerFragment<List<CommunityListItem>, GetCommunityListEvent> {
+    private String type;
+    private String cid;
 
     @Override
     public void initData(HeaderFooterAdapter adapter) {
-        loadHeader();
+
+        cid = ((CommunityCategoryListActivity) getActivity()).getCategoryId();
+        type = CommunityCategoryListActivity.TYPE_REPLYE;
         setLoadMoreEnable(true);
     }
 
@@ -48,13 +45,13 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        return CommonApi.getSingleInstance().getCommunityListNewest(currentRefeshUrl);
+        return CommonApi.getSingleInstance().getCommunityCategoryList(cid, type, "", "", "");
     }
 
     @NonNull
     @Override
     protected String requestHeader() {
-        return CommonApi.getSingleInstance().getCommunityCategory(Constant.QUANZI_CATEGORY);
+        return null;
     }
 
     @NonNull
@@ -76,9 +73,7 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
 
     @Override
     protected void onLoadHeader(GetCommunityListEvent event, HeaderFooterAdapter adapter) {
-        if (event.getBean() != null && event.getBean().size() > 0) {
-            mAdapter.registerHeader(event.getBean(), new CommunityCategoryProvider(mContext));//添加分类
-        }
+
     }
 
     @Override
@@ -94,19 +89,4 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
             toast("刷新数据失败");
         }
     }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onResultEvent(EventBusMsg event) {
-        int flag = event.getCommunity_fresh_new_or_hot();
-        if (flag == 0) {
-            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
-            refresh(POST_HEADER);
-            refresh(POST_REFRESH);
-        } else {
-            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_HOTEST);
-            refresh(POST_HEADER);
-            refresh(POST_REFRESH);
-        }
-    }
-
 }

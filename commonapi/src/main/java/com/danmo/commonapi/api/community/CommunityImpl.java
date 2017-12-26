@@ -10,8 +10,8 @@ import com.danmo.commonapi.event.GetCommunityListEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 public class CommunityImpl extends BaseImpl<CommunityService> implements CommunityApi {
-    public CommunityImpl(@NonNull Context context, int currentParse) {
-        super(context, currentParse);
+    public CommunityImpl(@NonNull Context context, String baseUrl, int currentParse) {
+        super(context, baseUrl, currentParse);
     }
 
     @Override
@@ -32,6 +32,13 @@ public class CommunityImpl extends BaseImpl<CommunityService> implements Communi
     public String getCommunityListHotest(String url) {
         String uuid = UUIDGenerator.getUUID();
         mService.getCommunityListHotest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
+        return uuid;
+    }
+
+    @Override
+    public String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
+        String uuid = UUIDGenerator.getUUID();
+        mService.getCommunityCategoryList(categoryid, type, orderTime, visistCount, pageLength).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
         return uuid;
     }
 }

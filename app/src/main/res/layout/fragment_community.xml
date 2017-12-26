@@ -18,8 +18,8 @@
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ToolbarPopupTheme"
-            app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing"
-            app:title="圈子"></android.support.v7.widget.Toolbar>
+            app:title="圈子"
+            app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -27,6 +27,6 @@
         android:id="@+id/quan_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/diy_gray"></FrameLayout>
+        android:background="@color/diy_gray"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </android.support.design.widget.CoordinatorLayout>

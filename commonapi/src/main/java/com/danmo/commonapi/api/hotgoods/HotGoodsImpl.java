@@ -11,8 +11,8 @@ import com.danmo.commonapi.event.GetHotGoodsRankEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 public class HotGoodsImpl extends BaseImpl<HotGoodsService> implements HotGoodsApi {
-    public HotGoodsImpl(@NonNull Context context, int currentParse) {
-        super(context, currentParse);
+    public HotGoodsImpl(@NonNull Context context, String baseUrl, int currentParse) {
+        super(context, baseUrl, currentParse);
     }
 
     @Override

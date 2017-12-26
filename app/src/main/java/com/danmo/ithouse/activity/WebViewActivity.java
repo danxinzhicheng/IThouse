@@ -2,10 +2,6 @@ package com.danmo.ithouse.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -17,11 +13,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.base.BaseActivity;
+import com.danmo.ithouse.base.ViewHolder;
 
 /**
  * 普通详情页，webview类型页面
  */
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends BaseActivity {
     private WebView webView;
     private Toolbar toolbar;
     public static final String INTENT_DETAIL_CONTENT_LINK = "link";
@@ -34,10 +32,13 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_webview_layout);
+    protected int getLayoutId() {
+        return R.layout.activity_webview_layout;
+    }
 
+    @Override
+    protected void initViews(ViewHolder holder, View root) {
+        super.initViews(holder, root);
         toolbar = findViewById(R.id.flexible_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,7 @@ public class WebViewActivity extends AppCompatActivity {
     private class webViewClient extends WebViewClient {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-            if( url.startsWith("http:") || url.startsWith("https:") ) {
+            if (url.startsWith("http:") || url.startsWith("https:")) {
                 view.loadUrl(url);
                 return false;
             }

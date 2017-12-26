@@ -56,11 +56,11 @@
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/flexible_toolbar"
-                app:navigationIcon="@drawable/abc_ic_ab_back_material"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@null"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/abc_ic_ab_back_material"
                 app:popupTheme="@style/ToolbarPopupTheme" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -81,11 +81,11 @@
             <WebView
                 android:id="@+id/wv_detail_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" />
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

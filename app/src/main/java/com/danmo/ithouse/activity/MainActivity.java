@@ -110,4 +110,5 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
 
         va.start();
     }
+
 }

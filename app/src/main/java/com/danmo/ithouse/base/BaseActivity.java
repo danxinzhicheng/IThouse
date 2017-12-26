@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.danmo.commonutil.leak.IMMLeaks;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.MainActivity;
 import com.danmo.ithouse.util.Config;
 
 import java.io.Serializable;
@@ -47,15 +48,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 case R.id.action_blog:
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Config.BLOG)));
                     break;
+                case R.id.action_wp:
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Config.WORDPRESS)));
             }
             return false;
         }
     };
 
-    public static void openActivity(Context context, Class<?> cls) {
-        Intent intent = new Intent(context, cls);
-        context.startActivity(intent);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,10 +133,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void openActivity(Class<?> cls) {
-        openActivity(this, cls);
-    }
-
     /**
      * 打开 Activity 的同时传递一个数据
      */
@@ -210,12 +205,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (l.onTurnBack()) return;
         }
 
-        long curTime = SystemClock.uptimeMillis();
-        if ((curTime - mBackPressedTime) < (3 * 1000)) {
-            finish();
+        if (this instanceof MainActivity) {
+            long curTime = SystemClock.uptimeMillis();
+            if ((curTime - mBackPressedTime) < (3 * 1000)) {
+                finish();
+            } else {
+                mBackPressedTime = curTime;
+                toastLong(this.getString(R.string.tip_double_click_exit));
+            }
         } else {
-            mBackPressedTime = curTime;
-            toastLong(this.getString(R.string.tip_double_click_exit));
+            super.onBackPressed();
         }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,6 +14,7 @@ import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
 import com.danmo.commonutil.recyclerview.adapter.singletype.SingleTypeAdapter;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.CommunityCategoryListActivity;
 import com.danmo.ithouse.util.Config;
 import com.danmo.ithouse.util.EventBusMsg;
 
@@ -79,12 +81,20 @@ public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityLi
         }
 
         @Override
-        public void convert(int position, RecyclerViewHolder holder, CommunityListItem bean) {
+        public void convert(final int position, RecyclerViewHolder holder, final CommunityListItem bean) {
             ImageView icon = holder.get(R.id.item_community_category_icon);
             icon.setImageResource(icons[position]);
 
             holder.setText(R.id.item_community_category_title, titles[position]);
             holder.setText(R.id.item_community_category_addnum, "+" + bean.c);
+
+            holder.getRootView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CommunityCategoryListActivity.start(mContext, titles[position], bean.id);
+                }
+            });
+
         }
     }
 

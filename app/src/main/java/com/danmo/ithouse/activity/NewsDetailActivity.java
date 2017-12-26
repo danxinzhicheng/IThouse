@@ -3,14 +3,10 @@ package com.danmo.ithouse.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +32,8 @@ import com.danmo.commonapi.event.GetNewsDetailRelatedEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.base.BaseActivity;
+import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.provider.RecommentActicalProvider;
 import com.danmo.ithouse.provider.RelatedActicalProvider;
 
@@ -54,7 +52,7 @@ import java.util.List;
 /**
  * 普通内容详情页类型页面
  */
-public class NewsDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
+public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnOffsetChangedListener {
 
     private static final int PERCENTAGE_TO_SHOW_IMAGE = 10;
     private int mMaxScrollSize = 0;
@@ -84,9 +82,15 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;letter-spacing:1.2;\">%s</body></html>";
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_detail_layout);
+    protected int getLayoutId() {
+        return R.layout.activity_news_detail_layout;
+    }
+
+    @Override
+    protected void initViews(ViewHolder holder, View root) {
+        super.initViews(holder, root);
+
+
         mTopSub = findViewById(R.id.detail_top_sub);
         tvTime = findViewById(R.id.detail_time);
         tvAuthor = findViewById(R.id.detail_author);

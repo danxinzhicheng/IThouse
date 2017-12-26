@@ -27,7 +27,7 @@ public class BaseApplication extends Application {
         sAppContext = this;
     }
 
-    private void initRealm(){
+    private void initRealm() {
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .name("ithome") //文件名

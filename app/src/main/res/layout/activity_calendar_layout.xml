@@ -16,7 +16,7 @@
         app:navigationIcon="@drawable/abc_ic_ab_back_material"
         app:popupTheme="@style/ToolbarPopupTheme"
         app:title="2017年12月22日"
-        app:titleTextAppearance="@style/TextAppearance.Toolbar" />
+        app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing" />
 
     <com.haibin.calendarview.CalendarLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             app:calendar_card_view="com.danmo.ithouse.widget.calendar.SimpleCalendarCardView"
-            app:calendar_height="35dp"
+            app:calendar_height="40dp"
             app:current_month_lunar_text_color="#CFCFCF"
             app:current_month_text_color="#333333"
             app:day_text_size="13sp"
