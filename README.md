@@ -14,7 +14,7 @@
 3. Gradle版本：gradle-4.1-all.zip
    classpath 'com.android.tools.build:gradle:3.0.0'
 
-   注：可根据自己环境修改版本，只要编译通过就可
+   注：可根据自己的环境修改Gradle版本，只要编译通过就可
 
 4. Android Support库：26.0.1
 
@@ -31,6 +31,7 @@
 3. Http请求 : Retrofit
 4. 图片加载 ：Glide
 5. 数据持久化 ：Realm
+6. 日志Log：Bugly
 
 ## 项目架构参考
 - DiyCode

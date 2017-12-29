@@ -6,6 +6,8 @@ import android.content.Context;
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonutil.CrashHandler;
 import com.danmo.commonutil.Utils;
+import com.danmo.ithouse.util.Config;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -25,6 +27,7 @@ public class BaseApplication extends Application {
         CommonApi.init(this, client_id, client_secret);
         initRealm();
         sAppContext = this;
+        CrashReport.initCrashReport(this, Config.appID_Bugly, true);
     }
 
     private void initRealm() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.danmo.ithouse.R;
@@ -40,12 +41,13 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnDat
 
     @Override
     protected void initViews() {
-        mCalendarView = findViewById(R.id.calendarView);
-        mTabLayout = findViewById(R.id.calendar_tab_nav);
-        mViewPager = findViewById(R.id.calendar_viewpager);
-
-        mToolbar = findViewById(R.id.flexible_toolbar);
+        super.initViews();
+        mToolbar = mRootView.findViewById(R.id.canlendar_toolbar);
         setSupportActionBar(mToolbar);
+        mCalendarView = findViewById(R.id.calendarView);
+        mTabLayout = mRootView.findViewById(R.id.calendar_tab_nav);
+        mViewPager = mRootView.findViewById(R.id.calendar_viewpager);
+
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -31,7 +32,7 @@ import java.util.List;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected DrawerLayout rootLayout;
+    protected DrawerLayout mRootView;
     protected FrameLayout flActivityContainer;
     private Toast mToast;
     private Fragment mFragment;
@@ -80,7 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         flActivityContainer.addView(LayoutInflater.from(this).inflate(getLayoutId(), flActivityContainer, false));
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(mListener);
-        rootLayout = findViewById(R.id.root_layout);
+        mRootView = findViewById(R.id.root_layout);
     }
 
     // 默认点击左上角是结束当前 Activity
