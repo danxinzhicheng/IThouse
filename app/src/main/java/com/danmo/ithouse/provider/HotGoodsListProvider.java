@@ -25,7 +25,7 @@ import java.util.Map;
  */
 
 public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
-    private Map<String, Integer> mapClicked = new HashMap<String, Integer>();
+    private Map<String, Integer> mMapClicked = new HashMap<String, Integer>();
 
     public HotGoodsListProvider(@NonNull Context context) {
         super(context, R.layout.item_hotgoods_list);
@@ -59,7 +59,7 @@ public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
         Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 
         final TextView title = holder.get(R.id.hotgoods_item_title);
-        if (mapClicked.containsKey(bean.productid)) {
+        if (mMapClicked.containsKey(bean.productid)) {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
         } else {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_black));
@@ -72,7 +72,7 @@ public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
                 if (UrlUtil.isUrlPrefix(link)) {
                     WebViewActivity.start(mContext, link, WebViewActivity.PAGE_TYPE_HOTGOODS);
                     title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
-                    mapClicked.put(bean.productid, position);
+                    mMapClicked.put(bean.productid, position);
                 }
             }
         });

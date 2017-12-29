@@ -61,7 +61,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     // 分页加载
     protected int pageIndex = 0;                      // 当面页码
     protected int pageCount = 20;                     // 每页个数
-    protected android.support.v7.widget.RecyclerView mRecyclerView;
+    protected RecyclerView mRecyclerView;
     // 适配器
     protected HeaderFooterAdapter mAdapter;
     protected FooterProvider mFooterProvider;
@@ -114,12 +114,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
                 refresh(POST_HEADER);
                 refresh(POST_REFRESH);
                 refresh(POST_MID);
-                mRefreshLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                }, 200);
             }
         });
         initData(mAdapter);
@@ -263,12 +257,12 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             int mScrollState = recyclerView.getScrollState();
             if (mScrollState == RecyclerView.SCROLL_STATE_DRAGGING || mScrollState == RecyclerView.SCROLL_STATE_SETTLING) {
-                if (dy > 0) {//up -> hide
+                if (dy > 50) {//up -> hide
                     if (isRequestShowed) {
                         EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_UP));
                         isRequestShowed = false;
                     }
-                } else {//down -> show
+                } else if (dy < -50) {//down -> show
                     if (!isRequestShowed) {
                         EventBus.getDefault().post(new EventBusMsg(SCROLL_STATE_DOWN));
                         isRequestShowed = true;

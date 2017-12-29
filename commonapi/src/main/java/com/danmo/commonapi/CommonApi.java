@@ -142,4 +142,9 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
     public String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
         return sCommunityApi.getCommunityCategoryList(categoryid, type, orderTime, visistCount, pageLength);
     }
+
+    @Override
+    public String getCommunityComment(String id) {
+        return sCommunityApi.getCommunityComment(id);
+    }
 }

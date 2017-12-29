@@ -8,11 +8,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.BaseViewPagerAdapter;
-import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.category.HotPostFragment;
 import com.danmo.ithouse.fragment.sub.category.NewestReplyFragment;
 import com.danmo.ithouse.fragment.sub.category.NewestReportFragment;
@@ -47,13 +47,19 @@ public class CommunityCategoryListActivity extends BaseActivity {
     }
 
     @Override
-    protected void initViews(ViewHolder holder, View root) {
-        super.initViews(holder, root);
+    protected void initViews() {
+        super.initViews();
         mToolbar = findViewById(R.id.flexible_toolbar);
         mTabLayout = findViewById(R.id.category_tab);
         mViewPager = findViewById(R.id.category_viewpager);
 
         mFloatButton = findViewById(R.id.floatButton);
+        mFloatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CommunityCategoryListActivity.this, "功能待开发", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

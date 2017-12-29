@@ -8,4 +8,6 @@ public interface CommunityApi {
     String getCommunityListHotest(String url);
 
     String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength);
+
+    String getCommunityComment(String id);
 }

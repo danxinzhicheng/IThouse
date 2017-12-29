@@ -48,4 +48,7 @@
     <color name="diy_white">#ffffff</color>
     <color name="diy_white_bg">#F0F0F0</color>
 
+    <color name="comment_name">#6682BA</color>
+    <color name="comment_floor_bg">#F9F9ED</color>
+
 </resources>

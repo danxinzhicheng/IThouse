@@ -24,7 +24,6 @@ import java.util.List;
 
 public class NewestBannerProvider extends BaseViewProvider<Newest> {
 
-
     public NewestBannerProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest_banner);
     }

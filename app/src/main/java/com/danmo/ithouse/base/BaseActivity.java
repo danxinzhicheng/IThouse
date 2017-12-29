@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -34,7 +33,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected DrawerLayout rootLayout;
     protected FrameLayout flActivityContainer;
-    protected ViewHolder mViewHolder;
     private Toast mToast;
     private Fragment mFragment;
     private List<TurnBackListener> mTurnBackListeners = new ArrayList<>();
@@ -59,11 +57,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewHolder = new ViewHolder(getLayoutInflater(), null, getLayoutId());
         setContentView(R.layout.activity_drawer);
-
         initDatas();
-        initViews(mViewHolder, mViewHolder.getRootView());
+        initViews();
         IMMLeaks.fixFocusedViewLeak(this.getApplication()); // 修复 InputMethodManager 引发的内存泄漏
     }
 
@@ -79,7 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化 View， 调用位置在 initDatas 之后
      */
-    protected void initViews(ViewHolder holder, View root) {
+    protected void initViews() {
         flActivityContainer = findViewById(R.id.activity_container);
         flActivityContainer.addView(LayoutInflater.from(this).inflate(getLayoutId(), flActivityContainer, false));
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -148,7 +144,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         intent.putExtra(key, value);
         context.startActivity(intent);
     }
-
 
     @SuppressWarnings("RestrictedApi")
     protected void clearOldFragment(Fragment fragment) {

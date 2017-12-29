@@ -33,7 +33,6 @@ import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
-import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.provider.RecommentActicalProvider;
 import com.danmo.ithouse.provider.RelatedActicalProvider;
 
@@ -87,10 +86,8 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
     }
 
     @Override
-    protected void initViews(ViewHolder holder, View root) {
-        super.initViews(holder, root);
-
-
+    protected void initViews() {
+        super.initViews();
         mTopSub = findViewById(R.id.detail_top_sub);
         tvTime = findViewById(R.id.detail_time);
         tvAuthor = findViewById(R.id.detail_author);

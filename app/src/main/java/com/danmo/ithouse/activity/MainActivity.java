@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
-import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.nav.NavFragment;
 import com.danmo.ithouse.fragment.nav.NavigationButton;
 import com.danmo.ithouse.fragment.nav.OnTabReselectListener;
@@ -26,8 +25,8 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
     private NavFragment mNavBar;
 
     @Override
-    protected void initViews(ViewHolder holder, View root) {
-        super.initViews(holder, root);
+    protected void initViews() {
+        super.initViews();
         FragmentManager manager = getSupportFragmentManager();
         mNavBar = new NavFragment();
         addFragment(R.id.fag_nav, mNavBar);

@@ -14,7 +14,6 @@ import android.webkit.WebViewClient;
 
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
-import com.danmo.ithouse.base.ViewHolder;
 
 /**
  * 普通详情页，webview类型页面
@@ -37,8 +36,8 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initViews(ViewHolder holder, View root) {
-        super.initViews(holder, root);
+    protected void initViews() {
+        super.initViews();
         toolbar = findViewById(R.id.flexible_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

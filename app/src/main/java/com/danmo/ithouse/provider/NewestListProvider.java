@@ -29,7 +29,7 @@ import io.realm.RealmResults;
  */
 
 public class NewestListProvider extends BaseViewProvider<NewestItem> {
-    private Map<String, Integer> mapClicked = new HashMap<>();
+    private Map<String, Integer> mMapClicked = new HashMap<>();
 
     public NewestListProvider(@NonNull Context context) {
         super(context, R.layout.item_fragment_newest);
@@ -69,7 +69,7 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
         final TextView title = holder.get(R.id.item_title);
 
         final RealmResults realmResults = BaseApplication.sRealm.where(NewsHistoryBean.class).findAll();
-        if (mapClicked.containsKey(bean.newsid)) {
+        if (mMapClicked.containsKey(bean.newsid)) {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
         } else {
             title.setTextColor(mContext.getResources().getColor(R.color.diy_black));
@@ -79,7 +79,7 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
             public void onClick(View v) {
                 NewsDetailActivity.start(mContext, NewsDetailActivity.TYPE_LIST, bean.newsid);
                 title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
-                mapClicked.put(bean.newsid, position);
+                mMapClicked.put(bean.newsid, position);
 
                 if (realmResults != null && realmResults.size() >= 20) {
                     BaseApplication.sRealm.executeTransaction(new Realm.Transaction() {

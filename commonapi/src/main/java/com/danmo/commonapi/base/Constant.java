@@ -22,6 +22,8 @@
 
 package com.danmo.commonapi.base;
 
+import android.text.TextUtils;
+
 public class Constant {
 
     public static final int PARSE_DEFAULT = 0;
@@ -69,4 +71,22 @@ public class Constant {
     public static final String SEARCH_LAPIN = "http://s.lapin365.com/callback/searchp?platform=ithome_android&key=Android&userid=1467532&pagenumber=1";
     public static final String SEARCH_QUANZI = "http://apiquan.ithome.com/api/post/getsearch?keyword=ce3f2d7f0740b24b&maxnewsid=0&r=1513750956822";
 
+    //获取头像Url
+    public static String convertRealPicUrl(String uid) {
+        if (TextUtils.isEmpty(uid)) {
+            return Constant.QUANZI_PIC_URL;
+        }
+        if (uid.length() == 1) {
+            uid = "1347938";
+        }
+        if (uid.length() == 7) {
+            String url = Constant.QUANZI_PIC_URL + "/" + "001" + "/" + uid.substring(1, 3) + "/" + uid.substring(3, 5) + "/" + uid.substring(5, 7) + "_60.jpg";
+            return url;
+        }
+        if (uid.length() == 6) {
+            String url = Constant.QUANZI_PIC_URL + "/" + "000" + "/" + uid.substring(0, 2) + "/" + uid.substring(2, 4) + "/" + uid.substring(4, 6) + "_60.jpg";
+            return url;
+        }
+        return Constant.QUANZI_PIC_URL;
+    }
 }

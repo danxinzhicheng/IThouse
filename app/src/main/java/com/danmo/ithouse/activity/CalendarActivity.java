@@ -11,7 +11,6 @@ import android.view.View;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
 import com.danmo.ithouse.base.BaseViewPagerAdapter;
-import com.danmo.ithouse.base.ViewHolder;
 import com.danmo.ithouse.fragment.sub.calendar.NewsEventFragment;
 import com.danmo.ithouse.fragment.sub.calendar.NewsPushFragment;
 import com.danmo.ithouse.fragment.sub.calendar.ReadHistoryFragment;
@@ -40,8 +39,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnDat
     }
 
     @Override
-    protected void initViews(ViewHolder holder, View root) {
-        super.initViews(holder, root);
+    protected void initViews() {
         mCalendarView = findViewById(R.id.calendarView);
         mTabLayout = findViewById(R.id.calendar_tab_nav);
         mViewPager = findViewById(R.id.calendar_viewpager);
