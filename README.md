@@ -1,7 +1,7 @@
 
 # ITHouse
 
-一款高仿IT之家的Android APP。
+一款高仿IT之家的Android APP，力求原汁原味，还原那个熟悉的之家。
 
 ## APP下载
 
