@@ -23,23 +23,9 @@ public class CommunityImpl extends BaseImpl<CommunityService> implements Communi
     }
 
     @Override
-    public String getCommunityListNewest(String url) {
+    public String getCommunityList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
         String uuid = UUIDGenerator.getUUID();
-        mService.getCommunityListNewest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
-        return uuid;
-    }
-
-    @Override
-    public String getCommunityListHotest(String url) {
-        String uuid = UUIDGenerator.getUUID();
-        mService.getCommunityListHotest(url).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
-        return uuid;
-    }
-
-    @Override
-    public String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
-        String uuid = UUIDGenerator.getUUID();
-        mService.getCommunityCategoryList(categoryid, type, orderTime, visistCount, pageLength).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
+        mService.getCommunityList(categoryid, type, orderTime, visistCount, pageLength).enqueue(new BaseCallback<>(new GetCommunityListEvent(uuid)));
         return uuid;
     }
 

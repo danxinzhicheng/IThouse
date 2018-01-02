@@ -45,7 +45,9 @@ public class NewestReplyFragment extends RefreshRecyclerFragment<List<CommunityL
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        return CommonApi.getSingleInstance().getCommunityCategoryList(cid, type, "", "", "");
+        long curTime = System.currentTimeMillis();
+        String strCurTime = String.valueOf(curTime);
+        return CommonApi.getSingleInstance().getCommunityList(cid, type, strCurTime, "", "");
     }
 
     @NonNull

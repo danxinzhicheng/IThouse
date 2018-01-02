@@ -54,10 +54,9 @@ public class Constant {
 
     //============================圈子====================================
     public static final String QUANZI_CATEGORY = "http://apiquan.ithome.com/api/category?client=2";
-    public static final String QUANZI_LIST_NEWEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=0&orderTime&visistCount&pageLength";
-    public static final String QUANZI_LIST_HOTEST = "http://apiquan.ithome.com/api/post/?categoryid=0&type=3&orderTime&visistCount&pageLength";
+//    public static final String QUANZI_LIST_NEWEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=0&orderTime&visistCount&pageLength";
+//    public static final String QUANZI_LIST_HOTEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=3&orderTime&visistCount&pageLength";
     public static final String QUANZI_PIC_URL = "http://avatar.ithome.com/avatars";//图片路径前缀
-
     // http://apiquan.ithome.com/api/post/?categoryid=22&type=0&orderTime&visistCount&pageLength //最新回复 畅谈id:2
     // http://apiquan.ithome.com/api/post/?categoryid=22&type=2&orderTime&visistCount&pageLength //热帖
     // http://apiquan.ithome.com/api/post/?categoryid=22&type=1&orderTime&visistCount&pageLength //最新发表

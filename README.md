@@ -7,6 +7,8 @@
 
 当前Release版本：[点击下载](https://github.com/danxinzhicheng/IThouse/blob/master/app/release/app-release.apk?raw=true)
 
+> 由于用到了5.0以上独有的API，故暂不支持在4.4以及4.4-的平台调试，否则会Crash哦。
+
 ## 编译环境
 
 1. Android Studio：3.0正式版
@@ -39,7 +41,7 @@
 > 感谢github，感谢开源.
 
 ## 抓包工具
-  > 使用Fiddler抓包工具抓取IT之家的xml和json，作为样本数据，项目中全部以URL完整地址请求数据。
+  > 使用Fiddler抓包工具抓取IT之家的xml和json，作为样本数据，项目中部分以URL完整地址请求数据。
 
 ## 版本
 ### v1.0.1

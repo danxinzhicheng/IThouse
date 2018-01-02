@@ -15,14 +15,8 @@ public interface CommunityService {
     @GET
     Call<List<CommunityListItem>> getCommunityCategory(@Url String url);
 
-    @GET
-    Call<List<CommunityListItem>> getCommunityListNewest(@Url String url);
-
-    @GET
-    Call<List<CommunityListItem>> getCommunityListHotest(@Url String url);
-
     @GET("post")
-    Call<List<CommunityListItem>> getCommunityCategoryList(@Query("categoryid") String categoryid,
+    Call<List<CommunityListItem>> getCommunityList(@Query("categoryid") String categoryid,
                                                            @Query("type") String type,
                                                            @Query("orderTime") String orderTime,
                                                            @Query("visistCount") String visistCount,

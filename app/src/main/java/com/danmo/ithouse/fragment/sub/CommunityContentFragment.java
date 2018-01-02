@@ -26,7 +26,9 @@ import java.util.List;
 
 public class CommunityContentFragment extends RefreshRecyclerFragment<List<CommunityListItem>, GetCommunityListEvent> {
 
-    private String currentRefeshUrl = Constant.QUANZI_LIST_NEWEST;
+    private String mCurRefeshType = "0";
+    private String mCurCategory = "0";
+
 
     @Override
     public void initData(HeaderFooterAdapter adapter) {
@@ -48,7 +50,9 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        return CommonApi.getSingleInstance().getCommunityListNewest(currentRefeshUrl);
+        long curTime = System.currentTimeMillis();
+        String strCurTime = String.valueOf(curTime);
+        return CommonApi.getSingleInstance().getCommunityList(mCurCategory, mCurRefeshType, strCurTime, "", "");
     }
 
     @NonNull
@@ -98,12 +102,12 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(EventBusMsg event) {
         int flag = event.getCommunity_fresh_new_or_hot();
-        if (flag == 0) {
-            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_NEWEST);
+        if (flag == 0) {//最新
+            mCurRefeshType = "0";
             refresh(POST_HEADER);
             refresh(POST_REFRESH);
-        } else {
-            currentRefeshUrl = CommonApi.getSingleInstance().getCommunityListNewest(Constant.QUANZI_LIST_HOTEST);
+        } else {//最热
+            mCurRefeshType = "3";
             refresh(POST_HEADER);
             refresh(POST_REFRESH);
         }

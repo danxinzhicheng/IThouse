@@ -128,19 +128,19 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
         return sCommunityApi.getCommunityCategory(url);
     }
 
-    @Override
-    public String getCommunityListNewest(String url) {
-        return sCommunityApi.getCommunityListNewest(url);
-    }
+//    @Override
+//    public String getCommunityListNewest(String url) {
+//        return sCommunityApi.getCommunityListNewest(url);
+//    }
+//
+//    @Override
+//    public String getCommunityListHotest(String url) {
+//        return sCommunityApi.getCommunityListHotest(url);
+//    }
 
     @Override
-    public String getCommunityListHotest(String url) {
-        return sCommunityApi.getCommunityListHotest(url);
-    }
-
-    @Override
-    public String getCommunityCategoryList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
-        return sCommunityApi.getCommunityCategoryList(categoryid, type, orderTime, visistCount, pageLength);
+    public String getCommunityList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {
+        return sCommunityApi.getCommunityList(categoryid, type, orderTime, visistCount, pageLength);
     }
 
     @Override
