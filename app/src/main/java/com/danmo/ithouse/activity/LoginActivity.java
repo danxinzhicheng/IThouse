@@ -1,5 +1,9 @@
 package com.danmo.ithouse.activity;
 
+import android.content.Context;
+import android.content.Intent;
+
+import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
 
 /**
@@ -9,6 +13,11 @@ import com.danmo.ithouse.base.BaseActivity;
 public class LoginActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_login_layout;
+    }
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 }

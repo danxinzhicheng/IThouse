@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@color/colorPrimary">
-
         <include layout="@layout/userinfo_item_head" />
 
     </LinearLayout>

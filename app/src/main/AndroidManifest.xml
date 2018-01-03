@@ -58,6 +58,9 @@
         <activity
             android:name="com.danmo.ithouse.activity.CommunityCommentActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.danmo.ithouse.activity.LoginActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

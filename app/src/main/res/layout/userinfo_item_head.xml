@@ -20,6 +20,7 @@
         android:layout_marginTop="15dp">
 
         <Button
+            android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -28,6 +29,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

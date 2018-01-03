@@ -1,8 +1,10 @@
 package com.danmo.ithouse.fragment;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.danmo.ithouse.R;
+import com.danmo.ithouse.activity.LoginActivity;
 import com.danmo.ithouse.base.BaseFragment;
 import com.danmo.ithouse.base.ViewHolder;
 
@@ -11,6 +13,8 @@ import com.danmo.ithouse.base.ViewHolder;
  */
 
 public class UserFragment extends BaseFragment {
+    private Button btnLogin, btnRegister;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_userinfo;
@@ -18,10 +22,16 @@ public class UserFragment extends BaseFragment {
 
     @Override
     protected void initViews(ViewHolder holder, View root) {
-//        Toolbar toolbar = holder.get(R.id.toolbar);
-//        CollapsingToolbarLayout ctl = holder.get(R.id.ctl);
-//        ctl.setExpandedTitleColor(Color.parseColor("#00FFFFFF"));
-//        ((AppCompatActivity) mContext).setSupportActionBar(toolbar);
-//        BarUtils.addMarginTopEqualStatusBarHeight(toolbar);
+
+        btnLogin = root.findViewById(R.id.btn_login);
+//        btnRegister = holder.get(R.id.btn_register);
+//
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.start(mContext);
+            }
+        });
+
     }
 }

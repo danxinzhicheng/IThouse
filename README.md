@@ -36,11 +36,13 @@
 6. 日志Log：Bugly
 
 ## 项目架构参考
+
 - DiyCode
 - OSChina
 > 感谢github，感谢开源.
 
 ## 抓包工具
+
   > 使用Fiddler抓包工具抓取IT之家的xml和json，作为样本数据，项目中部分以URL完整地址请求数据。
 
 ## 版本
