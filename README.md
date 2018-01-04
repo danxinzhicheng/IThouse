@@ -7,7 +7,6 @@
 
 当前Release版本：[点击下载](https://github.com/danxinzhicheng/IThouse/blob/master/app/release/app-release.apk?raw=true)
 
-> 由于用到了5.0以上独有的API，故暂不支持在4.4以及4.4-的平台调试，否则会Crash哦。
 
 ## 编译环境
 
