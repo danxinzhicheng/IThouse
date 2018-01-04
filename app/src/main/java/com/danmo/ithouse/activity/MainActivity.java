@@ -2,7 +2,6 @@ package com.danmo.ithouse.activity;
 
 import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.danmo.ithouse.R;
@@ -27,10 +26,9 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
     @Override
     protected void initViews() {
         super.initViews();
-        FragmentManager manager = getSupportFragmentManager();
         mNavBar = new NavFragment();
         addFragment(R.id.fag_nav, mNavBar);
-        mNavBar.setup(this, manager, R.id.main_container, this);
+        mNavBar.setup(R.id.main_container, this);
     }
 
     @Override

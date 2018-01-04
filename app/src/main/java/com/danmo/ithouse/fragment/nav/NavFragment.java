@@ -1,6 +1,5 @@
 package com.danmo.ithouse.fragment.nav;
 
-import android.content.Context;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -31,7 +30,6 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
     private NavigationButton mNavExplore;
     private NavigationButton mNavMe;
 
-    private Context mContext;
     private int mContainerId;
     private FragmentManager mFragmentManager;
     private NavigationButton mCurrentNavButton;
@@ -84,6 +82,8 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
                 Config.navigationTitles[3],
                 UserFragment.class);
 
+        mFragmentManager = getActivity().getSupportFragmentManager();
+
         clearOldFragment();
         doSelect(mNavNews);
     }
@@ -99,9 +99,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 //        }
     }
 
-    public void setup(Context context, FragmentManager fragmentManager, int contentId, OnNavigationReselectListener listener) {
-        mContext = context;
-        mFragmentManager = fragmentManager;
+    public void setup(int contentId, OnNavigationReselectListener listener) {
         mContainerId = contentId;
         mOnNavigationReselectListener = listener;
     }
@@ -111,8 +109,8 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
             doSelect(mNavMe);
     }
 
-    @SuppressWarnings("RestrictedApi")
     private void clearOldFragment() {
+
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
         List<Fragment> fragments = mFragmentManager.getFragments();
         if (transaction == null || fragments == null || fragments.size() == 0)
