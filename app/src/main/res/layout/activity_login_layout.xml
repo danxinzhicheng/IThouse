@@ -42,6 +42,7 @@
             android:layout_height="wrap_content">
 
             <com.danmo.ithouse.widget.edittext.AutoCheckEditText
+                android:id="@+id/et_login_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/icon_edittext_clear"
@@ -65,6 +66,7 @@
             app:passwordToggleTint="@color/diy_gray2">
 
             <com.danmo.ithouse.widget.edittext.AutoCheckEditText
+                android:id="@+id/et_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="密码"
@@ -76,6 +78,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -91,12 +94,14 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/tv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="忘记密码?"
                 android:textColor="@color/black_alpha_144" />
 
             <TextView
+                android:id="@+id/tv_login_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -146,24 +151,28 @@
                 android:layout_marginTop="0dp">
 
                 <ImageView
+                    android:id="@+id/iv_login_weixin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:src="@drawable/login_btn_weixin" />
 
                 <ImageView
+                    android:id="@+id/iv_login_qq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:src="@drawable/login_btn_qq" />
 
                 <ImageView
+                    android:id="@+id/iv_login_weibo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
                     android:src="@drawable/login_btn_weibo" />
 
                 <ImageView
+                    android:id="@+id/iv_login_taobao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"

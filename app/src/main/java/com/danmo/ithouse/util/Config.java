@@ -30,8 +30,10 @@ public class Config {
             R.drawable.quan_zhanwu};
     public static final String[] communityTitles = {"畅谈", "极客圈", "安卓圈", "Win10圈", "Win10M圈", "iOS圈", "软媒产品", "站务处理"};
 
-    public static final String appID_Bugly="8cda658486";
-    public static final String appKey_Bugly="9f43fe14-1027-44ed-a0dd-43ec84139499";
+    public static final String appID_Bugly = "8cda658486";
+    public static final String appKey_Bugly = "9f43fe14-1027-44ed-a0dd-43ec84139499";
 
+    public static final String login_client_id = "2b04e15b";
+    public static final String login_client_secret = "86c0c3572ed909932854b076b24a6bb2b441bff4f202056918fe4819c7960e8a";
 
 }

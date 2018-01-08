@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.base.BaseImpl;
 import com.danmo.commonapi.callback.BaseCallback;
-import com.danmo.commonapi.event.GetNewsDetailContentEvent;
-import com.danmo.commonapi.event.GetNewsDetailRecommendEvent;
-import com.danmo.commonapi.event.GetNewsDetailRelatedEvent;
+import com.danmo.commonapi.event.newsdetail.GetNewsDetailContentEvent;
+import com.danmo.commonapi.event.newsdetail.GetNewsDetailRecommendEvent;
+import com.danmo.commonapi.event.newsdetail.GetNewsDetailRelatedEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 public class NewsDetailImpl extends BaseImpl<NewsDetailService> implements NewsDetailAPI {

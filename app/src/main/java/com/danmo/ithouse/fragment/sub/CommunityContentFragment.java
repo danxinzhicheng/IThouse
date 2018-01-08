@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.community.CommunityListItem;
-import com.danmo.commonapi.event.GetCommunityListEvent;
+import com.danmo.commonapi.event.community.GetCommunityListEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;

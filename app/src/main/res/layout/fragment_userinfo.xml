@@ -13,7 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@color/colorPrimary">
-        <include layout="@layout/userinfo_item_head" />
+
+        <include
+            android:id="@+id/userinfo_head"
+            layout="@layout/userinfo_item_head" />
+
+        <include
+            android:id="@+id/userinfo_head_logined"
+            layout="@layout/userinfo_item_head_logined"
+            android:visibility="gone" />
 
     </LinearLayout>
 

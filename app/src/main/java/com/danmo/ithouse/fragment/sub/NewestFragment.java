@@ -8,7 +8,7 @@ import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.newest.NewestItem;
 import com.danmo.commonapi.bean.newest.NewestTopNode;
-import com.danmo.commonapi.event.GetNewestEvent;
+import com.danmo.commonapi.event.newest.GetNewestEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;

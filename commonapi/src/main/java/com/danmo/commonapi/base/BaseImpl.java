@@ -19,6 +19,7 @@ package com.danmo.commonapi.base;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.danmo.commonapi.base.cache.CacheUtil;
 import com.danmo.commonapi.converter.StringConverterFactory;
 
 import java.lang.reflect.ParameterizedType;

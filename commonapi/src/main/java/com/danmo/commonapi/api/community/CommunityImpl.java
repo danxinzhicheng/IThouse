@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.base.BaseImpl;
 import com.danmo.commonapi.callback.BaseCallback;
-import com.danmo.commonapi.event.GetCommunityCatetoryEvent;
-import com.danmo.commonapi.event.GetCommunityCommentEvent;
-import com.danmo.commonapi.event.GetCommunityListEvent;
+import com.danmo.commonapi.event.community.GetCommunityCatetoryEvent;
+import com.danmo.commonapi.event.community.GetCommunityCommentEvent;
+import com.danmo.commonapi.event.community.GetCommunityListEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 public class CommunityImpl extends BaseImpl<CommunityService> implements CommunityApi {

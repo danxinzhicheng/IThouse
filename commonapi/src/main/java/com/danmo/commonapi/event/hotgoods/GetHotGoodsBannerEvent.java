@@ -1,4 +1,4 @@
-package com.danmo.commonapi.event;
+package com.danmo.commonapi.event.hotgoods;
 
 import android.support.annotation.Nullable;
 

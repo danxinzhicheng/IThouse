@@ -17,10 +17,10 @@ public interface CommunityService {
 
     @GET("post")
     Call<List<CommunityListItem>> getCommunityList(@Query("categoryid") String categoryid,
-                                                           @Query("type") String type,
-                                                           @Query("orderTime") String orderTime,
-                                                           @Query("visistCount") String visistCount,
-                                                           @Query("pageLength") String pageLength);
+                                                   @Query("type") String type,
+                                                   @Query("orderTime") String orderTime,
+                                                   @Query("visistCount") String visistCount,
+                                                   @Query("pageLength") String pageLength);
 
     @GET("post/{id}")
     Call<Comment> getCommunityComment(@Path("id") String id);

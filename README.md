@@ -7,7 +7,7 @@
 
 当前Release版本：[点击下载](https://github.com/danxinzhicheng/IThouse/blob/master/app/release/app-release.apk?raw=true)
 
-> 由于用到了5.0以上独有的API，故暂不支持在4.4以及4.4-的平台调试，否则会Crash哦。
+> 由于用到了5.0以上SDK独有的API，比如动画相关，所以尽量在5.0+以上设备上调试，否则会Crash哦。
 
 ## 编译环境
 
@@ -52,6 +52,7 @@
 - 支持资讯栏目搜索功能
 - 添加日历界面
 - 添加圈子二级页面(分类二级页面，评论楼层页面)
+- 支持登陆功能（登陆和个人信息使用diyCode接口）
 
 ### v1.0.0
 - 整个项目的架构，从无到有

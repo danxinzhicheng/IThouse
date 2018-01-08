@@ -12,12 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Last modified 2017-03-08 01:01:18
- *
- * GitHub:  https://github.com/GcsSloop
- * Website: http://www.gcssloop.com
- * Weibo:   http://weibo.com/GcsSloop
+
  */
 
 package com.danmo.commonapi.base;
@@ -54,7 +49,7 @@ public class Constant {
 
     //============================圈子====================================
     public static final String QUANZI_CATEGORY = "http://apiquan.ithome.com/api/category?client=2";
-//    public static final String QUANZI_LIST_NEWEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=0&orderTime&visistCount&pageLength";
+    //    public static final String QUANZI_LIST_NEWEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=0&orderTime&visistCount&pageLength";
 //    public static final String QUANZI_LIST_HOTEST = "http://apiquan.ithome.com/api/post?categoryid=0&type=3&orderTime&visistCount&pageLength";
     public static final String QUANZI_PIC_URL = "http://avatar.ithome.com/avatars";//图片路径前缀
     // http://apiquan.ithome.com/api/post/?categoryid=22&type=0&orderTime&visistCount&pageLength //最新回复 畅谈id:2
@@ -88,4 +83,11 @@ public class Constant {
         }
         return Constant.QUANZI_PIC_URL;
     }
+
+
+    //============================登录=============================================
+    public static final String BASE_URL_LOGIN = "https://diycode.cc/api/v3/";
+    public static final String OAUTH_URL_LOGIN = "https://www.diycode.cc/oauth/token";
+
+
 }

@@ -9,7 +9,7 @@ import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.hotgoods.HotGoodsItem;
 import com.danmo.commonapi.bean.hotgoods.HotGoodsTopNode;
 import com.danmo.commonapi.bean.hotgoods.RankBeanTmp;
-import com.danmo.commonapi.event.GetHotGoodsListEvent;
+import com.danmo.commonapi.event.hotgoods.GetHotGoodsListEvent;
 import com.danmo.commonutil.recyclerview.adapter.multitype.HeaderFooterAdapter;
 import com.danmo.commonutil.recyclerview.layoutmanager.SpeedyLinearLayoutManager;
 import com.danmo.ithouse.fragment.refresh.RefreshRecyclerFragment;

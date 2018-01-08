@@ -5,8 +5,8 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.base.BaseImpl;
 import com.danmo.commonapi.callback.BaseCallback;
-import com.danmo.commonapi.event.GetNewestBannerEvent;
-import com.danmo.commonapi.event.GetNewestEvent;
+import com.danmo.commonapi.event.newest.GetNewestBannerEvent;
+import com.danmo.commonapi.event.newest.GetNewestEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 

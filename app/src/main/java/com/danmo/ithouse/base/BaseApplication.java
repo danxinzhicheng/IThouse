@@ -12,10 +12,12 @@ import com.tencent.bugly.crashreport.CrashReport;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
+import static com.danmo.commonapi.bean.login.OAuth.client_id;
+import static com.danmo.commonapi.bean.login.OAuth.client_secret;
+
 
 public class BaseApplication extends Application {
-    public static final String client_id = "7024a413";
-    public static final String client_secret = "8404fa33ae48d3014cfa89deaa674e4cbe6ec894a57dbef4e40d083dbbaa5cf4";
+
     public static Context sAppContext;
     public static Realm sRealm;
 

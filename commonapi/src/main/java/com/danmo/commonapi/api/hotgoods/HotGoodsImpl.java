@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.base.BaseImpl;
 import com.danmo.commonapi.callback.BaseCallback;
-import com.danmo.commonapi.event.GetHotGoodsBannerEvent;
-import com.danmo.commonapi.event.GetHotGoodsListEvent;
-import com.danmo.commonapi.event.GetHotGoodsRankEvent;
+import com.danmo.commonapi.event.hotgoods.GetHotGoodsBannerEvent;
+import com.danmo.commonapi.event.hotgoods.GetHotGoodsListEvent;
+import com.danmo.commonapi.event.hotgoods.GetHotGoodsRankEvent;
 import com.danmo.commonutil.UUIDGenerator;
 
 public class HotGoodsImpl extends BaseImpl<HotGoodsService> implements HotGoodsApi {
