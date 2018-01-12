@@ -8,6 +8,8 @@ public class EventBusMsg {
     private String msg;
     private int flag;//1,up; 0,down
     private int community_fresh_new_or_hot;//0,new; 1,hot;
+    private int user_name;
+    private int user_icon;
 
     public EventBusMsg() {
     }
@@ -42,5 +44,21 @@ public class EventBusMsg {
 
     public void setCommunity_fresh_new_or_hot(int community_fresh_new_or_hot) {
         this.community_fresh_new_or_hot = community_fresh_new_or_hot;
+    }
+
+    public int getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(int user_name) {
+        this.user_name = user_name;
+    }
+
+    public int getUser_icon() {
+        return user_icon;
+    }
+
+    public void setUser_icon(int user_icon) {
+        this.user_icon = user_icon;
     }
 }

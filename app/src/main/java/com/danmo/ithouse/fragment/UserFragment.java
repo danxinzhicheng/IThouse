@@ -1,5 +1,7 @@
 package com.danmo.ithouse.fragment;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +21,8 @@ import com.danmo.ithouse.util.GlideRoundTransform;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.Map;
 
 /**
  * 我
@@ -57,7 +61,22 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
         if (v == btnLogin) {
             LoginUtilActivity.checkLogin(mContext, new LoginUtilActivity.LoginCallback() {
                 @Override
-                public void onLogined() {
+                public void onLogined(Intent intent) {
+
+                    if (intent != null) {
+                        Bundle bundle = intent.getExtras();
+                        Map<String, String> serializableMap = (Map) bundle
+                                .get("map");
+                        viewHead.setVisibility(View.GONE);
+                        viewHeadLogined.setVisibility(View.VISIBLE);
+
+                        tvName.setText(serializableMap.get("name"));
+                        Glide.with(mContext)
+                                .load(serializableMap.get("iconurl"))
+                                .transform(new GlideRoundTransform(mContext, 25))
+                                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                                .into(ivAvatar);
+                    }
                 }
 
                 @Override
@@ -84,7 +103,7 @@ public class UserFragment extends BaseFragment implements View.OnClickListener {
 
             UserDetail me = mCache.getMe();
             if (me == null) {
-                CommonApi.getSingleInstance().getMe();   // 重新加载
+//                CommonApi.getSingleInstance().getMe();   // 重新加载
                 return;
             }
             tvName.setText(me.getLogin());

@@ -8,6 +8,9 @@ import com.danmo.commonutil.CrashHandler;
 import com.danmo.commonutil.Utils;
 import com.danmo.ithouse.util.Config;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -30,6 +33,8 @@ public class BaseApplication extends Application {
         initRealm();
         sAppContext = this;
         CrashReport.initCrashReport(this, Config.appID_Bugly, true);
+        initUMeng();
+
     }
 
     private void initRealm() {
@@ -39,6 +44,21 @@ public class BaseApplication extends Application {
                 .schemaVersion(1) //版本号
                 .build();
         sRealm = Realm.getInstance(config);
+    }
+
+    private void initUMeng() {
+        UMShareAPI.get(this);//初始化sdk
+        UMConfigure.setLogEnabled(true);
+        com.umeng.socialize.Config.DEBUG = true;
+        //初始化组件化基础库, 统计SDK/推送SDK/分享SDK都必须调用此初始化接口
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, Config.appKey_UMeng);
+
+        //UMShareAPI.init(this,Config.appKey_UMeng);
+
+        PlatformConfig.setWeixin(Config.appKey_Weixin, Config.appSecret_Weixin);
+        PlatformConfig.setSinaWeibo(Config.appKey_Weibo, Config.appSecret_Weibo, "http://danmoit.cn");
+        PlatformConfig.setQQZone(Config.appID_QQ, Config.appKey_QQ);
+
     }
 
 }

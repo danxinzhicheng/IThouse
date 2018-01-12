@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 
 import com.danmo.commonapi.bean.login.Token;
 
-//import com.danmo.commonapi.base.Token;
-
 /**
  * 缓存工具类，用于缓存各类数据
  */
@@ -17,8 +15,6 @@ public class CacheUtil {
     public CacheUtil(Context context) {
         cache = ACache.get(context);
     }
-
-    //--- token ------------------------------------------------------------------------------------
 
     public void saveToken(@NonNull Token token) {
         cache.put("token", token);

@@ -62,8 +62,8 @@ public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
             }
 
             ImageView ivRankPic = holder.get(R.id.hotgoods_rank_pic);
-            String url = Constant.LAPIN_PIC_URL + bean.Picture;
-            Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivRankPic);
+//            String url = Constant.LAPIN_PIC_URL + bean.Picture;//接口有变动
+            Glide.with(mContext).load(bean.Picture).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivRankPic);
 
             String ranknum = String.valueOf(holder.getLayoutPosition() + 1);
             holder.setText(R.id.hotgoods_rank_num, ranknum);

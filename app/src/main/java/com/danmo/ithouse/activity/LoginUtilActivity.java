@@ -18,7 +18,7 @@ public class LoginUtilActivity extends Activity {
     private static LoginCallback mCallback;
 
     public interface LoginCallback {
-        void onLogined();
+        void onLogined(Intent data);
 
         void onLoginFailed();
     }
@@ -35,7 +35,7 @@ public class LoginUtilActivity extends Activity {
         //此处检查当前的登录状态
         boolean login = CommonApi.getSingleInstance().isLogin();
         if (login) {
-            callback.onLogined();
+            callback.onLogined(null);
         } else {
             mCallback = callback;
             Intent intent = new Intent(context, LoginUtilActivity.class);
@@ -47,15 +47,17 @@ public class LoginUtilActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         finish();
-        if (requestCode == REQUEST_CODE_LOGIN && resultCode == RESULT_OK && mCallback != null) {
-            boolean login = CommonApi.getSingleInstance().isLogin();
-            if (login) {
-                mCallback.onLogined();
-            } else {
-                mCallback.onLoginFailed();
-            }
-        }
-        mCallback = null;
+        mCallback.onLogined(data);
+
+//        if (requestCode == REQUEST_CODE_LOGIN && resultCode == RESULT_OK && mCallback != null) {
+//            boolean login = CommonApi.getSingleInstance().isLogin();
+//            if (login) {
+//                mCallback.onLogined(data);
+//            } else {
+//                mCallback.onLoginFailed();
+//            }
+//        }
+//        mCallback = null;
     }
 
 }

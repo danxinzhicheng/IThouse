@@ -8,6 +8,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 
 import com.danmo.ithouse.R;
@@ -31,11 +32,15 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
     private NavigationButton mNavMe;
 
     private int mContainerId;
-    private FragmentManager mFragmentManager;
     private NavigationButton mCurrentNavButton;
     private OnNavigationReselectListener mOnNavigationReselectListener;
 
     public NavFragment() {
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
     @Override
@@ -82,8 +87,6 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
                 Config.navigationTitles[3],
                 UserFragment.class);
 
-        mFragmentManager = getActivity().getSupportFragmentManager();
-
         clearOldFragment();
         doSelect(mNavNews);
     }
@@ -111,8 +114,8 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
 
     private void clearOldFragment() {
 
-        FragmentTransaction transaction = mFragmentManager.beginTransaction();
-        List<Fragment> fragments = mFragmentManager.getFragments();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        List<Fragment> fragments = getActivity().getSupportFragmentManager().getFragments();
         if (transaction == null || fragments == null || fragments.size() == 0)
             return;
         boolean doCommit = false;
@@ -142,7 +145,7 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void doTabChanged(NavigationButton oldNavButton, NavigationButton newNavButton) {
-        FragmentTransaction ft = mFragmentManager.beginTransaction();
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
         if (oldNavButton != null) {
             if (oldNavButton.getFragment() != null) {
                 ft.detach(oldNavButton.getFragment());

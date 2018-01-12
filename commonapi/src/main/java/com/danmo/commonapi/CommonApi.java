@@ -55,7 +55,6 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
     public static CommonApi init(@NonNull Context context, @NonNull final String client_id,
                                  @NonNull final String client_secret) {
         initLogger(context);
-        Logger.i("初始化IThouse");
 
         OAuth.client_id = client_id;
         OAuth.client_secret = client_secret;
@@ -76,7 +75,6 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
 
     private static void initImplement(Context context) {
         mContext = context;
-        Logger.i("初始化 implement");
         try {
             sNewestImpl = new NewestImpl(context, Constant.BASE_URL_NEWS, Constant.PARSE_XML);
             sNewsDetailAPI = new NewsDetailImpl(context, Constant.BASE_URL_NEWS, Constant.PARSE_XML);
@@ -87,7 +85,6 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Logger.i("初始化 implement 结束");
     }
 
     @Override
@@ -137,16 +134,6 @@ public class CommonApi implements NewestAPI, NewsDetailAPI, HotGoodsApi, Communi
     public String getCommunityCategory(String url) {
         return sCommunityApi.getCommunityCategory(url);
     }
-
-//    @Override
-//    public String getCommunityListNewest(String url) {
-//        return sCommunityApi.getCommunityListNewest(url);
-//    }
-//
-//    @Override
-//    public String getCommunityListHotest(String url) {
-//        return sCommunityApi.getCommunityListHotest(url);
-//    }
 
     @Override
     public String getCommunityList(String categoryid, String type, String orderTime, String visistCount, String pageLength) {

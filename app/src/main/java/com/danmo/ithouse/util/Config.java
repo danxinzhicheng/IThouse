@@ -36,4 +36,14 @@ public class Config {
     public static final String login_client_id = "2b04e15b";
     public static final String login_client_secret = "86c0c3572ed909932854b076b24a6bb2b441bff4f202056918fe4819c7960e8a";
 
+    public static final String appKey_UMeng = "5a56d6ccf43e487c5600017c";
+
+    public static final String appID_QQ = "1106672576";
+    public static final String appKey_QQ = "XoXlexsJAdpZuTMj";
+
+    public static final String appKey_Weixin = "wxdc1e388c3822c80b";
+    public static final String appSecret_Weixin = "3baf1193c85774b3fd9d18447d76cab0";
+
+    public static final String appKey_Weibo = "1585030032";
+    public static final String appSecret_Weibo = "857c9e2d504198e0be7f79656684109e";
 }

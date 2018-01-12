@@ -2,6 +2,7 @@ package com.danmo.ithouse.activity;
 
 import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 
 import com.danmo.ithouse.R;
@@ -56,6 +57,11 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
     protected void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

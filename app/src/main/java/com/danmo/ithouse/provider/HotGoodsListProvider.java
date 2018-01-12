@@ -55,8 +55,8 @@ public class HotGoodsListProvider extends BaseViewProvider<HotGoodsItem> {
         holder.setText(R.id.hotgoods_item_quan_info, bean.QuanInfo);
 
         ImageView imageView = holder.get(R.id.hotgoods_item_pic);
-        String url = Constant.LAPIN_PIC_URL + bean.Picture;
-        Glide.with(mContext).load(url).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
+//        String url = Constant.LAPIN_PIC_URL + bean.Picture;//接口有变动
+        Glide.with(mContext).load(bean.Picture).diskCacheStrategy(DiskCacheStrategy.RESULT).into(imageView);
 
         final TextView title = holder.get(R.id.hotgoods_item_title);
         if (mMapClicked.containsKey(bean.productid)) {

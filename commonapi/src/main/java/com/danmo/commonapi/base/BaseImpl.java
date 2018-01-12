@@ -60,7 +60,7 @@ public class BaseImpl<Service> {
 
     private void initRetrofit(String baseUrl, int currentParse) {
 
-        // 设置 Log 拦截器，可以用于以后处理一些异常情况
+        // 设置 Log 拦截器，可以用于以后查看处理一些异常情况
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 

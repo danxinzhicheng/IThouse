@@ -12,8 +12,6 @@ import retrofit2.http.Query;
 
 interface UserService {
 
-    //--- user info --------------------------------------------------------------------------------
-
     /**
      * 获取用户列表
      *
