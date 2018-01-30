@@ -41,8 +41,8 @@ public class Config {
     public static final String appID_QQ = "1106672576";
     public static final String appKey_QQ = "XoXlexsJAdpZuTMj";
 
-    public static final String appKey_Weixin = "wxdc1e388c3822c80b";
-    public static final String appSecret_Weixin = "3baf1193c85774b3fd9d18447d76cab0";
+    public static final String appKey_Weixin = "wx10909356d53a8395";
+    public static final String appSecret_Weixin = "54e6abef71841fa293014469083a1447";
 
     public static final String appKey_Weibo = "1585030032";
     public static final String appSecret_Weibo = "857c9e2d504198e0be7f79656684109e";

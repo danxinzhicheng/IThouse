@@ -25,3 +25,14 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "26.0.2"
+    applicationId = "com.danmo.ithouse"
+    minSdkVersion = 21
+    targetSdkVersion = 26
+    versionCode = 1
+    versionName = "v1.0.1"
+    supportVersion = '26.0.1'
+}
