@@ -3,8 +3,10 @@ package com.danmo.ithouse.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.event.login.LoginEvent;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
+import com.danmo.ithouse.base.BaseFragment;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -43,18 +46,21 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
     private TextView tvForgetPasswd, tvLoginRegister;
     private ImageView ivLoginWeixin, ivLoginQQ, ivLoginWeibo, ivLoginTaobao;
     private Button btnLogin;
-
-    public ArrayList<SnsPlatform> platforms = new ArrayList<SnsPlatform>();
-    private SHARE_MEDIA[] list = {SHARE_MEDIA.QQ, SHARE_MEDIA.SINA, SHARE_MEDIA.WEIXIN};
+    private static int REQUEST_CODE_LOGIN = 1;
+    public ArrayList<SnsPlatform> platforms = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login_layout;
     }
 
-    public static void start(Context context) {
+    public static void startActivityForResult(Activity context) {
         Intent intent = new Intent(context, LoginMainActivity.class);
-        context.startActivity(intent);
+        context.startActivityForResult(intent,REQUEST_CODE_LOGIN);
+    }
+    public static void startActivityForResult(Fragment fragment) {
+        Intent intent = new Intent(fragment.getActivity(), LoginMainActivity.class);
+        fragment.startActivityForResult(intent,REQUEST_CODE_LOGIN);
     }
 
     @Override
@@ -133,7 +139,8 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
                 toastShort("请输入密码");
                 return;
             }
-            CommonApi.getSingleInstance().login(name, passwd);
+            CommonApi.getSingleInstance().login(name, passwd);//登录
+
         } else if (v == ivLoginWeixin) {
             authorization(SHARE_MEDIA.WEIXIN);
 
@@ -148,7 +155,7 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
         }
     }
 
-    //授权
+    //一键授权
     private void authorization(SHARE_MEDIA share_media) {
         UMShareAPI.get(this).getPlatformInfo(this, share_media, new UMAuthListener() {
             @Override
@@ -158,9 +165,8 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-                Log.d(TAG, "onComplete " + "授权完成");
+                Log.i(TAG, "onComplete " + "授权完成");
 
-                //sdk是6.4.4的,但是获取值的时候用的是6.2以前的(access_token)才能获取到值,未知原因
                 String uid = map.get("uid");
                 String openid = map.get("openid");//微博没有
                 String unionid = map.get("unionid");//微博没有

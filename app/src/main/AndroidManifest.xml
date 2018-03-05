@@ -65,12 +65,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.danmo.ithouse.activity.LoginMainActivity"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.danmo.ithouse.activity.LoginUtilActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
 
         <!--umeng-->
         <meta-data

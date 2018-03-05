@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.danmo.commonapi.base.Constant;
 import com.danmo.commonapi.bean.hotgoods.HotGoodsItem;
 import com.danmo.commonapi.bean.hotgoods.RankBeanTmp;
 import com.danmo.commonutil.UrlUtil;
@@ -93,8 +93,10 @@ public class HotGoodsRankListProvider extends BaseViewProvider<RankBeanTmp> {
                 @Override
                 public void onClick(View v) {
                     String link = bean.QuanUrl;
-                    if (UrlUtil.isUrlPrefix(link)) {
-                        WebViewActivity.start(mContext, link, WebViewActivity.PAGE_TYPE_HOTGOODS);
+                    if (!TextUtils.isEmpty(link)) {
+                        if (UrlUtil.isUrlPrefix(link)) {
+                            WebViewActivity.start(mContext, link, WebViewActivity.PAGE_TYPE_HOTGOODS);
+                        }
                     }
                 }
             }, R.id.hotgoods_rank_quan_info);
