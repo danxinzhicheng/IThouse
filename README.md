@@ -1,5 +1,5 @@
 
-# ITHouse
+# ITHouse(注：接下来计划开发最新2.0版本，敬请期待，查看代码请点击Branch选择version-2.0)
 
 一款高仿IT之家的Android APP，力求原汁原味，还原那个熟悉的之家。
 
