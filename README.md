@@ -17,6 +17,7 @@
 1. Android Studio：3.0正式版
 2. 编译SDK： 26
 3. Gradle版本：gradle-4.1-all.zip
+
    注：可根据自己的环境修改Gradle版本，只要编译通过就可
 
 4. 通用Android Support库：26.0.1
