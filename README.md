@@ -1,5 +1,5 @@
 
-# ITHouse(注：接下来计划开发最新2.0版本，敬请期待，查看代码请点击Branch选择version-2.0)
+# ITHouse(注：查看最新2.0版本，请点击这里：[version-2.0](https://github.com/danxinzhicheng/IThouse/tree/version-2.0))
 
 一款高仿IT之家的Android APP，力求原汁原味，还原那个熟悉的之家。
 
@@ -14,7 +14,6 @@
 1. Android Studio：3.0正式版
 2. 编译SDK： 26
 3. Gradle版本：gradle-4.1-all.zip
-   classpath 'com.android.tools.build:gradle:3.0.0'
 
    注：可根据自己的环境修改Gradle版本，只要编译通过就可
 
@@ -28,19 +27,13 @@
 
 ## 第三方库
 
-1. Banner幻灯片：YouthBanner(com.youth.banner:banner:1.4.10)
+1. 轮播：YouthBanner(com.youth.banner:banner:1.4.10)
 2. 通信总线 : EventBus
 3. Http请求 : Retrofit
 4. 图片加载 ：Glide
 5. 数据持久化 ：Realm
 6. 日志Log：Bugly
 7. 友盟分享
-
-## 项目架构参考
-
-- DiyCode
-- OSChina
-> 感谢github，感谢开源.
 
 ## 抓包工具
 
@@ -86,7 +79,7 @@
 ## 作者联系方式
 - 微信：danxinzhicheng
 - QQ：742671635
-> 两年多Android开发经验，商业APP开发，系统应用开发，Application Framework定制等，欢迎添加骚扰，技术交流等。
+> 三年Android开发经验，涉及商业APP开发，系统应用开发，Framework定制等，欢迎添加骚扰，技术交流等。
 
 ****
 > 声明：本项目属仿IT之家Android版本，仅供学习交流，勿用于商业用途。
