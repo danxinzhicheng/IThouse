@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -19,6 +18,7 @@ public class DensityUtil {
 
     /**
      * 根据手机分辨率从DP转成PX
+     *
      * @param context
      * @param dpValue
      * @return
@@ -30,6 +30,7 @@ public class DensityUtil {
 
     /**
      * 将sp值转换为px值，保证文字大小不变
+     *
      * @param spValue
      * @return
      */
@@ -40,6 +41,7 @@ public class DensityUtil {
 
     /**
      * 根据手机的分辨率PX(像素)转成DP
+     *
      * @param context
      * @param pxValue
      * @return
@@ -51,6 +53,7 @@ public class DensityUtil {
 
     /**
      * 将px值转换为sp值，保证文字大小不变
+     *
      * @param pxValue
      * @return
      */
@@ -92,10 +95,10 @@ public class DensityUtil {
     }
 
     public static int getSceenHeight(Activity activity) {
-        return activity.getWindowManager().getDefaultDisplay().getHeight();
+        return activity.getResources().getDisplayMetrics().heightPixels;
     }
 
     public static int getSceenWith(Activity activity) {
-        return activity.getWindowManager().getDefaultDisplay().getWidth();
+        return activity.getResources().getDisplayMetrics().widthPixels;
     }
 }

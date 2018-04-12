@@ -12,5 +12,6 @@ public class DetailRelatedItem implements Serializable {
     public String newstitle;
     public String postdate;
     public String url;
+    public String img;
 
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/layer_community_post_hot_new_bg" android:state_selected="true"></item>
+    <item android:drawable="@color/transparent" android:state_selected="false"></item>
+
+</selector>

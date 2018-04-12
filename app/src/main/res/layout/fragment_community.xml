@@ -18,6 +18,7 @@
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ToolbarPopupTheme"
+            app:logo="@drawable/quan_logo_topbar_red"
             app:title="圈子"
             app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing" />
 

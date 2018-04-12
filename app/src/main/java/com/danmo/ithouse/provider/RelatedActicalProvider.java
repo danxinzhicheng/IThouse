@@ -2,8 +2,11 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.danmo.commonapi.bean.newest.detail.DetailRelatedItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
 import com.danmo.commonutil.recyclerview.adapter.multitype.BaseViewProvider;
@@ -37,6 +40,10 @@ public class RelatedActicalProvider extends BaseViewProvider<DetailRelatedItem> 
         if (holder.getLayoutPosition() == 2) {//todo
             holder.get(R.id.detail_related_item_line).setVisibility(View.INVISIBLE);
         }
+        ImageView icon = holder.get(R.id.detail_related_item_image);
+
+        Glide.with(mContext).load(bean.img).into(icon);
+
 
 
     }

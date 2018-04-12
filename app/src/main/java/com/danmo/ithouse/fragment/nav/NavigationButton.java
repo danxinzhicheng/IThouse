@@ -1,10 +1,14 @@
 package com.danmo.ithouse.fragment.nav;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +25,8 @@ public class NavigationButton extends FrameLayout {
     private TextView mTitleView;
     private TextView mDot;
     private String mTag;
-
+    private View mRootView;
+    private AnimatorSet mAnimator = new AnimatorSet();//组合动画
     public NavigationButton(Context context) {
         super(context);
         init();
@@ -39,17 +44,31 @@ public class NavigationButton extends FrameLayout {
 
     private void init() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        inflater.inflate(R.layout.layout_nav_item, this, true);
+        mRootView = inflater.inflate(R.layout.layout_nav_item, this, true);
 
-        mIconView = (ImageView) findViewById(R.id.nav_iv_icon);
-        mTitleView = (TextView) findViewById(R.id.nav_tv_title);
-        mDot = (TextView) findViewById(R.id.nav_tv_dot);
+        mIconView = findViewById(R.id.nav_iv_icon);
+        mTitleView = findViewById(R.id.nav_tv_title);
+        mDot = findViewById(R.id.nav_tv_dot);
     }
 
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         mIconView.setSelected(selected);
         mTitleView.setSelected(selected);
+        if (selected) {
+            scaleAnimator(mRootView, 1f, 1.1f);
+        } else {
+            scaleAnimator(mRootView, 1.1f, 1f);
+        }
+    }
+
+    public void scaleAnimator(View view, float orignal, float dest) {
+        ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", orignal, dest);
+        ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", orignal, dest);
+        mAnimator.setDuration(500);
+        mAnimator.setInterpolator(new DecelerateInterpolator());
+        mAnimator.play(scaleX).with(scaleY);//两个动画同时开始
+        mAnimator.start();
     }
 
     public void showRedDot(int count) {

@@ -2,6 +2,7 @@ package com.danmo.ithouse.provider;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -26,18 +27,21 @@ public class RecommentActicalProvider extends BaseViewProvider<DetailRecommendIt
     public void onBindView(RecyclerViewHolder holder, DetailRecommendItem bean) {
         if (bean == null) return;
 
-        if (holder.getLayoutPosition() == 3) {//==todo
-            holder.get(R.id.detail_recomment_head).setVisibility(View.VISIBLE);
+        if (holder.getLayoutPosition() == 3) {//这里必须是三个item
+            holder.get(R.id.rl_detail_recomment_head).setVisibility(View.VISIBLE);
             holder.setText(R.id.detail_recomment_head, bean.category);
         } else {
-            holder.get(R.id.detail_recomment_head).setVisibility(View.GONE);
+            holder.get(R.id.rl_detail_recomment_head).setVisibility(View.GONE);
         }
 
         holder.setText(R.id.detail_recommend_item_coupon, bean.PromotionInfo);
         holder.setText(R.id.detail_recommend_item_title, bean.ProductName);
         holder.setText(R.id.detail_recommend_item_time, bean.CreateTime);
         ImageView icon = holder.get(R.id.detail_recomment_item_image);
-        String url = Constant.RECOMMEND_PIC_HOST + bean.Picture;
+        String url = bean.Picture;
+        if (!url.startsWith("http")) {
+            url = Constant.LAPIN_PIC_URL + url;
+        }
         Glide.with(mContext).load(url).into(icon);
 
 

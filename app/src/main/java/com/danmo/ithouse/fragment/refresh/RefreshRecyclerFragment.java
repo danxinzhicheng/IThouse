@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.danmo.commonapi.base.BaseEvent;
@@ -134,6 +135,7 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResultEvent(Event event) {
+
         String postType = mPostTypes.get(event.getUUID());
         if (event.isOk()) {
             if (postType.equals(POST_HEADER)) {

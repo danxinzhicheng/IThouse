@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--banner-->
+    <declare-styleable name="BannerWrapperViewStyleable">
+        <attr name="bannerClipChildren" format="boolean" />
+        <attr name="showIndicator" format="boolean" />
+        <attr name="playDelayTime" format="integer" />
+        <attr name="playAuto" format="boolean" />
+        <attr name="playLoop" format="boolean" />
+        <attr name="indicatorIconSelected" format="reference" />
+        <attr name="indicatorIconNormal" format="reference" />
+        <attr name="heightRate" format="float" />
+        <attr name="viewPageMargin" format="dimension" />
+        <attr name="viewPageHorizonMargin" format="dimension" />
+    </declare-styleable>
+
+    <!--roundImageview :has drop.-->
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_mutate_background" format="boolean" />
+        <attr name="riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

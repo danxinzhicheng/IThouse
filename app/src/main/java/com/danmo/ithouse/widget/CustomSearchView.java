@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
@@ -80,6 +81,7 @@ public class CustomSearchView extends LinearLayout {
         searchHistoryList = BaseApplication.sRealm.where(SearchHistoryBean.class).findAll();
     }
 
+
     public void init() {
 
         this.setOrientation(LinearLayout.VERTICAL);
@@ -87,7 +89,6 @@ public class CustomSearchView extends LinearLayout {
         mRootView = LayoutInflater.from(getContext())
                 .inflate(R.layout.custom_search_view, this, false);
         this.addView(mRootView);
-
         editTextSearch = mRootView.findViewById(R.id.et_search);
         editTextSearch.requestFocus();
 

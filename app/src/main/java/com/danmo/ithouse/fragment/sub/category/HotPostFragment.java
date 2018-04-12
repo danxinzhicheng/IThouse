@@ -45,11 +45,8 @@ public class HotPostFragment extends RefreshRecyclerFragment<List<CommunityListI
     @NonNull
     @Override
     protected String request(int offset, int limit) {
-        long curTime = System.currentTimeMillis();
-        String strCurTime = String.valueOf(curTime);
-        return CommonApi.getSingleInstance().getCommunityList(cid, type, strCurTime, "", "");
+        return CommonApi.getSingleInstance().getCommunityList(cid, type, "", "", "");
     }
-
 
     @NonNull
     @Override

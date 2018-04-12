@@ -16,8 +16,7 @@
             android:id="@+id/flexible_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/abc_ic_ab_back_material"
@@ -37,12 +36,12 @@
             android:id="@+id/category_tab"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/white"
-            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabSelectedTextColor="@color/colorAccent"
             app:tabTextAppearance="@style/TextAppearance.Tab"
-            app:tabTextColor="@color/grey_300" />
+            app:tabTextColor="@color/grey_700" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/category_viewpager"

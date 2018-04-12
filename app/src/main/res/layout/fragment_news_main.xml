@@ -15,9 +15,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeToolbarDarkOverflow"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:logo="@drawable/ithome_logo_topbar"
+            app:logo="@drawable/ithome_logo_topbar_dark"
             app:popupTheme="@style/ToolbarPopupTheme">
 
         </android.support.v7.widget.Toolbar>
@@ -32,8 +33,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@color/colorPrimary">
+            android:layout_height="45dp">
 
             <TextView
                 android:id="@+id/tv_pick_operator"
@@ -43,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:text="长按切换栏目"
-                android:textColor="@color/diy_white"
+                android:textColor="@color/grey_700"
                 android:visibility="gone" />
 
             <ImageView
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="12dp"
-                android:src="@drawable/icon_toolbar_custom" />
+                android:layout_marginRight="16dp"
+                android:src="@drawable/icon_toolbar_custom_dark" />
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_nav"
@@ -62,13 +62,13 @@
                 android:layout_toLeftOf="@+id/icon_toolbar_custom"
                 android:paddingRight="12dp"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorColor="@color/colorAccent"
                 app:tabMaxWidth="61dp"
                 app:tabMode="scrollable"
                 app:tabPaddingEnd="0dp"
                 app:tabPaddingStart="0dp"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="@color/tab_text_normal" />
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/grey_700" />
         </RelativeLayout>
 
         <android.support.v4.view.ViewPager
@@ -86,10 +86,10 @@
         android:visibility="invisible" />
 
     <com.danmo.ithouse.widget.CustomSearchView
-        android:layout_margin="5dp"
         android:id="@+id/view_custom_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:visibility="invisible" />
 
 </android.support.design.widget.CoordinatorLayout>

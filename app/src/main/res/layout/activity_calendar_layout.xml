@@ -10,8 +10,7 @@
         android:id="@+id/canlendar_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_collapseMode="pin"
         app:navigationIcon="@drawable/abc_ic_ab_back_material"
         app:popupTheme="@style/ToolbarPopupTheme"
@@ -23,13 +22,14 @@
         android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical"
+        app:default_status="shrink"
         app:calendar_content_view_id="@+id/calendar_content">
 
         <com.haibin.calendarview.CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@color/white"
             app:calendar_card_view="com.danmo.ithouse.widget.calendar.SimpleCalendarCardView"
             app:calendar_height="40dp"
             app:current_month_lunar_text_color="#CFCFCF"
@@ -40,10 +40,11 @@
             app:scheme_text="假"
             app:scheme_text_color="#333"
             app:scheme_theme_color="#333"
-            app:selected_text_color="#fff"
+            app:selected_text_color="@color/white"
             app:selected_theme_color="@color/colorPrimary"
-            app:week_background="#fff"
-            app:week_text_color="#fff"
+            app:current_day_text_color="@color/deep_purple_a700"
+            app:week_background="@color/white"
+            app:week_text_color="@color/white"
             app:week_view="com.danmo.ithouse.widget.calendar.SimpleWeekView" />
 
         <LinearLayout

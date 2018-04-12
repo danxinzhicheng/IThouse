@@ -4,12 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.youth.banner.Banner
+    <com.danmo.ithouse.widget.banner.BannerWrapperView
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:indicator_drawable_selected="@drawable/banner_indicator_sel"
-        app:indicator_drawable_unselected="@drawable/banner_indicator"
-        app:indicator_height="6dp"
-        app:indicator_width="6dp" />
+        android:layout_height="140dp"
+        android:layout_marginTop="10dp"
+        app:bannerClipChildren="false"
+        app:indicatorIconNormal="@drawable/banner_indicator"
+        app:indicatorIconSelected="@drawable/banner_indicator_red_sel"
+        app:playAuto="true"
+        app:playLoop="true"
+        app:viewPageHorizonMargin="15dp"
+        app:viewPageMargin="8dp" />
+
 </RelativeLayout>

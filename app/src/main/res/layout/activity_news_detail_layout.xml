@@ -11,57 +11,79 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Light">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/detail_title"
+            android:id="@+id/top_title"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
             app:collapsedTitleTextAppearance="@style/CollapsingTextAppearance.Collapsing"
-            app:contentScrim="?colorPrimary"
-            app:expandedTitleMarginBottom="40dp"
-            app:expandedTitleMarginStart="20dp"
+            app:expandedTitleGravity="center_horizontal"
+            app:expandedTitleMarginBottom="0dp"
+            app:expandedTitleMarginTop="0dp"
             app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            app:titleEnabled="false">
 
-            <RelativeLayout
-                android:id="@+id/detail_top_sub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/detail_time"
+                <com.danmo.ithouse.widget.TitleCenterTextView
+                    android:id="@+id/detail_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="bottom"
-                    android:text="@string/detail_time"
-                    android:textSize="11sp" />
+                    android:layout_marginBottom="10dp"
+                    android:maxLines="3"
+                    android:text="IT家园"
+                    android:textColor="@color/grey_800"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/detail_author"
+                <RelativeLayout
+                    android:id="@+id/detail_top_sub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/detail_time"
-                    android:text="@string/detail_author"
-                    android:textSize="11sp" />
-            </RelativeLayout>
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="10dp">
 
+                    <TextView
+                        android:id="@+id/detail_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:text="@string/detail_time"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/detail_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/detail_time"
+                        android:text="@string/detail_author"
+                        android:textSize="11sp" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/flexible_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@null"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/abc_ic_ab_back_material"
-                app:popupTheme="@style/ToolbarPopupTheme" />
+                app:popupTheme="@style/ToolbarPopupTheme"
+                app:title="@null" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -81,7 +103,7 @@
             <WebView
                 android:id="@+id/wv_detail_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
@@ -104,7 +126,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_width="45dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/detail_shape_corner"
@@ -135,7 +157,7 @@
                     android:background="@drawable/detail_shape_corner_comment"
                     android:gravity="center"
                     android:text="@string/detail_comment_bad"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -145,7 +167,7 @@
                     android:background="@drawable/detail_shape_corner_comment"
                     android:gravity="center"
                     android:text="@string/detail_comment_soso"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -155,7 +177,7 @@
                     android:background="@drawable/detail_shape_corner_comment"
                     android:gravity="center"
                     android:text="@string/detail_comment_good"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
 

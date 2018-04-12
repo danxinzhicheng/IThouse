@@ -7,55 +7,51 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_community_catetory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/recycler_view_community_catetory"
         android:layout_marginTop="15dp"
         android:background="@color/white"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/community_category_group"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:gravity="center_vertical"
-            android:text="最新帖子"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="15dp"
-            android:gravity="right|center_vertical">
+            <RadioButton
+                android:id="@+id/community_category_newest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/layer_community_post_hot_new_bg"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="最新帖子"
+                android:textColor="@color/community_post_hot_color_text_selector"
+                android:textSize="16sp" />
 
-            <RadioGroup
-                android:id="@+id/community_category_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/community_category_hotest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/layer_community_post_hot_new_bg"
+                android:button="@null"
+                android:gravity="center"
+                android:text="热门帖子"
+                android:textColor="@color/community_post_hot_color_text_selector"
+                android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/community_category_newest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="最新"
-                    android:checked="true"
-                    android:textColor="@color/grey_700"
-                    android:textSize="13sp" />
+        </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/community_category_hotest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="最热"
-                    android:textColor="@color/grey_700"
-                    android:textSize="13sp" />
-            </RadioGroup>
-        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

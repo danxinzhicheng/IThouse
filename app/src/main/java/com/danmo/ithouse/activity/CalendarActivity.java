@@ -55,6 +55,7 @@ public class CalendarActivity extends BaseActivity implements CalendarView.OnDat
         });
         mToolbar.setTitle(mCalendarView.getCurYear() + "年" + mCalendarView.getCurMonth() + "月" + mCalendarView.getCurDay() + "日");
 
+
         mCalendarView.setOnYearChangeListener(this);
         mCalendarView.setOnDateSelectedListener(this);
 

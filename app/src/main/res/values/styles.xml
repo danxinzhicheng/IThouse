@@ -2,17 +2,17 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--ToolBar上的Title颜色-->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <!--状态栏颜色-->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--ToolBar区域背景颜色-->
+        <item name="colorPrimary">@color/white</item>
+        <!--状态栏区域背景颜色-->
+        <item name="colorPrimaryDark">@color/white</item>
         <!--控制各个控件被选中时的颜色-->
         <item name="colorAccent">@color/colorAccent</item>
 
         <!--页面背景色-->
-        <!--<item name="android:windowBackground">@drawable/splash</item>-->
+        <item name="android:windowBackground">@color/white</item>
         <!--api 21 可用 底部导航栏颜色-->
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/grey_500</item>
         <item name="android:textColorPrimary">@color/white</item>
         <!--api 21 可用 各个控制控件的默认颜色-->
         <!--<item name="android:colorControlNormal">@color/white</item>-->
@@ -32,13 +32,19 @@
     <style name="CollapsingTextAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title" />
 
     <style name="CollapsingTextAppearance.Inverse">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CollapsingTextAppearance.Collapsing">
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="ThemeToolbarDarkOverflow" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/abc_primary_text_material_light</item>
+        <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_light</item>
+        <item name="android:textColorSecondary">@color/abc_secondary_text_material_light</item>
+    </style>
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
         <item name="navigationIcon">@drawable/abc_ic_ab_back_material</item>
         <item name="android:colorBackground">@color/white</item>

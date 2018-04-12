@@ -1,39 +1,33 @@
 package com.danmo.ithouse.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.danmo.commonapi.CommonApi;
 import com.danmo.commonapi.event.login.LoginEvent;
 import com.danmo.ithouse.R;
 import com.danmo.ithouse.base.BaseActivity;
-import com.danmo.ithouse.base.BaseFragment;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.shareboard.SnsPlatform;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Map;
-
-import static com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext;
 
 /**
  * Created by user on 2017/12/26.
@@ -41,13 +35,12 @@ import static com.umeng.commonsdk.stateless.UMSLEnvelopeBuild.mContext;
 
 public class LoginMainActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String TAG = "xxx";
+    private static final String TAG = "LoginMainActivity";
     private TextInputEditText etLoginName, etLoginPasswd;
     private TextView tvForgetPasswd, tvLoginRegister;
     private ImageView ivLoginWeixin, ivLoginQQ, ivLoginWeibo, ivLoginTaobao;
     private Button btnLogin;
     private static int REQUEST_CODE_LOGIN = 1;
-    public ArrayList<SnsPlatform> platforms = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -56,11 +49,12 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
 
     public static void startActivityForResult(Activity context) {
         Intent intent = new Intent(context, LoginMainActivity.class);
-        context.startActivityForResult(intent,REQUEST_CODE_LOGIN);
+        context.startActivityForResult(intent, REQUEST_CODE_LOGIN);
     }
+
     public static void startActivityForResult(Fragment fragment) {
         Intent intent = new Intent(fragment.getActivity(), LoginMainActivity.class);
-        fragment.startActivityForResult(intent,REQUEST_CODE_LOGIN);
+        fragment.startActivityForResult(intent, REQUEST_CODE_LOGIN);
     }
 
     @Override
@@ -84,7 +78,34 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
         ivLoginWeibo.setOnClickListener(this);
         ivLoginWeixin.setOnClickListener(this);
 
+        btnLogin.setClickable(false);
+        etLoginName.addTextChangedListener(mTextWatcher);
+        etLoginPasswd.addTextChangedListener(mTextWatcher);
+
     }
+
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (!etLoginName.getText().toString().isEmpty() && !etLoginPasswd.getText().toString().isEmpty()) {
+                btnLogin.setClickable(true);
+                btnLogin.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+            } else {
+                btnLogin.setClickable(false);
+                btnLogin.setBackgroundColor(getResources().getColor(R.color.grey_300));
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     protected void onStart() {
@@ -142,13 +163,13 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
             CommonApi.getSingleInstance().login(name, passwd);//登录
 
         } else if (v == ivLoginWeixin) {
-            authorization(SHARE_MEDIA.WEIXIN);
+            authorizationLogin(SHARE_MEDIA.WEIXIN);
 
         } else if (v == ivLoginQQ) {
-            authorization(SHARE_MEDIA.QQ);
+            authorizationLogin(SHARE_MEDIA.QQ);
 
         } else if (v == ivLoginWeibo) {
-            authorization(SHARE_MEDIA.SINA);
+            authorizationLogin(SHARE_MEDIA.SINA);
 
         } else if (v == ivLoginTaobao) {
 
@@ -156,7 +177,7 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
     }
 
     //一键授权
-    private void authorization(SHARE_MEDIA share_media) {
+    private void authorizationLogin(SHARE_MEDIA share_media) {
         UMShareAPI.get(this).getPlatformInfo(this, share_media, new UMAuthListener() {
             @Override
             public void onStart(SHARE_MEDIA share_media) {
@@ -178,10 +199,10 @@ public class LoginMainActivity extends BaseActivity implements View.OnClickListe
                 String iconurl = map.get("iconurl");
 
                 Intent intent = new Intent();
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("map",(Serializable) map);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("map", (Serializable) map);
                 intent.putExtras(bundle);
-                setResult(Activity.RESULT_OK,intent);
+                setResult(Activity.RESULT_OK, intent);
                 finish();
 
                 //拿到信息去请求登录接口。。。

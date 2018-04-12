@@ -7,6 +7,6 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/option_search"
-        android:icon="@drawable/icon_toolbar_search"
+        android:icon="@drawable/icon_toolbar_search_dark"
         app:showAsAction="always" />
 </menu>

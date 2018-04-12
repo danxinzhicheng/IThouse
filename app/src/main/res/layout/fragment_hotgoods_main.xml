@@ -18,6 +18,7 @@
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ToolbarPopupTheme"
+            app:logo="@drawable/lapin_logo_topbar_red"
             app:titleTextAppearance="@style/CollapsingTextAppearance.Collapsing"
             app:title="辣品">
 
@@ -35,15 +36,14 @@
             android:id="@+id/tab_nav"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@color/colorPrimary"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorColor="@color/colorAccent"
             app:tabMaxWidth="61dp"
             app:tabMode="scrollable"
             app:tabPaddingEnd="0dp"
             app:tabPaddingStart="0dp"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/tab_text_normal" />
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/grey_700" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

@@ -98,7 +98,7 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
                 title.setTextColor(mContext.getResources().getColor(R.color.diy_gray2));
                 mMapClicked.put(bean.newsid, position);
 
-                if (realmResults != null && realmResults.size() >= 20) {
+                if (realmResults != null && realmResults.size() >= 2) {
                     BaseApplication.sRealm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {

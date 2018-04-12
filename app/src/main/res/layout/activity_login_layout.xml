@@ -16,8 +16,7 @@
             android:id="@+id/flexible_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:navigationIcon="@drawable/abc_ic_ab_back_material"
@@ -82,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/grey_300"
             android:paddingBottom="18dp"
             android:paddingTop="18dp"
             android:text="登录"
@@ -155,28 +154,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
-                    android:src="@drawable/login_btn_weixin" />
+                    android:background="@drawable/login_shape_corner_bg"
+                    android:src="@drawable/me_login_weixin"
+                    android:tint="@color/grey_800" />
 
                 <ImageView
                     android:id="@+id/iv_login_qq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
-                    android:src="@drawable/login_btn_qq" />
+                    android:background="@drawable/login_shape_corner_bg"
+                    android:src="@drawable/me_login_qq"
+                    android:tint="@color/grey_800" />
 
                 <ImageView
                     android:id="@+id/iv_login_weibo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
-                    android:src="@drawable/login_btn_weibo" />
+                    android:background="@drawable/login_shape_corner_bg"
+                    android:src="@drawable/me_login_weibo"
+                    android:tint="@color/grey_800" />
 
                 <ImageView
                     android:id="@+id/iv_login_taobao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="18dp"
-                    android:src="@drawable/login_btn_taobao" />
+                    android:background="@drawable/login_shape_corner_bg"
+                    android:src="@drawable/me_login_taobao"
+                    android:tint="@color/grey_800" />
             </LinearLayout>
 
         </LinearLayout>

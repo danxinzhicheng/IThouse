@@ -3,11 +3,15 @@ package com.danmo.ithouse.provider;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.danmo.commonapi.bean.community.CommunityListItem;
 import com.danmo.commonutil.recyclerview.adapter.base.RecyclerViewHolder;
@@ -29,6 +33,8 @@ import java.util.List;
 
 public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityListItem>> {
 
+    private EventBusMsg eventBusMsg = new EventBusMsg();
+
     public CommunityCategoryProvider(@NonNull Context context) {
         super(context, R.layout.item_community_category);
     }
@@ -37,7 +43,9 @@ public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityLi
     public void onBindView(RecyclerViewHolder holder, List<CommunityListItem> bean) {
 
         RecyclerView mRecyclerView = holder.get(R.id.recycler_view_community_catetory);
-        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
+//        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
+        layoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(layoutManager);
 
         CommunityCategoryRecyclerAdapter adapter = new CommunityCategoryRecyclerAdapter(mContext, R.layout.item_community_category_sub_item);
@@ -54,12 +62,13 @@ public class CommunityCategoryProvider extends BaseViewProvider<List<CommunityLi
         RadioButton btnNew = holder.get(R.id.community_category_newest);
         RadioButton btnHot = holder.get(R.id.community_category_hotest);
         group.setOnCheckedChangeListener(new RadioGroupListener());
+
     }
+
 
     class RadioGroupListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            EventBusMsg eventBusMsg = new EventBusMsg();
 
             if (checkedId == R.id.community_category_newest) {
                 eventBusMsg.setCommunity_fresh_new_or_hot(0);

@@ -7,10 +7,9 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="32dp">
+        android:layout_height="32dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_operator"
@@ -19,7 +18,7 @@
             android:layout_marginLeft="15dp"
             android:gravity="center_vertical"
             android:text="长按切换栏目"
-            android:textColor="@color/diy_white" />
+            android:textColor="@color/grey_700" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -27,7 +26,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:visibility="gone"
             android:src="@drawable/icon_toolbar_custom_up" />
     </RelativeLayout>
 

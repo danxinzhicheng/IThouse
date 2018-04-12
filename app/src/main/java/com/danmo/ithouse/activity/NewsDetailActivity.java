@@ -3,8 +3,8 @@ package com.danmo.ithouse.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.view.menu.MenuBuilder;
@@ -74,8 +74,9 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
     public static final String INTENT_DETAIL_CONTENT_NEWSID = "newsid";
 
 
-    private CollapsingToolbarLayout detailTitle;
+    private TextView detailTitle;
     private WebView wvDetailContent;
+    private Toolbar toolbar;
 
     //文字左右对齐；文字间隔
     private static final String WEBVIEW_CONTENT = "<html><head></head><body style=\"text-align:justify;margin:0;letter-spacing:1.2;\">%s</body></html>";
@@ -104,7 +105,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
         wvDetailContent.setWebViewClient(new MyWebViewClient());
 
         detailTitle = findViewById(R.id.detail_title);
-        Toolbar toolbar = findViewById(R.id.flexible_toolbar);
+        toolbar = findViewById(R.id.flexible_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +113,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
                 NewsDetailActivity.this.onBackPressed();
             }
         });
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         AppBarLayout appbar = findViewById(R.id.appbar);
         appbar.addOnOffsetChangedListener(this);
 
@@ -123,6 +125,8 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
 
         mAdapter.register(DetailRelatedItem.class, new RelatedActicalProvider(this));
         mAdapter.register(DetailRecommendItem.class, new RecommentActicalProvider(this));
+
+        mRootView.setVisibility(View.INVISIBLE);
 
     }
 
@@ -137,6 +141,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             imgReset();
+            mRootView.setVisibility(View.VISIBLE);
         }
 
 //        @Override
@@ -166,11 +171,22 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
         String uuid = CommonApi.getSingleInstance().getNewsDetailContent(getDetailContentUrl());
         mPostTypes.put(POST_DETAIL_CONTENT, uuid);
 
-        String uuid2 = CommonApi.getSingleInstance().getNewsDetailRelated(Constant.NEWS_DETAIL_RELATED_URL);
+        String uuid2 = CommonApi.getSingleInstance().getNewsDetailRelated(getDetailRelatedUrl());
         mPostTypes.put(POST_DETAIL_RELATED, uuid2);
 
-        String uuid3 = CommonApi.getSingleInstance().getNewsDetailRecommend(Constant.NEWS_DETAIL_RECOMMEND_URL);
-        mPostTypes.put(POST_DETAIL_RECOMMEND, uuid3);
+        new Handler().postDelayed(new Runnable() {//最好在相关文章请求之后去请求推荐
+            @Override
+            public void run() {
+                String uuid3 = CommonApi.getSingleInstance().getNewsDetailRecommend(Constant.NEWS_DETAIL_RECOMMEND_URL);
+                mPostTypes.put(POST_DETAIL_RECOMMEND, uuid3);
+            }
+        }, 1000);
+
+    }
+
+    private String getDetailRelatedUrl() {
+        String newsid = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_NEWSID); //345234
+        return String.format(Constant.NEWS_DETAIL_RELATED_URL, newsid);
     }
 
 
@@ -214,6 +230,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
                         item.newstitle = jo.optString("newstitle");
                         item.postdate = jo.optString("postdate");
                         item.url = jo.optString("url");
+                        item.img = jo.optString("img");
                         listItem.add(item);
                     }
                     mAdapter.addDatas(listItem);
@@ -239,7 +256,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
         }
 
         if (!TextUtils.isEmpty(item.title)) {
-            detailTitle.setTitle(item.title);
+            detailTitle.setText(item.title);
         }
 
         if (!TextUtils.isEmpty(item.detail)) {
@@ -280,7 +297,12 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
             if (!mIsImageHidden) {
                 mIsImageHidden = true;
                 ViewCompat.animate(mTopSub).alpha(0).start();
-//                ViewCompat.animate(mTopSub).scaleY(0).scaleX(0).start();
+                ViewCompat.animate(detailTitle).alpha(0).start();
+
+
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
+                toolbar.setTitle(detailTitle.getText());
+//                ViewCompat.animate(detailTitle).scaleY(0).scaleX(0).start();
             }
         }
 
@@ -288,10 +310,14 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
             if (mIsImageHidden) {
                 mIsImageHidden = false;
                 ViewCompat.animate(mTopSub).alpha(1).start();
-//                ViewCompat.animate(mTopSub).scaleY(1).scaleX(1).start();
+                ViewCompat.animate(detailTitle).alpha(1).start();
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                toolbar.setTitle("");
+//                ViewCompat.animate(detailTitle).scaleY(1).scaleX(1).start();
             }
         }
     }
+
 
     public static void start(Context c, int fromType, String newsid) {
         Intent intent = new Intent(c, NewsDetailActivity.class);

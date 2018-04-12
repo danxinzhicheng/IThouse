@@ -185,11 +185,6 @@ public class NewsFragment extends BaseFragment {
             }
         });
 
-//        mAdapter = new BaseViewPagerAdapter(getChildFragmentManager(), getPagers());
-//        mBaseViewPager.setAdapter(mAdapter);
-//        mTabNav.setupWithViewPager(mBaseViewPager);
-//        mBaseViewPager.setCurrentItem(0, true);
-
         mAdapter = new BaseViewPagerAdapter(mContext, getChildFragmentManager(), getPagers());
         mBaseViewPager.setAdapter(mAdapter);
         mTabNav.setupWithViewPager(mBaseViewPager);

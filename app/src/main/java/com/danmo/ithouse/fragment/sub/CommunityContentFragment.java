@@ -29,7 +29,6 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     private String mCurRefeshType = "0";
     private String mCurCategory = "0";
 
-
     @Override
     public void initData(HeaderFooterAdapter adapter) {
         loadHeader();
@@ -41,27 +40,21 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
         adapter.register(CommunityListItem.class, new CommunityListProvider(getContext()));
     }
 
-    @NonNull
     @Override
     protected RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
         return new SpeedyLinearLayoutManager(getContext());
     }
 
-    @NonNull
     @Override
     protected String request(int offset, int limit) {
-        long curTime = System.currentTimeMillis();
-        String strCurTime = String.valueOf(curTime);
-        return CommonApi.getSingleInstance().getCommunityList(mCurCategory, mCurRefeshType, strCurTime, "", "");
+        return CommonApi.getSingleInstance().getCommunityList(mCurCategory, mCurRefeshType, "", "", "");
     }
 
-    @NonNull
     @Override
     protected String requestHeader() {
         return CommonApi.getSingleInstance().getCommunityCategory(Constant.QUANZI_CATEGORY);
     }
 
-    @NonNull
     @Override
     protected String requestMiddle() {
         return null;
@@ -81,7 +74,7 @@ public class CommunityContentFragment extends RefreshRecyclerFragment<List<Commu
     @Override
     protected void onLoadHeader(GetCommunityListEvent event, HeaderFooterAdapter adapter) {
         if (event.getBean() != null && event.getBean().size() > 0) {
-            mAdapter.registerHeader(event.getBean(), new CommunityCategoryProvider(mContext));//添加分类
+            adapter.registerHeader(event.getBean(), new CommunityCategoryProvider(mContext));//添加分类
         }
     }
 

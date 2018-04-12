@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
     android:layout_marginTop="10dp"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="1dp"
@@ -25,6 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:tint="@color/grey_800"
                 android:src="@drawable/me_icon_gold_mall" />
 
             <TextView
@@ -65,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:tint="@color/grey_800"
                 android:src="@drawable/me_icon_task" />
 
             <TextView

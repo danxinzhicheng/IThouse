@@ -2,59 +2,42 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/annonce.main.coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/diy_gray"
-    tools:ignore="RtlHardcoded">
+    android:background="@color/diy_gray">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include
-            android:id="@+id/userinfo_head"
-            layout="@layout/userinfo_item_head" />
-
-        <include
-            android:id="@+id/userinfo_head_logined"
-            layout="@layout/userinfo_item_head_logined"
-            android:visibility="gone" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:orientation="vertical">
-
-        <include layout="@layout/userinfo_item_1" />
-
-        <android.support.v4.widget.NestedScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="55dp"
-            android:scrollbars="none"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <include
+                android:id="@+id/userinfo_head"
+                layout="@layout/userinfo_item_head" />
 
-                <include layout="@layout/userinfo_item_2" />
+            <include
+                android:id="@+id/userinfo_head_logined"
+                layout="@layout/userinfo_item_head_logined"
+                android:visibility="gone" />
 
-                <include layout="@layout/userinfo_item_3" />
+            <include layout="@layout/userinfo_item_1" />
 
-                <include layout="@layout/userinfo_item_4" />
+            <include layout="@layout/userinfo_item_2" />
 
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+            <include layout="@layout/userinfo_item_3" />
 
-    </LinearLayout>
+            <include layout="@layout/userinfo_item_4" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>

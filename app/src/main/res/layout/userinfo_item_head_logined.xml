@@ -2,15 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="25dp"
-    android:background="@color/colorPrimary">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/iv_userinfo_pic"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/login_btn_qq" />
 
     <LinearLayout
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="淡漠IT"
-            android:textColor="@color/white"
+            android:textColor="@color/grey_800"
             android:textSize="20sp" />
     </LinearLayout>
 

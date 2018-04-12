@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_marginBottom=".2dp"
-    android:layout_marginRight=".2dp"
+    android:layout_width="90dp"
+    android:layout_height="100dp"
     android:background="@color/white"
-    android:gravity="center_vertical"
-    android:paddingLeft="20dp">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/item_community_category_icon"
@@ -18,8 +16,8 @@
         android:id="@+id/item_community_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:text="站务处理"
+        android:layout_marginTop="10dp"
         android:textColor="@color/diy_black"
         android:textSize="14sp" />
 
@@ -27,8 +25,8 @@
         android:id="@+id/item_community_category_addnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:text="+50"
+        android:layout_marginTop="10dp"
         android:textColor="@color/colorPrimary"
         android:textSize="11sp" />
 
