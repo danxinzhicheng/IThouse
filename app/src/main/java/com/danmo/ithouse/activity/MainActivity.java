@@ -2,7 +2,6 @@ package com.danmo.ithouse.activity;
 
 import android.animation.ValueAnimator;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
 
 import com.danmo.ithouse.R;
@@ -30,6 +29,10 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
         mNavBar = new NavFragment();
         addFragment(R.id.fag_nav, mNavBar);
         mNavBar.setup(R.id.main_container, this);
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
     @Override
@@ -113,5 +116,6 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
 
         va.start();
     }
+
 
 }

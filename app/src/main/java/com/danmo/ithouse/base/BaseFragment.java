@@ -91,8 +91,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Log.i("xxx","onCreateView");
-
         if (mRoot != null) {
             ViewGroup parent = (ViewGroup) mRoot.getParent();
             if (parent != null)
@@ -125,7 +123,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("xxx","onDestroyView");
         if (mViewHolder.getRootView() != null) {
             ((ViewGroup) mViewHolder.getRootView().getParent()).removeView(mViewHolder.getRootView());
         }

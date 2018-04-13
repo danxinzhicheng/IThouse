@@ -45,7 +45,6 @@ public class BaseCallback<T> implements Callback<T> {
      */
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        Log.i("msg", "response.body--->" + response.body());
         if (response.isSuccessful()) {
             EventBus.getDefault().post(event.setEvent(response.code(), response.body()));
         } else {
@@ -62,7 +61,6 @@ public class BaseCallback<T> implements Callback<T> {
      */
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        Log.i("msg", "onFailure---->" + t.toString());
         EventBus.getDefault().post(event.setEvent(-1, null));
     }
 }
