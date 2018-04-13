@@ -65,18 +65,25 @@
 - 资讯，辣品，圈子，我，四大导航栏主界面的布局及数据展示
 - 文章详情页的布局及数据展示
 
+## 项目运行展示
+
+![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/version-2.0/Screenshots/ithouse_record.gif)
+
 ## 项目截图
 资讯：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/version-2.0/Screenshots/Screenshot_1.png)
 
+
 辣品：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/version-2.0/Screenshots/Screenshot_2.png)
 
+
 圈子：
 
 ![image](https://raw.githubusercontent.com/danxinzhicheng/IThouse/version-2.0/Screenshots/Screenshot_3.png)
+
 
 个人：
 
