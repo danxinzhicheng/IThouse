@@ -96,6 +96,7 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
     implementation project(':commonutil')
     implementation project(':commonapi')
+    implementation project(':ijkplayerlib')
     implementation files('libs/SocialSDK_Sina_Full.jar')
     implementation files('libs/SocialSDK_WeiXin_Full.jar')
     implementation files('libs/SocialSDK_ynote.jar')

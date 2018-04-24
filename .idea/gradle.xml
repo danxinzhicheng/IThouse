@@ -9,7 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/commonapi" />
             <option value="$PROJECT_DIR$/commonutil" />
+            <option value="$PROJECT_DIR$/ijkplayerlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
