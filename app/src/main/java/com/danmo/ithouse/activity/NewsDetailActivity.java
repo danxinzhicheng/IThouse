@@ -11,6 +11,7 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -189,7 +190,6 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
         return String.format(Constant.NEWS_DETAIL_RELATED_URL, newsid);
     }
 
-
     private String getDetailContentUrl() {
         String newsid = getIntent().getStringExtra(INTENT_DETAIL_CONTENT_NEWSID); //345234
         if (getIntent().getIntExtra(INTENT_FROM_TYPE, 0) == TYPE_BANNER) {
@@ -217,7 +217,7 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
                     return;
                 }
                 try {
-                    List<Serializable> listItem = new ArrayList<Serializable>();
+                    List<Serializable> listItem = new ArrayList<>();
                     JSONArray jsonArray = new JSONArray(ss[1]);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         if (i >= 3) {
@@ -299,10 +299,8 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
                 ViewCompat.animate(mTopSub).alpha(0).start();
                 ViewCompat.animate(detailTitle).alpha(0).start();
 
-
                 getSupportActionBar().setDisplayShowTitleEnabled(true);
                 toolbar.setTitle(detailTitle.getText());
-//                ViewCompat.animate(detailTitle).scaleY(0).scaleX(0).start();
             }
         }
 
@@ -313,7 +311,6 @@ public class NewsDetailActivity extends BaseActivity implements AppBarLayout.OnO
                 ViewCompat.animate(detailTitle).alpha(1).start();
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
                 toolbar.setTitle("");
-//                ViewCompat.animate(detailTitle).scaleY(1).scaleX(1).start();
             }
         }
     }

@@ -35,7 +35,7 @@ public class Constant {
     //    public static final String NEWS_DETAIL_CONTENT_URL = "http://api.ithome.com/xml/newscontent/329/170.xml";//文章详情
     public static final String NEWS_DETAIL_CONTENT_URL = "http://api.ithome.com/xml/newscontent/%s.xml";//文章详情
     public static final String NEWS_DETAIL_CONTENT_URL_BANNER = "http://api.ithome.com/rss/%s.xml";//文章详情forBanner
-    public static final String NEWS_DETAIL_RELATED_URL = "http://api.ithome.com/json/tags/0355/%s.json";//相关文章
+    public static final String NEWS_DETAIL_RELATED_URL = "http://api.ithome.com/json/tags/0375/%s.json";//相关文章
     public static final String NEWS_DETAIL_RECOMMEND_URL = "http://api.lapin365.com/api/apps/douzaimai?count=3&platform=ithome_android";//商品推荐
     public static final String RECOMMEND_PIC_HOST = "http://img.lapin365.com/productpictures";//推荐图片路径前缀
 
