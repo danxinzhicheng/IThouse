@@ -142,8 +142,8 @@ public class NewestListProvider extends BaseViewProvider<NewestItem> {
         Window dialogWindow = dialog.getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         dialogWindow.setGravity(Gravity.CENTER);
-        lp.width = DensityUtil.dip2px(mContext,350); // 宽度
-        lp.height = DensityUtil.dip2px(mContext,260); // 高度
+        lp.width = DensityUtil.dip2px(mContext, 350); // 宽度
+        lp.height = DensityUtil.dip2px(mContext, 260); // 高度
         dialogWindow.setAttributes(lp);
 
         initDialogView(dialogView, shareTxt);

@@ -71,18 +71,23 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         if (Config.navigationTitles.length < 4) {
             return;
         }
+
+        //资讯
         mNavNews.init(R.drawable.tab_icon_news,
                 Config.navigationTitles[0],
                 NewsFragment.class);
 
+        //辣品
         mNavTweet.init(R.drawable.tab_icon_hotgoods,
                 Config.navigationTitles[1],
                 HotGoodsFragment.class);
 
+        //圈子
         mNavExplore.init(R.drawable.tab_icon_quan,
                 Config.navigationTitles[2],
                 CommunityFragment.class);
 
+        //我
         mNavMe.init(R.drawable.tab_icon_me,
                 Config.navigationTitles[3],
                 UserFragment.class);
@@ -107,10 +112,6 @@ public class NavFragment extends BaseFragment implements View.OnClickListener {
         mOnNavigationReselectListener = listener;
     }
 
-    public void select(int index) {
-        if (mNavMe != null)
-            doSelect(mNavMe);
-    }
 
     private void clearOldFragment() {
 

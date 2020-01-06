@@ -89,7 +89,6 @@ public class MainActivity extends BaseActivity implements NavFragment.OnNavigati
         } else if (flag == RefreshRecyclerFragment.SCROLL_STATE_DOWN) {
             showBottomNav(mNavBar.getView());
         }
-
     }
 
     private void showBottomNav(final View mTarget) {

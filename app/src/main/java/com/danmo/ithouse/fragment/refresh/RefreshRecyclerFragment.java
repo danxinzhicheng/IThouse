@@ -44,7 +44,6 @@ public abstract class RefreshRecyclerFragment<T, Event extends BaseEvent<T>> ext
     // 适配器
     protected HeaderFooterAdapter mAdapter;
     protected FooterProvider mFooterProvider;
-    //    protected boolean isFirstAddFooter = true;
     private ArrayMap<String, String> mPostTypes = new ArrayMap<>();    // 请求类型
     private int mState = STATE_NORMAL;
     // View
